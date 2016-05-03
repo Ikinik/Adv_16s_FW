@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>Adv_15P_FW_SRC/cz/pecinovsky/edu/adv15p_framework/scenario/ScenarioStep.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>374</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="@51_AUX"/>
+        <group name="@55_AUX"/>
+        <group name="#EDU"/>
+        <group name="#OOPA_15P">
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_15P/Adv_15P_FW/Adv_15P_FW_SRC/eu/pedu/adv15p_fw/test_util/factorytest/FactoryTester.java</file>
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_15P/Adv_15P_FW/Adv_15P_FW_SRC/eu/pedu/adv15p_fw/test_util/common/ATester.java</file>
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_15P/Adv_15P_FW/Adv_15P_FW_SRC/eu/pedu/adv15p_fw/Framework.java</file>
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_15P/Adv_15P_FW/Adv_15P_FW_SRC/eu/pedu/adv15p_fw/scenario/AScenarioManager.java</file>
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_15P/Adv_15P_FW/Adv_15P_FW_SRC/eu/pedu/adv15p_fw/test_util/scenariotest/ScenarioManagerTester.java</file>
+        </group>
+        <group name="@50_AUX">
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_15P/Adv_15P_FW/Adv_15P_FW_SRC/eu/pedu/adv15p_fw/utilities/DBG.java</file>
+        </group>
+        <group name="@49_AUX"/>
+        <group name="2015P_OOPA_15P">
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_15P/Adv_15P_FW/Adv_15P_FW_SRC/eu/pedu/adv15p_fw/test_util/ATestVisitor.java</file>
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_15P/Adv_15P_FW/Adv_15P_FW_ADD/eu/pedu/adv14p_fw/test_util/TextGameTestUtil.java</file>
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_15P/Adv_15P_FW/Adv_15P_FW_ADD/eu/pedu/adv15pG_fw/test_util/gameTtest/TGame14pRunTest.java</file>
+        </group>
+        <group name="@52_AUX"/>
+        <group name="OOPA_2_2016s">
+            <file>file:/D:/Vyuka/%23%20Common/Adventura/Adv_16s/Adv_16s_FW/Adv_16s_FW_SRC/eu/pedu/adv16s_fw/game_txt/IScenarioManager.java</file>
+        </group>
+    </open-files>
+</project-private>
