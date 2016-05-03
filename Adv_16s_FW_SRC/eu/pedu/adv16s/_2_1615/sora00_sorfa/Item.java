@@ -80,7 +80,7 @@ class Item extends ANamed implements IItem
     @Override
     public int getWeight()
     {
-        //TODO EmptyItem.getWeight - Metoda ještě není hotov
+        //TODO EmptyItem.getWeight - Metoda ještě není hotovta
         throw new UncompletedMethodException();
     }
 
