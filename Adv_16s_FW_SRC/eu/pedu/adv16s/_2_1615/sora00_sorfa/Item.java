@@ -31,6 +31,7 @@ import eu.pedu.adv16s_fw.utilities.UncompletedMethodException;
 class Item extends ANamed implements IItem
 {
 //== CONSTANT CLASS FIELDS =====================================================
+    private static boolean MOVABLE;
 //== VARIABLE CLASS FIELDS =====================================================
 
 
@@ -45,6 +46,9 @@ class Item extends ANamed implements IItem
 
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
+    /** Název objektu */
+    private final String name;
+
 //== VARIABLE INSTANCE FIELDS ==================================================
 
 
@@ -63,6 +67,15 @@ class Item extends ANamed implements IItem
     Item(String name)
     {
         super(name);
+        this.name = name;
+        boolean movable;
+        switch(name.charAt(0)){
+            case 'M':
+                movable = true;
+            default:
+                movable = false;
+        }
+        MOVABLE = movable;
     }
 
 
@@ -80,11 +93,19 @@ class Item extends ANamed implements IItem
     @Override
     public int getWeight()
     {
-        //TODO EmptyItem.getWeight - Metoda ještě není hotovta
-        throw new UncompletedMethodException();
+        return 0;
     }
 
 
+    /***************************************************************************
+     * Vrátí název prostoru
+     *
+     * @return Název prostoru
+     */
+    @Override
+    public String getName(){
+        return name;
+    }
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

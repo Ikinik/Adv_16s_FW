@@ -1,13 +1,12 @@
 /* The file is saved in UTF-8 codepage.
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
-package eu.pedu.adv16s_fw.empty_classes;
+package eu.pedu.adv16s._2_1615.sora00_sorfa;
 
-import eu.pedu.adv16s_fw.game_txt.IItem;
+import java.util.*;
+import java.util.stream.Collectors;
 
-import java.util.Collection;
 import eu.pedu.adv16s_fw.game_txt.ISpace;
-import eu.pedu.adv16s_fw.utilities.UncompletedMethodException;
 
 
 
@@ -44,25 +43,48 @@ class Space extends ANamed implements ISpace
 
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
+    /** Název dané místnosti */
+    private final String name;
+
+    /** Názvy sousedů místnosti na počátku hry. */
+    private final String[] neighborNames;
+
+    /** Názvy objektů v místnosti na počátku hry. */
+    private final String[] itemNames;
+
 //== VARIABLE INSTANCE FIELDS ==================================================
-
-
+    private Collection<Space> neighbors;
+    private Collection<Item> items;
 
 //##############################################################################
 //== CONSTRUCTORS AND FACTORY METHODS ==========================================
 
     /***************************************************************************
+     * Vytvoří novou místnost se zadaným názvem a
+     * zadanými názvy jejich počátečních sousedů a objektů.
      *
+     * @param name          Název dané místnosti
+     * @param neighborNames Názvy sousedů místnosti na počátku hry
+     * @param itemNames   Názvy objektů v místnosti na počátku hry
      */
-    Space(String name)
-    {
+    Space(String name, String[] neighborNames, String... itemNames) {
         super(name);
+        this.name = name;
+        this.neighborNames = neighborNames;
+        this.itemNames = itemNames;
     }
 
 
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
+
+    /***************************************************************************
+     * @return jméno prostoru
+     */
+    public String getName(){
+        return this.name;
+    }
 
     /***************************************************************************
      * Returns the collection of current neighbors of this space, i.e. the
@@ -73,12 +95,10 @@ class Space extends ANamed implements ISpace
      * @return Collection of neighbors
      */
     @Override
-    public Collection<? extends ISpace> getNeighbors()
+    public Collection<Space> getNeighbors()
     {
-        //TODO EmptySpace.getNeighbors - Metoda ještě není hotova
-        throw new UncompletedMethodException();
+        return Collections.unmodifiableCollection(neighbors);
     }
-
 
     /***************************************************************************
      * Returns a collection of items located in the given space.
@@ -86,18 +106,35 @@ class Space extends ANamed implements ISpace
      * @return Collection of items located in the given space
      */
     @Override
-    public Collection<? extends IItem> getItems()
+    public Collection<Item> getItems()
     {
-        //TODO EmptySpace.getItems - Metoda ještě není hotova
-        throw new UncompletedMethodException();
+        return Collections.unmodifiableCollection(items);
     }
 
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    /***************************************************************************
+     * Nastaví výchozí stav dané místnosti na počátku hry.
+     */
+    void initialize(){
+        initializeNeightbors();
+        initializeItems();
+    }
+
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
+    private void initializeNeightbors(){
+        World world = World.getInstance();
+        neighbors = Arrays.stream(neighborNames)
+                          .map(world::getSpace)
+                          .collect(Collectors.toList());
+    }
 
-
+    private void initializeItems(){
+        items = Arrays.stream(itemNames)
+                      .map(Item::new)
+                      .collect(Collectors.toList());
+    }
 
 //##############################################################################
 //== NESTED DATA TYPES =========================================================

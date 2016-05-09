@@ -3,33 +3,40 @@
  */
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
 
-import eu.pedu.adv16s_fw.game_txt.IGSMFactory;
-import eu.pedu.adv16s_fw.game_txt.IGame;
-import eu.pedu.adv16s_fw.scenario.AScenarioManager;
+import eu.pedu.adv16s_fw.game_txt.IBag;
+import eu.pedu.adv16s_fw.game_txt.IItem;
+import eu.pedu.adv16s_fw.utilities.UncompletedMethodException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 
 /*******************************************************************************
- * Instances of the {@code GSMFactory } class represent
- * the factory objects which are able to deliver the game instance,
- * an instance of scenario manager of this game
- * and an instance of the text user interface.
- * As long as some of these objects are not yet fully defined,
- * the methods throw the
- * {@link eu.pedu.adv16s_fw.utilities.UncompletedMethodException}.
+ * Instance of the {@code EmptyBag} class represents the repository,
+ * to which the players store the items picked up in individual spaces,
+ * so that they could be moved to other spaces and/or used.
+ * The disposal site has a final capacity defining the maximal permitted
+ * sum of weights of items occuring in the repository.
  * <p>
- * In the first stage of the whole application development only the method
- * {@link #getScenarioManager()} allowing to obtain
- * the scenario manager instance is active.
- * Bodies of remaining methods are commented.
- * In the next development stages also these methods are uncommented.
+ * In this game the bag is ...
+ * with capacity ....
+ * The item weight represents
  *
  * @author  Rudolf PECINOVSKÝ
  * @version 2016-Summer
  */
-public class GSMFactory implements IGSMFactory, IAuthorPrototype
+class Bag implements IBag
 {
 //== CONSTANT CLASS FIELDS =====================================================
+
+    /** The only instance of the bag in the game. */
+    private static final Bag SINGLETON = new Bag();
+
+
+
 //== VARIABLE CLASS FIELDS =====================================================
 
 
@@ -44,17 +51,28 @@ public class GSMFactory implements IGSMFactory, IAuthorPrototype
 
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
+    private static int CAPACITY = 4;
 //== VARIABLE INSTANCE FIELDS ==================================================
-
+    private Collection<Item> items;
 
 
 //##############################################################################
 //== CONSTRUCTORS AND FACTORY METHODS ==========================================
 
     /***************************************************************************
-     * Creates the factory object providing the key application objects.
+     * Factory method returning the only existing instance of the game.
+     *
+     * @return The instance of the given game
      */
-    public GSMFactory()
+    static Bag getInstance()
+    {
+        return SINGLETON;
+    }
+
+
+    /***************************************************************************
+     */
+    Bag()
     {
     }
 
@@ -64,43 +82,40 @@ public class GSMFactory implements IGSMFactory, IAuthorPrototype
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
     /***************************************************************************
-     * Returns the instance of the scenario manager.
+     * Returns the bag capacity, i.e. the maximal permitted sum
+     * of weights of items, that can be put into the bag at the same time.
      *
-     * @return Required scenario manager
+     * @return Capacity of the bag
      */
     @Override
-    public AScenarioManager getScenarioManager()
+    public int getCapacity()
     {
-        return ScenarioManager.getInstance();
+        return CAPACITY;
     }
 
 
     /***************************************************************************
-     * Returns the instance of text version of the game.
+     * Returns the collection of items saved in the bag.
      *
-     * @return Required game
+     * @return Collection of items in the bag
      */
     @Override
-    public IGame getGame()
+    public Collection<? extends IItem> getItems()
     {
-       return RobotGame.getInstance();
+        return Collections.unmodifiableCollection(items);
     }
-
-
-    /***************************************************************************
-     * Returns the object executing the user interface.
-     *
-     * @return Required user interface
-     */
-//    @Override
-//    public IUI getUI()
-//    {
-//        return TextUI_Instance;
-//    }
 
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    /***************************************************************************
+     * Initialize.
+     */
+    void initialize()
+    {
+        items = new ArrayList<>();
+    }
+
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 
 

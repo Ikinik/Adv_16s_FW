@@ -9,7 +9,7 @@ import eu.pedu.adv16s_fw.scenario.TypeOfScenario;
 
 
 import static eu.pedu.adv16s_fw.scenario.TypeOfStep.*;
-
+import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
 
 /*******************************************************************************
@@ -90,8 +90,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         );
 
 
@@ -376,8 +376,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -387,8 +387,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -414,8 +414,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -424,8 +424,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -434,8 +434,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
 
         ,
@@ -444,8 +444,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -454,8 +454,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -464,8 +464,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -474,8 +474,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -484,8 +484,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -495,8 +495,8 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
         ,
 
@@ -505,34 +505,44 @@ String[]   bag;        //Current bag content
             ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
-            new String[] { "Skříň", "Postel", "Nepořádek" },
-            new String[] { "Cívka" }
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
         )
     };
 
+    private static final ScenarioStep[] REQUIRED_STEPS_SCENARIO_STEPS = {
+        START_STEP,
+        new ScenarioStep(tsHELP, pHELP,
+            "Nápověda:\n Abyste vyhladil lidstvo musíte se nějak dostat \n" +
+            "do nedalekého skladu jaderných zbraní. K tomu by vám mohl \n" +
+            "pomoct nědko v domě. Budete ho ale muste nějak motivovat. \n" +
+            "Dostat se pouze do skaldu nestačí. Budete potřebovat tajný kód\n" +
+            "k odpálení jaderných hlavic. (Pssst prý se nachází u \n" +
+            "důvěryhodné osoby v v domě.\n\n" +
+            "Seznam užitečných příkazů:\n" +
+            "Jdi (cíl)\t\tpřesune vás na zadané místo.\n" +
+            "Seber (co)\t\tsebere věc a vloží do inventáře.\n" +
+            "Polož (co)\t\tpoloží věc z inventáře na zem\n" +
+            "Inventář\t\tvypíše obsah inventáře\n" +
+            "Použij (co, na co)\t\t použije věc v inventáři na věc ve vašem " +
+            "okolí\n" +
+            "Skombinuj (co, s čím)\t\t skombinuje dvě věci v inventáři a" +
+            " vytvoří tak věc novou\n" +
+            "Tancuj\t\tzatancujete roztomilý taneček\n" +
+            "Prozkoumej (co)\t\tprozkoumá předmět ve vašem okolí.\n" +
+            "?\tzobrazí tuto užitečnou nápovědu.",
+            "Dětský-pokoj",
+            new String[] { "Chodba" },
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
+        )
+    };
 
     /** The only instance of this class.
      *  It manages all scenarios of the associated game. */
     private static final ScenarioManager MANAGER =
                                           new ScenarioManager();
 
-
-
-//== VARIABLE CLASS FIELDS =====================================================
-
-
-
-//##############################################################################
-//== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
-
-    /***************************************************************************
-     * Static constructor is placed before definitions of constants
-     * {@link #AGE}, {@link #THIS_YEAR} and {@link #BORN_YEAR}
-     * and once again before the definition of a constant
-     * {@link MISTAKE_SCENARIO_STEPS}.
-     * Such initialization should be before each further constant
-     * defining the steps of the following scenario.
-     */
 
 
 
@@ -589,6 +599,8 @@ String[]   bag;        //Current bag content
                     TypeOfScenario.scHAPPY,    HAPPY_SCENARIO_STEPS);
         addScenario(MISTAKE_SCENARIO_NAME,
                     TypeOfScenario.scMISTAKES, MISTAKE_SCENARIO_STEPS);
+        addScenario("_REQUIRED_",
+                    TypeOfScenario.scGENERAL, REQUIRED_STEPS_SCENARIO_STEPS);
         seal();
     }
 
@@ -654,7 +666,8 @@ String[]   bag;        //Current bag content
         //Tests if the scenario manager and its scenarios
         //comply with requirements
 //%U+ «A107
-        MANAGER.autoTest();
+
+        //MANAGER.autoTest();
 
         //Simulates playing the game according to happy scenario
 //        MANAGER.getHappyScenario().simulate();
@@ -665,6 +678,7 @@ String[]   bag;        //Current bag content
 
         //Game testing according to scenarios with the given names
 //        MANAGER.testGameByScenarios("???");
+        MANAGER.testGameByScenarios("_REQUIRED_");
 
         //Playing the game according to the scenario with the given name
 //        MANAGER.playGameByScenario("???");

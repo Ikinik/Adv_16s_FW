@@ -110,8 +110,6 @@ public class RobotGame extends ANamed implements IGame, IAuthorPrototype
     @Override
     public boolean isAlive()
     {
-        //TODO RobotGame.isAlive - Metoda ještě není hotova
-        //throw new UncompletedMethodException();
         return AAction.isAlive;
     }
 
@@ -122,10 +120,9 @@ public class RobotGame extends ANamed implements IGame, IAuthorPrototype
      * @return The bag to which the player saves the taken items
      */
     @Override
-    public IBag getBag()
+    public Bag getBag()
     {
-        //TODO RobotGame.getBag - Metoda ještě není hotova
-        throw new UncompletedMethodException();
+        return Bag.getInstance();
     }
 
 
@@ -135,10 +132,9 @@ public class RobotGame extends ANamed implements IGame, IAuthorPrototype
      * @return The collection of all actions usable in the game
      */
     @Override
-    public Collection<? extends IAction> getAllActions()
+    public Collection<AAction> getAllActions()
     {
-        //TODO RobotGame.getAllActions - Metoda ještě není hotova
-        throw new UncompletedMethodException();
+        return AAction.getAllActions();
     }
 
 
@@ -169,10 +165,9 @@ public class RobotGame extends ANamed implements IGame, IAuthorPrototype
      * @return The world in which the game takes place
      */
     @Override
-    public IWorld getWorld()
+    public World getWorld()
     {
-        //TODO RobotGame.getWorld - Metoda ještě není hotova
-        throw new UncompletedMethodException();
+        return World.getInstance();
     }
 
 

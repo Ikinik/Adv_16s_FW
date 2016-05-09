@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
+import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
 /*******************************************************************************
  * The {@code AAction} abstract class is a common superclass of all classes,
@@ -44,7 +44,7 @@ abstract class AAction extends ANamed implements IAction
     /**Vytvoří instance akcí, tím že se vytvoří jejich instance se sami
      * přidají do mapy name_2_acction */
     static {
-        //new CommandHelp();
+        new ActionHelp();
         //new CommandMove();
         //new CommandPickUp();
         //new CommandExit();
@@ -65,19 +65,58 @@ abstract class AAction extends ANamed implements IAction
         return isAlive;
     }
 
+
+
     /***************************************************************************
      * Vrátí kolekci akcí, které je možné ve hře použít.
      *
      * @return Kolekce akcí použitelných ve hře
      */
-    static Collection<AAction> getAllCommands()
+    static Collection<AAction> getAllActions()
     {
         return Collections.unmodifiableCollection(NAME_2_ACTION.values());
     }
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 
+    /***************************************************************************
+     * Zjistí, jaký příkaz je zadáván, a jedná-li se o známý příkaz,
+     * provede jej.
+     *
+     * @param commandLine Zadávaný příkaz
+     * @return Odpověď hry na zadaný příkaz
+     */
+    private static String executeCommonAction(String commandLine) {
+        String[] words = commandLine.toLowerCase().split("\\s+");
+        String commandName = words[0];
+        AAction command = NAME_2_ACTION.get(commandName);
+        String answer;
+        if (command == null) {
+            answer = zNEZNAMY_PRIKAZ;
+        } else {
+            answer = command.execute(words);
+        }
+        return answer;
+    }
 
+    /***************************************************************************
+     * Ověří, jestli je hra spouštěna správným (= prázdným) příkazem,
+     * a pokud ano, spustí hru.
+     *
+     * @param command Příkaz spouštějící hru
+     * @return Odpověď hry na zadaný příkaz
+     */
+    private static String startGame(String command) {
+        String answer;
+        if (command.isEmpty()) {
+            isAlive = true;
+            initialize();
+            answer = Texts.zCELE_UVITANI;
+        } else {
+            answer = Texts.zNENI_START;
+        }
+        return answer;
+    }
 
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
@@ -129,7 +168,7 @@ abstract class AAction extends ANamed implements IAction
      * the actions of <i>apply</i> type ) can have two (e.g. apply key lock)
      * or three (e.g. apply key to lock) etc.
      *
-     * @param arguments Action arguments –
+     * @param arguments ActionHelp arguments –
      *                  their number can be different for each action,
      *                  but for all execution of the same action is the same
      * @return The answer of the game after processing the command
@@ -144,10 +183,21 @@ abstract class AAction extends ANamed implements IAction
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
     /***************************************************************************
+     * Vrátí název příkazu, tj. text, který musí hráč zadat
+     * pro vyvolaní daného příkazu.
+     *
+     * @return Název příkazu
+     */
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    /***************************************************************************
      * Returns the action description with explanation of its function
      * and the meaning of individual parameters.
      *
-     * @return Action description
+     * @return ActionHelp description
      */
     @Override
     public String getDescription()
@@ -163,18 +213,27 @@ abstract class AAction extends ANamed implements IAction
      */
     static String executeAction(String action)
     {
-//        /*
-//        action = action.trim();
-//        String answer;
-//        if (isAlive) {
-//            answer = executeCommonAction(action);
-//        }
-//        else {
-//            answer = startGame(action);
-//        }
-//        return answer;
-//        */
-        return " ";
+        action = action.trim();
+        String answer;
+        if (isAlive) {
+            answer = executeCommonAction(action);
+        }
+        else {
+            answer = startGame(action);
+        }
+        return answer;
+    }
+
+    static void initialize(){
+        World.getInstance().initialize();
+        Bag.getInstance().initialize();
+    }
+
+    /***************************************************************************
+     * Příkaz, který zastaví hru.
+     */
+    public void stopGame(){
+        this.isAlive = false;
     }
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================

@@ -3,11 +3,15 @@
  */
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
+
+import eu.pedu.adv16s_fw.game_txt.INamed;
 import eu.pedu.adv16s_fw.game_txt.IWorld;
 import eu.pedu.adv16s_fw.game_txt.ISpace;
-import eu.pedu.adv16s_fw.utilities.UncompletedMethodException;
-
+import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
 
 /*******************************************************************************
@@ -30,7 +34,7 @@ class World implements IWorld
     /** The only instance (singleton) of this world. */
     private static final World SINGLETON = new World();
 
-
+    private final ArrayList<Space> spaces;
 
 //== VARIABLE CLASS FIELDS =====================================================
 
@@ -47,7 +51,7 @@ class World implements IWorld
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
 //== VARIABLE INSTANCE FIELDS ==================================================
-
+    private Space currentSpace;
 
 
 //##############################################################################
@@ -70,9 +74,38 @@ class World implements IWorld
      */
     private World()
     {
+        spaces = new ArrayList<>();
+        spaces.add(new Space(DETSKY_POKOJ,
+                             new String[] {CHODBA},
+                             HOLCICKA, SKRIN, NEPORADEK));
+        spaces.add(new Space(LOZNICE_RODICU,
+                             new String[] {CHODBA}));
+        spaces.add(new Space(CHODBA,
+                             new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                                 KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY}));
+        spaces.add(new Space(KOUPELNA,
+                             new String[] {CHODBA},
+                             SPRCHOVY_KOUT, UMYVADLO, ZACHOD));
+        spaces.add(new Space(POKOJ_PRO_HOSTY,
+                             new String[] {CHODBA},
+                             POSTEL, KRESLO, STRYCEK_ALFRED));
+        spaces.add(new Space(OBYVAK,
+                             new String[] {PREDSIN, KUCHYN},
+                             TELEVIZE, POHOVKA));
+        spaces.add(new Space(KUCHYN,
+                             new String[] {OBYVAK},
+                             TATINEK, MAMINKA));
+        spaces.add(new Space(PREDSIN,
+                             new String[] {OBYVAK, GARAZ}));
+        spaces.add(new Space(GARAZ,
+                             new String[] {PREDSIN},
+                             AUTO));
     }
 
-
+    public void initialize(){
+        currentSpace = INamed.getO(DETSKY_POKOJ, spaces).get();
+        spaces.forEach(Space::initialize);
+    }
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
@@ -85,8 +118,7 @@ class World implements IWorld
     @Override
     public Collection<? extends ISpace> getAllSpaces()
     {
-        //TODO EmptyGame.getAllSpaces - Metoda ještě není hotova
-        throw new UncompletedMethodException();
+        return Collections.unmodifiableCollection(spaces);
     }
 
 
@@ -99,12 +131,23 @@ class World implements IWorld
     @Override
     public ISpace getCurrentSpace()
     {
-        //TODO EmptyGame.getCurrentSpace - Metoda ještě není hotova
-        throw new UncompletedMethodException();
+        return currentSpace;
     }
 
-
-
+    /***************************************************************************
+     * Vrátí odkaz na místnost se zadaným názvem.
+     *
+     * *
+     * @param name Název požadované místnosti
+     * @return Místnost se zadaným názvem (nezávisle na velkosti písmen)
+     * nebo {@code null} v případě, že taková místnost neexistuje
+     */
+    Space getSpace(String name)
+    {
+        Optional<Space> space = INamed.getO(name, spaces);
+        Space result = space.orElse(null);
+        return result;
+    }
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 
