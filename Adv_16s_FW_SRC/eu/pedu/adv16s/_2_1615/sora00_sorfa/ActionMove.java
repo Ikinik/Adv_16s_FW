@@ -3,8 +3,6 @@
  */
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
 
-import eu.pedu.adv16s_fw.game_txt.IAction;
-
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -16,7 +14,7 @@ import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
  *
  * @author  Adam Šorfa
  */
-class ActionHelp extends AAction
+class ActionMove extends AAction
 {
 //== CONSTANT CLASS FIELDS =====================================================
 //== VARIABLE CLASS FIELDS =====================================================
@@ -43,10 +41,10 @@ class ActionHelp extends AAction
     /***************************************************************************
      * Creates the action instance for ...
      */
-    ActionHelp()
+    ActionMove()
     {
-        super (pHELP,
-               "Vypíše nápovědu - názvy a popisy všech příkazů");
+        super (pJDI,
+                "Přesune hráče do sousední místnonsi, zadané jako parametr.");
     }
 
 
@@ -77,16 +75,16 @@ class ActionHelp extends AAction
         RobotGame game = RobotGame.getInstance();
         Collection<AAction> actions = game.getAllActions();
         String result =
-            "Nápověda:\n Abyste vyhladil lidstvo musíte se nějak dostat \n" +
-            "do nedalekého skladu jaderných zbraní. K tomu by vám mohl \n" +
-            "pomoct nědko v domě. Budete ho ale muste nějak motivovat. \n" +
-            "Dostat se pouze do skaldu nestačí. Budete potřebovat tajný kód\n" +
-            "k odpálení jaderných hlavic. (Pssst prý se nachází u \n" +
-            "důvěryhodné osoby v v domě.\n\n" +
-            "Seznam užitečných příkazů:\n" +
-            actions.stream().map(cmd -> cmd.getName() + "\t" +
-                                        cmd.getDescription())
-                                        .collect(Collectors.joining("\n"));
+                "Nápověda:\n Abyste vyhladil lidstvo musíte se nějak dostat \n" +
+                        "do nedalekého skladu jaderných zbraní. K tomu by vám mohl \n" +
+                        "pomoct nědko v domě. Budete ho ale muste nějak motivovat. \n" +
+                        "Dostat se pouze do skaldu nestačí. Budete potřebovat tajný kód\n" +
+                        "k odpálení jaderných hlavic. (Pssst prý se nachází u \n" +
+                        "důvěryhodné osoby v v domě.\n\n" +
+                        "Seznam užitečných příkazů:\n" +
+                        actions.stream().map(cmd -> cmd.getName() + "\t" +
+                                cmd.getDescription())
+                                .collect(Collectors.joining("\n"));
         return result;
     }
 

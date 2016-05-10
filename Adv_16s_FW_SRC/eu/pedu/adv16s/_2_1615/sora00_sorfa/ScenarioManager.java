@@ -311,8 +311,6 @@ String[]   bag;        //Current bag content
         )
         ,
 
-
-
         new ScenarioStep(tsNON_STANDARD2, "Použij tatínek auto",
             "S tatínkovo pomocí jste se úspěšně dostal do tajného skladu \n" +
             "jaderných zbraní. Zde jste pomocí skenu tatínkovy sítnice a \n" +
@@ -329,7 +327,6 @@ String[]   bag;        //Current bag content
             new String[] { }
         )
         ,
-
     };
 
 
@@ -530,7 +527,15 @@ String[]   bag;        //Current bag content
             " vytvoří tak věc novou\n" +
             "Tancuj\t\tzatancujete roztomilý taneček\n" +
             "Prozkoumej (co)\t\tprozkoumá předmět ve vašem okolí.\n" +
-            "?\tzobrazí tuto užitečnou nápovědu.",
+            "?\tVypíše nápovědu - názvy a popisy všech příkazů",
+            "Dětský-pokoj",
+            new String[] { "Chodba" },
+            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            new String[] { }
+        ),
+
+        new ScenarioStep(tsEND, "Konec",zKONEC
+            ,
             "Dětský-pokoj",
             new String[] { "Chodba" },
             new String[] { "Holčička", "Nepořádek", "Skříň" },

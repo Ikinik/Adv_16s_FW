@@ -82,14 +82,14 @@ class Texts
             "Dostat se pouze do skaldu nestačí. Budete potřebovat tajný kód\n" +
             "k odpálení jaderných hlavic. (Pssst prý se nachází u \n" +
             "důvěryhodné osoby v v domě.\n\n" +
-            "Seznam užitečných příkazů:\n";
-
+            "Seznam užitečných příkazů:\n",
+            zKONEC = "Konec hry, tak zas příště.\n";
 
     /** Názvy používaných příkazů. */
     static final String
             pHELP   = "?",
             pTANCUJ = "tancuj",
-            pNASAĎ  = "jdi",
+            pJDI    = "jdi",
             pOTEVŘI = "Prozkoumej",
             pPOLOŽ  = "Seber",
             pPŘEČTI = "Skombinuj",
