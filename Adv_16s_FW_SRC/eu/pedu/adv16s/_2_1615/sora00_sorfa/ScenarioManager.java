@@ -172,6 +172,16 @@ String[]   bag;        //Current bag content
         )
         ,
 
+        new ScenarioStep(tsTAKE , "Seber Umyvadlo",
+            "Sebral jste Umyvadlo."
+
+            ,
+            "Koupelna",
+            new String[] { "Koupelna" },
+            new String[] { "Sprchový-kout", "Záchod" },
+            new String[] { "Sponka", "Pistole", "Umyvadlo" }
+        ),
+
         new ScenarioStep(tsMOVE, "Jdi Chodba",
                 "Šel jste do chodba"
 
@@ -180,7 +190,7 @@ String[]   bag;        //Current bag content
                 new String[] { "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
                         "Pokoj-pro-hosty", "Kumbál", "Schody"},
                 new String[] { },
-                new String[] { "Sponka", "Pistole" }
+                new String[] { "Sponka", "Pistole", "Umyvadlo" }
         )
         ,
 
@@ -192,7 +202,7 @@ String[]   bag;        //Current bag content
             "Pokoj-pro-hosty",
             new String[] { "Chodba" },
             new String[] { "Postel", "Křeslo", "Strýček-Alfréd" },
-            new String[] { "Sponka", "Pistole" }
+            new String[] { "Sponka", "Pistole", "Umyvadlo" }
         )
         ,
 
@@ -204,22 +214,57 @@ String[]   bag;        //Current bag content
             ,
             "Pokoj-pro-hosty",
             new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Telefon" },
-            new String[] { "Sponka", "Pistole" }
+            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Telefon", "Rolexky", "Peněženka", "Psací-pero" },
+            new String[] { "Sponka", "Pistole", "Umyvadlo", }
         )
         ,
 
-        new ScenarioStep(tsTAKE, "Seber telefon",
+        new ScenarioStep(tsTAKE, "Seber Telefon",
             "Sebral jste telefon"
 
             ,
             "Pokoj-pro-hosty",
             new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd" },
-            new String[] { "Sponka", "Pistole", "Telefon" }
+            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Rolexky", "Peněženka", "Psací-pero" },
+            new String[] { "Sponka", "Pistole", "Telefon", "Umyvadlo" }
         )
         ,
+        new ScenarioStep(tsTAKE, "Seber Peněženka",
+            "Sebral jste telefon"
 
+            ,
+            "Pokoj-pro-hosty",
+            new String[] { "Chodba" },
+            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Rolexky", "Psací-pero" },
+            new String[] { "Sponka", "Pistole", "Telefon", "Umyvadlo", "Peněženka" }
+        ),
+        new ScenarioStep(tsTAKE, "Seber Rolexky",
+            "Sebral jste telefon"
+
+            ,
+            "Pokoj-pro-hosty",
+            new String[] { "Chodba" },
+            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Psací-pero" },
+            new String[] { "Sponka", "Pistole", "Telefon", "Umyvadlo", "Peněženka", "Rolexky" }
+        ),
+        new ScenarioStep(tsPUT_DOWN, "Polož Umyvadlo",
+            "Položil jste Umyvadlo na zem."
+
+            ,
+            "Pokoj-pro-hosty",
+            new String[] { "Chodba" },
+            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Psací-pero", "Umyvadlo" },
+            new String[] { "Sponka", "Pistole", "Telefon", "Peněženka", "Rolexky" }
+        ),
+        new ScenarioStep(tsTAKE, "Seber Psací-pero",
+            "Sebral jste Psací-pero"
+
+            ,
+            "Pokoj-pro-hosty",
+            new String[] { "Chodba" },
+            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Umyvadlo" },
+            new String[] { "Sponka", "Pistole", "Telefon", "Peněženka", "Rolexky", "Psací-pero" }
+        ),
         new ScenarioStep(tsNON_STANDARD2 , "Skombinuj telefon sponka",
             "Pomocí sponky jste z otevřel kryt telefonu a našel jste v něm \n" +
             "ukrytý papírek s přístupovým kódem."
@@ -227,8 +272,8 @@ String[]   bag;        //Current bag content
             ,
             "Pokoj-pro-hosty",
             new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd" },
-            new String[] {"Pistole", "Přístupový-kód" }
+            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Umyvadlo"},
+            new String[] {"Pistole", "Přístupový-kód", "Peněženka", "Rolexky", "Psací-pero" }
         )
         ,
 
@@ -240,19 +285,19 @@ String[]   bag;        //Current bag content
             new String[] { "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
                     "Pokoj-pro-hosty", "Kumbál", "Schody" },
             new String[] { },
-            new String[] { "Přístupový-kód", "Pistole" }
+            new String[] { "Přístupový-kód", "Pistole" , "Peněženka", "Rolexky", "Psací-pero"}
         )
         ,
 
-        new ScenarioStep(tsMOVE, "Jdi Schody",
+        new ScenarioStep(tsNON_STANDARD1, "Sejdi Schody",
             "Sešel jste po schodech do prvního patra. Schody vedou přímo do\n" +
             "obýváku"
 
             ,
-            "Schody",
+            "Obývák",
             new String[] { "Předsíň", "Kuchyň" },
             new String[] { "Televize", "Pohovka"},
-            new String[] { "Přístupový-kód", "Pistole" }
+            new String[] { "Přístupový-kód", "Pistole", "Peněženka", "Rolexky", "Psací-pero" }
         )
         ,
 
@@ -263,7 +308,7 @@ String[]   bag;        //Current bag content
             "Kuchyň",
             new String[] { "Obývák" },
             new String[] { "Tatínek", "Maminka"},
-            new String[] { "Přístupový-kód", "Pistole" }
+            new String[] { "Přístupový-kód", "Pistole", "Peněženka", "Rolexky", "Psací-pero" }
         )
         ,
 
@@ -274,7 +319,7 @@ String[]   bag;        //Current bag content
             "Kuchyň",
             new String[] { "Obývák" },
             new String[] { "Maminka"},
-            new String[] { "Přístupový-kód", "Pistole", "Tatínek" }
+            new String[] { "Přístupový-kód", "Pistole", "Tatínek", "Peněženka", "Rolexky", "Psací-pero" }
         )
         ,
 
@@ -285,7 +330,7 @@ String[]   bag;        //Current bag content
             "Obývák",
             new String[] { "Předsíň", "Kuchyň" },
             new String[] { "Televize", "Pohovka" },
-            new String[] { "Přístupový-kód", "Pistole", "Tatínek" }
+            new String[] { "Přístupový-kód", "Pistole", "Tatínek", "Peněženka", "Rolexky", "Psací-pero" }
         )
         ,
 
@@ -296,7 +341,7 @@ String[]   bag;        //Current bag content
             "Předsíň",
             new String[] { "Obývák", "Garáž" },
             new String[] { },
-            new String[] { "Přístupový-kód", "Pistole", "Tatínek" }
+            new String[] { "Přístupový-kód", "Pistole", "Tatínek", "Peněženka", "Rolexky", "Psací-pero" }
         )
         ,
 
@@ -307,7 +352,7 @@ String[]   bag;        //Current bag content
             "Garáž",
             new String[] { "Předsíň" },
             new String[] { "Auto" },
-            new String[] { "Přístupový-kód", "Pistole", "Tatínek" }
+            new String[] { "Přístupový-kód", "Pistole", "Tatínek", "Peněženka", "Rolexky", "Psací-pero" }
         )
         ,
 
@@ -604,8 +649,8 @@ String[]   bag;        //Current bag content
                     TypeOfScenario.scHAPPY,    HAPPY_SCENARIO_STEPS);
         addScenario(MISTAKE_SCENARIO_NAME,
                     TypeOfScenario.scMISTAKES, MISTAKE_SCENARIO_STEPS);
-        addScenario("_REQUIRED_",
-                    TypeOfScenario.scGENERAL, REQUIRED_STEPS_SCENARIO_STEPS);
+//        addScenario("_REQUIRED_",
+//                   TypeOfScenario.scGENERAL, REQUIRED_STEPS_SCENARIO_STEPS);
         seal();
     }
 
@@ -679,11 +724,11 @@ String[]   bag;        //Current bag content
 
         //Game testing made gradually according to both mandatory scenarios,
         //the happy scenario is passed twice one after the other
-        //MANAGER.testGame();
+        MANAGER.testGame();
 
         //Game testing according to scenarios with the given names
 //        MANAGER.testGameByScenarios("???");
-        MANAGER.testGameByScenarios("_REQUIRED_");
+    //    MANAGER.testGameByScenarios("_REQUIRED_");
 
         //Playing the game according to the scenario with the given name
 //        MANAGER.playGameByScenario("???");
