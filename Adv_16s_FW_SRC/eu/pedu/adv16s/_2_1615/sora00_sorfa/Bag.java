@@ -105,7 +105,13 @@ class Bag implements IBag
         return Collections.unmodifiableCollection(items);
     }
 
-
+    public boolean tryAddItem(Item item){
+        if(!item.isMovable() || items.size() >= getCapacity()){
+            return false;
+        }
+        items.add(item);
+        return true;
+    }
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /***************************************************************************

@@ -230,7 +230,7 @@ String[]   bag;        //Current bag content
         )
         ,
         new ScenarioStep(tsTAKE, "Seber Peněženka",
-            "Sebral jste telefon"
+            "Sebral jste peněženka"
 
             ,
             "Pokoj-pro-hosty",
@@ -239,7 +239,7 @@ String[]   bag;        //Current bag content
             new String[] { "Sponka", "Pistole", "Telefon", "Umyvadlo", "Peněženka" }
         ),
         new ScenarioStep(tsTAKE, "Seber Rolexky",
-            "Sebral jste telefon"
+            "Sebral jste rolexky"
 
             ,
             "Pokoj-pro-hosty",
@@ -579,11 +579,40 @@ String[]   bag;        //Current bag content
             new String[] { }
         ),
 
+        new ScenarioStep(tsMOVE, pJDI + " Chodba",
+            "Šel jste do chodba"
+            ,
+            "Chodba",
+            new String[] { "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
+                    "Pokoj-pro-hosty", "Kumbál", "Schody" },
+            new String[] { },
+            new String[] { }
+        ),
+
+//        new ScenarioStep(tsMOVE, pJDI + " Koupelna",
+//            "Šel jste do koupelna"
+//            ,
+//            "Koupelna",
+//            new String[] { "Chodba" },
+//            new String[] { "Sprchový-kout", "Umyvadlo", "Záchod" },
+//            new String[] { }
+//        ),
+
+//        new ScenarioStep(tsTAKE, pSEBER + " Umyvadlo",
+//            "Sebral jste umyvadlo"
+//            ,
+//            "Koupelna",
+//            new String[] { "Chodba" },
+//            new String[] { "Sprchový-kout", "Záchod" },
+//            new String[] { "Umyvadlo" }
+//        ),
+
         new ScenarioStep(tsEND, "Konec",zKONEC
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            "Chodba",
+            new String[] { "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
+                    "Pokoj-pro-hosty", "Kumbál", "Schody" },
+            new String[] { },
             new String[] { }
         )
     };
@@ -649,8 +678,8 @@ String[]   bag;        //Current bag content
                     TypeOfScenario.scHAPPY,    HAPPY_SCENARIO_STEPS);
         addScenario(MISTAKE_SCENARIO_NAME,
                     TypeOfScenario.scMISTAKES, MISTAKE_SCENARIO_STEPS);
-//        addScenario("_REQUIRED_",
-//                   TypeOfScenario.scGENERAL, REQUIRED_STEPS_SCENARIO_STEPS);
+        addScenario("_REQUIRED_",
+                   TypeOfScenario.scGENERAL, REQUIRED_STEPS_SCENARIO_STEPS);
         seal();
     }
 
@@ -724,11 +753,11 @@ String[]   bag;        //Current bag content
 
         //Game testing made gradually according to both mandatory scenarios,
         //the happy scenario is passed twice one after the other
-        MANAGER.testGame();
+        //MANAGER.testGame();
 
         //Game testing according to scenarios with the given names
 //        MANAGER.testGameByScenarios("???");
-    //    MANAGER.testGameByScenarios("_REQUIRED_");
+        MANAGER.testGameByScenarios("_REQUIRED_");
 
         //Playing the game according to the scenario with the given name
 //        MANAGER.playGameByScenario("???");

@@ -2,10 +2,8 @@
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
-
 import eu.pedu.adv16s_fw.game_txt.INamed;
 import java.util.Optional;
-
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
 
@@ -14,7 +12,7 @@ import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
  *
  * @author  Adam Šorfa
  */
-class ActionMove extends AAction
+class ActionPickUp extends AAction
 {
 //== CONSTANT CLASS FIELDS =====================================================
 //== VARIABLE CLASS FIELDS =====================================================
@@ -41,10 +39,10 @@ class ActionMove extends AAction
     /***************************************************************************
      * Creates the action instance for ...
      */
-    ActionMove()
+    ActionPickUp()
     {
-        super (pJDI,
-                "Přesune hráče do sousední místnonsi, zadané jako parametr.");
+        super (pSEBER,
+                "Sebere věc a vloží do inventáře.");
     }
 
 
@@ -73,18 +71,22 @@ class ActionMove extends AAction
     public String execute(String... arguments)
     {
         if(arguments.length < 2){
-            return zCIL_NEZADAN;
+            return zPREDMET_NEZADAN;
         }
-        String destinationName = arguments[1];
+        String itemName = arguments[1];
         Space currentSpace = World.getInstance().getCurrentSpace();
-        Optional<Space> destination = INamed.getO(destinationName,
-                                                  currentSpace.getNeighbors());
-        if(!destination.isPresent()){
-            return zNENI_CIL;
+        Item item = currentSpace.getItem(itemName);
+        if(item == null){
+            return zNENI_ITEM;
         }
-        Space destinationSpace = destination.get();
-        World.getInstance().setCurrentSpace(destinationSpace);
-        return zPRESUN + destinationSpace.getName();
+
+        Bag bag = Bag.getInstance();
+        if(bag.tryAddItem(item)){
+            currentSpace.removeItem(item);
+            return zZVEDNUTO + itemName;
+        }else{
+            return zNE_ZVEDNUTO;
+        }
     }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

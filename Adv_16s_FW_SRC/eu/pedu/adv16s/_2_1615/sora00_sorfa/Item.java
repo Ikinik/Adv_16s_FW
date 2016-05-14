@@ -96,6 +96,9 @@ class Item extends ANamed implements IItem
         return 0;
     }
 
+    public boolean isMovable(){
+        return MOVABLE;
+    }
 
     /***************************************************************************
      * Vrátí název prostoru

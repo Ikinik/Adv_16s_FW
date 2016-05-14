@@ -129,11 +129,17 @@ class World implements IWorld
      * @return The space in which the player is just situated
      */
     @Override
-    public ISpace getCurrentSpace()
+    public Space getCurrentSpace()
     {
         return currentSpace;
     }
 
+    /***************************************************************************
+     * Nastaví aktuální prostor.
+     */
+    public void setCurrentSpace(Space currentSpace){
+        this.currentSpace = currentSpace;
+    }
     /***************************************************************************
      * Vrátí odkaz na místnost se zadaným názvem.
      *

@@ -44,7 +44,9 @@ abstract class AAction extends ANamed implements IAction
     /**Vytvoří instance akcí, tím že se vytvoří jejich instance se sami
      * přidají do mapy name_2_acction */
     static {
+        new ActionHelp();
         new ActionMove();
+        new ActionPickUp();
         //new CommandMove();
         //new CommandPickUp();
         //new CommandExit();
@@ -168,7 +170,7 @@ abstract class AAction extends ANamed implements IAction
      * the actions of <i>apply</i> type ) can have two (e.g. apply key lock)
      * or three (e.g. apply key to lock) etc.
      *
-     * @param arguments ActionMove arguments –
+     * @param arguments ActionPickUp arguments –
      *                  their number can be different for each action,
      *                  but for all execution of the same action is the same
      * @return The answer of the game after processing the command
@@ -197,7 +199,7 @@ abstract class AAction extends ANamed implements IAction
      * Returns the action description with explanation of its function
      * and the meaning of individual parameters.
      *
-     * @return ActionMove description
+     * @return ActionPickUp description
      */
     @Override
     public String getDescription()

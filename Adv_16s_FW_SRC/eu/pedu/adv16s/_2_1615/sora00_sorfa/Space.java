@@ -6,6 +6,7 @@ package eu.pedu.adv16s._2_1615.sora00_sorfa;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import eu.pedu.adv16s_fw.game_txt.INamed;
 import eu.pedu.adv16s_fw.game_txt.ISpace;
 
 
@@ -84,6 +85,18 @@ class Space extends ANamed implements ISpace
      */
     public String getName(){
         return this.name;
+    }
+
+    /**
+     * @return Oběkt v batohu
+     */
+    public Item getItem(String itemName){
+        Item result = INamed.getO(itemName, items).orElse(null);
+        return result;
+    }
+
+    public void removeItem(Item item){
+        items.remove(item);
     }
 
     /***************************************************************************

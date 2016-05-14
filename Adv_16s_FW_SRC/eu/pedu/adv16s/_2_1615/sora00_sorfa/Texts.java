@@ -83,7 +83,15 @@ class Texts
             "k odpálení jaderných hlavic. (Pssst prý se nachází u \n" +
             "důvěryhodné osoby v v domě.\n\n" +
             "Seznam užitečných příkazů:\n",
-            zKONEC = "Konec hry, tak zas příště.\n";
+            zKONEC = "Konec hry, tak zas příště.\n",
+            zCIL_NEZADAN = "Cíl nezadán, Cíl nezadán píp píp, chrrrr",
+            zNENI_CIL = "Tam jít nemohu",
+            zPRESUN = "Šel jste do ",
+            zPREDMET_NEZADAN = "stderr: Není co sebrat.",
+            zNENI_ITEM = "stderr: Není co sebrat.",
+            zZVEDNUTO = "Sebral jste ",
+            zNE_ZVEDNUTO = "Přístup odepřen. Do klávesnice bude vpuštěno 2230" +
+                           " voltů\nOdpočítávám: \n3.\n2..\n1...";
 
     /** Názvy používaných příkazů. */
     static final String
@@ -91,11 +99,12 @@ class Texts
             pTANCUJ = "tancuj",
             pJDI    = "jdi",
             pOTEVŘI = "Prozkoumej",
-            pPOLOŽ  = "Seber",
+            pPOLOŽ  = "Polož",
             pPŘEČTI = "Skombinuj",
             pVEZMI  = "Použij",
             pZAVŘI  = "Polož",
-            pKONEC  = "Konec";
+            pKONEC  = "Konec",
+            pSEBER  = "Seber";
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 
