@@ -87,18 +87,6 @@ class Space extends ANamed implements ISpace
         return this.name;
     }
 
-    /**
-     * @return Oběkt v batohu
-     */
-    public Item getItem(String itemName){
-        Item result = INamed.getO(itemName, items).orElse(null);
-        return result;
-    }
-
-    public void removeItem(Item item){
-        items.remove(item);
-    }
-
     /***************************************************************************
      * Returns the collection of current neighbors of this space, i.e. the
      * collection of spaces, to which we can move from this space with the
@@ -124,7 +112,26 @@ class Space extends ANamed implements ISpace
         return Collections.unmodifiableCollection(items);
     }
 
+    /**
+     * Vrátí odkaz na objekt s daným názvem uložený v osloveném kontejneru
+     * (ji v něm více shodných objektů s daným názvem vrátí libovolný z nich)
+     *
+     * @param itemName název požadovaného objektu
+     * @return odakz na hledaný objekt, nebo {@code null} v případě, že takový
+     *         objekt v dané místnosti není
+     */
+    public Item getItem(String itemName){
+        return INamed.getO(itemName, items).orElse(null);
+    }
 
+    /**
+     * Odebere zadaný objekt ze své kolekce objektů
+     *
+     * @param item Odebíraný objekt
+     */
+    public void removeItem(Item item){
+        items.remove(item);
+    }
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /***************************************************************************

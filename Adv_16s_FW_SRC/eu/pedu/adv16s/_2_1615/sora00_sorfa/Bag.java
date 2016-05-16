@@ -51,7 +51,7 @@ class Bag implements IBag
 
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
-    private static int CAPACITY = 4;
+    private static int CAPACITY = 6;
 //== VARIABLE INSTANCE FIELDS ==================================================
     private Collection<Item> items;
 
@@ -105,8 +105,19 @@ class Bag implements IBag
         return Collections.unmodifiableCollection(items);
     }
 
+    /**
+     * Vejde-li se zdaná věc do batuhu, přidá jí a vrátí zprávu o výsledku.
+     *
+     * @param item věc, která se má přidat do batohu
+     * @return Zpráva o výsledku: {@code true} = byl přidán, {@code false} =
+     *                            nebyl přidán
+     */
     public boolean tryAddItem(Item item){
-        if(!item.isMovable() || items.size() >= getCapacity()){
+        if(!item.isMovable()){
+            return false;
+        }
+
+        if(items.size() >= CAPACITY){
             return false;
         }
         items.add(item);

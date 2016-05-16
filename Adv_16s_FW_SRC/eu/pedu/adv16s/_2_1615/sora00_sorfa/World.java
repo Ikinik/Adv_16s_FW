@@ -82,7 +82,9 @@ class World implements IWorld
                              new String[] {CHODBA}));
         spaces.add(new Space(CHODBA,
                              new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
-                                 KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY}));
+                                 KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+                             OBRAZ
+                ));
         spaces.add(new Space(KOUPELNA,
                              new String[] {CHODBA},
                              SPRCHOVY_KOUT, UMYVADLO, ZACHOD));
@@ -135,12 +137,6 @@ class World implements IWorld
     }
 
     /***************************************************************************
-     * Nastaví aktuální prostor.
-     */
-    public void setCurrentSpace(Space currentSpace){
-        this.currentSpace = currentSpace;
-    }
-    /***************************************************************************
      * Vrátí odkaz na místnost se zadaným názvem.
      *
      * *
@@ -153,6 +149,10 @@ class World implements IWorld
         Optional<Space> space = INamed.getO(name, spaces);
         Space result = space.orElse(null);
         return result;
+    }
+
+    public void setCurrentSpace(Space cSpace) {
+        currentSpace = cSpace;
     }
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

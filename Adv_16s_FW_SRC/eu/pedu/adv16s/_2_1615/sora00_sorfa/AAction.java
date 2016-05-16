@@ -46,8 +46,10 @@ abstract class AAction extends ANamed implements IAction
     static {
         new ActionHelp();
         new ActionMove();
+        new ActionEnd();
         new ActionPickUp();
-        //new CommandMove();
+        new ActionRun();
+        //new ActionMove();
         //new CommandPickUp();
         //new CommandExit();
     }
@@ -170,7 +172,7 @@ abstract class AAction extends ANamed implements IAction
      * the actions of <i>apply</i> type ) can have two (e.g. apply key lock)
      * or three (e.g. apply key to lock) etc.
      *
-     * @param arguments ActionPickUp arguments –
+     * @param arguments ActionMove arguments –
      *                  their number can be different for each action,
      *                  but for all execution of the same action is the same
      * @return The answer of the game after processing the command
@@ -199,7 +201,7 @@ abstract class AAction extends ANamed implements IAction
      * Returns the action description with explanation of its function
      * and the meaning of individual parameters.
      *
-     * @return ActionPickUp description
+     * @return ActionMove description
      */
     @Override
     public String getDescription()
@@ -234,8 +236,8 @@ abstract class AAction extends ANamed implements IAction
     /***************************************************************************
      * Příkaz, který zastaví hru.
      */
-    public void stopGame(){
-        this.isAlive = false;
+    public static void stopGame(){
+        isAlive = false;
     }
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================

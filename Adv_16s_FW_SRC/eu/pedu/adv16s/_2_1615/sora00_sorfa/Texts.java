@@ -40,7 +40,7 @@ class Texts
     /** Názvy používaných objektů. */
     static final String
             HOLCICKA        = "Holčička",
-            SKRIN           = "Skříň",
+            SKRIN           = "#Skříň",
             NEPORADEK       = "Nepořádek",
             SPRCHOVY_KOUT   = "Sprchový-kout",
             UMYVADLO        = "Umyvadlo",
@@ -55,7 +55,8 @@ class Texts
             POHOVKA         = "Pohovka",
             TATINEK         = "Tatínek",
             AUTO            = "Auto",
-            MAMINKA         = "Maminka";
+            MAMINKA         = "Maminka",
+            OBRAZ           = "Obraz";
 
             /* pomocné texty - výstupy: */
     static final String
@@ -84,27 +85,29 @@ class Texts
             "důvěryhodné osoby v v domě.\n\n" +
             "Seznam užitečných příkazů:\n",
             zKONEC = "Konec hry, tak zas příště.\n",
-            zCIL_NEZADAN = "Cíl nezadán, Cíl nezadán píp píp, chrrrr",
-            zNENI_CIL = "Tam jít nemohu",
-            zPRESUN = "Šel jste do ",
-            zPREDMET_NEZADAN = "stderr: Není co sebrat.",
-            zNENI_ITEM = "stderr: Není co sebrat.",
+            zPREDMET_NEZADAN = "stderr: Není co sebrat.\n",
+            zNENI_ITEM = "Undefined index vesmír. Předmět nenalezen. " +
+                    "Segmentation fault !!!\n",
             zZVEDNUTO = "Sebral jste ",
-            zNE_ZVEDNUTO = "Přístup odepřen. Do klávesnice bude vpuštěno 2230" +
-                           " voltů\nOdpočítávám: \n3.\n2..\n1...";
+            zNE_ZVEDNUTO = "Přístup odepřen. Do klávesnice bude vpuštěno 2230 "+
+                    "voltů\n Odpočítávám: \n3.\n2..\n1...",
+            zCIL_NEZADAN = "Cíl nezadán, Cíl nezadán píp píp, chrrrr",
+            zNENI_CIL = "Příliš daleko.",
+            zPRESUN = "Vešel jste do ";
 
     /** Názvy používaných příkazů. */
     static final String
             pHELP   = "?",
             pTANCUJ = "tancuj",
             pJDI    = "jdi",
-            pOTEVŘI = "Prozkoumej",
-            pPOLOŽ  = "Polož",
-            pPŘEČTI = "Skombinuj",
+            pOTEVRI = "Prozkoumej",
+            pPOLOZ  = "Polož",
+            pPRECTI = "Skombinuj",
             pVEZMI  = "Použij",
-            pZAVŘI  = "Polož",
+            pZAVRI  = "Polož",
             pKONEC  = "Konec",
-            pSEBER  = "Seber";
+            pSEBER  = "Seber",
+            pBJEZ   = "Bjež";
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 

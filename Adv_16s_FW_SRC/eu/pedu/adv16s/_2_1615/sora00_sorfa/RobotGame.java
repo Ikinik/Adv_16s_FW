@@ -4,14 +4,10 @@
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
 
 import eu.pedu.adv16s_fw.game_txt.BasicActions;
-import eu.pedu.adv16s_fw.game_txt.IAction;
-import eu.pedu.adv16s_fw.game_txt.IBag;
 import eu.pedu.adv16s_fw.game_txt.IGame;
-import eu.pedu.adv16s_fw.game_txt.IWorld;
-import eu.pedu.adv16s_fw.utilities.UncompletedMethodException;
-
 import java.util.Collection;
 
+import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
 
 /*******************************************************************************
@@ -154,8 +150,7 @@ public class RobotGame extends ANamed implements IGame, IAuthorPrototype
     @Override
     public BasicActions getBasicActions()
     {
-        //TODO RobotGame.getBasicActions - Metoda ještě není hotova
-        throw new UncompletedMethodException();
+        return new BasicActions(pJDI, pSEBER, pPOLOZ, pHELP, pKONEC);
     }
 
 
@@ -193,8 +188,7 @@ public class RobotGame extends ANamed implements IGame, IAuthorPrototype
     @Override
     public void stop()
     {
-        //TODO RobotGame.stop - Metoda ještě není hotova
-        throw new UncompletedMethodException();
+        AAction.stopGame();
     }
 
 

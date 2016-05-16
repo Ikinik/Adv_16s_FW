@@ -66,7 +66,7 @@ class ActionHelp extends AAction
      * the actions of <i>apply</i> type ) can have two (e.g. apply key lock)
      * or three (e.g. apply key to lock) etc.
      *
-     * @param arguments ActionPickUp arguments –
+     * @param arguments ActionMove arguments –
      *                  their number can be different for each action,
      *                  but for all execution of the same action is the same
      * @return The answer of the game after processing the command

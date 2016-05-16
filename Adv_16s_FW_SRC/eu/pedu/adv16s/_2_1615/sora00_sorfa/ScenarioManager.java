@@ -230,7 +230,7 @@ String[]   bag;        //Current bag content
         )
         ,
         new ScenarioStep(tsTAKE, "Seber Peněženka",
-            "Sebral jste peněženka"
+            "Sebral jste telefon"
 
             ,
             "Pokoj-pro-hosty",
@@ -239,7 +239,7 @@ String[]   bag;        //Current bag content
             new String[] { "Sponka", "Pistole", "Telefon", "Umyvadlo", "Peněženka" }
         ),
         new ScenarioStep(tsTAKE, "Seber Rolexky",
-            "Sebral jste rolexky"
+            "Sebral jste telefon"
 
             ,
             "Pokoj-pro-hosty",
@@ -579,41 +579,32 @@ String[]   bag;        //Current bag content
             new String[] { }
         ),
 
-        new ScenarioStep(tsMOVE, pJDI + " Chodba",
-            "Šel jste do chodba"
+        new ScenarioStep(tsTAKE, pSEBER + " Skříň",
+            "Sebral jste skříň"
             ,
-            "Chodba",
-            new String[] { "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
-                    "Pokoj-pro-hosty", "Kumbál", "Schody" },
-            new String[] { },
-            new String[] { }
+            "Dětský-pokoj",
+            new String[] { "Chodba" },
+            new String[] { "Holčička", "Nepořádek" },
+            new String[] { "Skříň" }
         ),
 
-//        new ScenarioStep(tsMOVE, pJDI + " Koupelna",
-//            "Šel jste do koupelna"
-//            ,
-//            "Koupelna",
-//            new String[] { "Chodba" },
-//            new String[] { "Sprchový-kout", "Umyvadlo", "Záchod" },
-//            new String[] { }
-//        ),
-
-//        new ScenarioStep(tsTAKE, pSEBER + " Umyvadlo",
-//            "Sebral jste umyvadlo"
-//            ,
-//            "Koupelna",
-//            new String[] { "Chodba" },
-//            new String[] { "Sprchový-kout", "Záchod" },
-//            new String[] { "Umyvadlo" }
-//        ),
+        new ScenarioStep(tsNON_STANDARD1 , pBJEZ + " chodba",
+            "Vešel jste do chodba"
+            ,
+            "Chodba",
+            new String[]{ "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
+                    "Pokoj-pro-hosty", "Kumbál", "Schody"},
+            new String[] { "Obraz" },
+            new String[] { "Skříň" }
+        ),
 
         new ScenarioStep(tsEND, "Konec",zKONEC
             ,
             "Chodba",
-            new String[] { "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
-                    "Pokoj-pro-hosty", "Kumbál", "Schody" },
-            new String[] { },
-            new String[] { }
+            new String[]{ "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
+                    "Pokoj-pro-hosty", "Kumbál", "Schody"},
+            new String[] { "Obraz" },
+            new String[] { "Skříň" }
         )
     };
 

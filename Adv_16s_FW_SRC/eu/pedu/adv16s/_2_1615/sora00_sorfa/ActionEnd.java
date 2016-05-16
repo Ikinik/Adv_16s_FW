@@ -2,8 +2,7 @@
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
-import eu.pedu.adv16s_fw.game_txt.INamed;
-import java.util.Optional;
+
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
 
@@ -12,7 +11,7 @@ import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
  *
  * @author  Adam Šorfa
  */
-class ActionPickUp extends AAction
+class ActionEnd extends AAction
 {
 //== CONSTANT CLASS FIELDS =====================================================
 //== VARIABLE CLASS FIELDS =====================================================
@@ -39,10 +38,10 @@ class ActionPickUp extends AAction
     /***************************************************************************
      * Creates the action instance for ...
      */
-    ActionPickUp()
+    ActionEnd()
     {
-        super (pSEBER,
-                "Sebere věc a vloží do inventáře.");
+        super (pKONEC,
+                "Ukončí hru");
     }
 
 
@@ -52,41 +51,16 @@ class ActionPickUp extends AAction
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
     /***************************************************************************
-     * Processes the command composed from the given words
-     * and returns the game answer to the user.
-     * Number of word depends on particular action, however it must be
-     * at least one, because the zeroth element contains the action name.
-     * The remaining words are arguments of this action and they may differ:
-     * the actions of <i>end</i> and <i>help</i> type do not have any,
-     * the actions of <i>go</i> and <i>take</i> type have one,
-     * the actions of <i>apply</i> type ) can have two (e.g. apply key lock)
-     * or three (e.g. apply key to lock) etc.
+     * Předčasně ukončí hru.
      *
-     * @param arguments ActionPickUp arguments –
-     *                  their number can be different for each action,
-     *                  but for all execution of the same action is the same
-     * @return The answer of the game after processing the command
+     * @param arguments Parametry příkazu - nepoužité
+     * @return Text zprávy vypsané po provedeni příkazu
      */
     @Override
     public String execute(String... arguments)
     {
-        if(arguments.length < 2){
-            return zPREDMET_NEZADAN;
-        }
-        String itemName = arguments[1];
-        Space currentSpace = World.getInstance().getCurrentSpace();
-        Item item = currentSpace.getItem(itemName);
-        if(item == null){
-            return zNENI_ITEM;
-        }
-
-        Bag bag = Bag.getInstance();
-        if(bag.tryAddItem(item)){
-            currentSpace.removeItem(item);
-            return zZVEDNUTO + itemName;
-        }else{
-            return zNE_ZVEDNUTO;
-        }
+        stopGame();
+        return zKONEC;
     }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

@@ -31,7 +31,7 @@ import eu.pedu.adv16s_fw.utilities.UncompletedMethodException;
 class Item extends ANamed implements IItem
 {
 //== CONSTANT CLASS FIELDS =====================================================
-    private static boolean MOVABLE;
+    private final boolean MOVABLE;
 //== VARIABLE CLASS FIELDS =====================================================
 
 
@@ -47,7 +47,7 @@ class Item extends ANamed implements IItem
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
     /** Název objektu */
-    private final String name;
+    private String name;
 
 //== VARIABLE INSTANCE FIELDS ==================================================
 
@@ -67,14 +67,13 @@ class Item extends ANamed implements IItem
     Item(String name)
     {
         super(name);
-        this.name = name;
-        boolean movable;
-        switch(name.charAt(0)){
-            case 'M':
-                movable = true;
-            default:
-                movable = false;
+        boolean movable = false;
+        if(name.charAt(0) == '#'){
+            movable = true;
+            name = name.substring(1);
         }
+
+        this.name = name;
         MOVABLE = movable;
     }
 
