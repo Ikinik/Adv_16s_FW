@@ -6,6 +6,7 @@ package eu.pedu.adv16s._2_1615.sora00_sorfa;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import eu.pedu.adv16s_fw.game_txt.IGame;
 import eu.pedu.adv16s_fw.game_txt.INamed;
 import eu.pedu.adv16s_fw.game_txt.ISpace;
 
@@ -27,7 +28,7 @@ import eu.pedu.adv16s_fw.game_txt.ISpace;
  * @author  Rudolf PECINOVSKÝ
  * @version 2016-Summer
  */
-class Space extends ANamed implements ISpace
+class Space extends ItemContainer implements ISpace, INamed
 {
 //== CONSTANT CLASS FIELDS =====================================================
 //== VARIABLE CLASS FIELDS =====================================================
@@ -45,7 +46,7 @@ class Space extends ANamed implements ISpace
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
     /** Název dané místnosti */
-    private final String name;
+    private String name;
 
     /** Názvy sousedů místnosti na počátku hry. */
     private final String[] neighborNames;
@@ -55,7 +56,6 @@ class Space extends ANamed implements ISpace
 
 //== VARIABLE INSTANCE FIELDS ==================================================
     private Collection<Space> neighbors;
-    private Collection<Item> items;
 
 //##############################################################################
 //== CONSTRUCTORS AND FACTORY METHODS ==========================================
@@ -69,7 +69,8 @@ class Space extends ANamed implements ISpace
      * @param itemNames   Názvy objektů v místnosti na počátku hry
      */
     Space(String name, String[] neighborNames, String... itemNames) {
-        super(name);
+        super(itemNames);
+        checkName(name);
         this.name = name;
         this.neighborNames = neighborNames;
         this.itemNames = itemNames;
@@ -101,36 +102,10 @@ class Space extends ANamed implements ISpace
         return Collections.unmodifiableCollection(neighbors);
     }
 
-    /***************************************************************************
-     * Returns a collection of items located in the given space.
-     *
-     * @return Collection of items located in the given space
-     */
     @Override
-    public Collection<Item> getItems()
+    public String toString()
     {
-        return Collections.unmodifiableCollection(items);
-    }
-
-    /**
-     * Vrátí odkaz na objekt s daným názvem uložený v osloveném kontejneru
-     * (ji v něm více shodných objektů s daným názvem vrátí libovolný z nich)
-     *
-     * @param itemName název požadovaného objektu
-     * @return odakz na hledaný objekt, nebo {@code null} v případě, že takový
-     *         objekt v dané místnosti není
-     */
-    public Item getItem(String itemName){
-        return INamed.getO(itemName, items).orElse(null);
-    }
-
-    /**
-     * Odebere zadaný objekt ze své kolekce objektů
-     *
-     * @param item Odebíraný objekt
-     */
-    public void removeItem(Item item){
-        items.remove(item);
+        return name;
     }
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
@@ -138,24 +113,40 @@ class Space extends ANamed implements ISpace
      * Nastaví výchozí stav dané místnosti na počátku hry.
      */
     void initialize(){
+        super.initialize();
         initializeNeightbors();
-        initializeItems();
     }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
     private void initializeNeightbors(){
         World world = World.getInstance();
         neighbors = Arrays.stream(neighborNames)
-                          .map(world::getSpace)
-                          .collect(Collectors.toList());
+                .map(world::getSpace)
+                .collect(Collectors.toList());
     }
 
-    private void initializeItems(){
-        items = Arrays.stream(itemNames)
-                      .map(Item::new)
-                      .collect(Collectors.toList());
+    /**
+     * Vnitřek konstruktoru abstaraktní třídy ANamed. Musel jsem implementovat
+     * uvnitř třídy, aby tato třída {@code Space} mohla být potomkem třídy
+     * {@code {@link ItemContainer}}
+     * @param name název prostoru.
+     */
+    private void checkName(String name){
+        if ((name == null)  ||  name.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "\nThe object name may be neither null "
+                            + "nor an empty string");
+        }
+        if (! (this instanceof IGame)         &&
+                ( (! name.equals(name.trim())) ||
+                        (name.split("\\s").length > 1)  ))
+        {
+            throw new IllegalArgumentException(
+                    "\nNames may not contain any whitespaces - Entered: «"
+                            + name + '»');
+        }
+        this.name = name;
     }
-
 //##############################################################################
 //== NESTED DATA TYPES =========================================================
 }

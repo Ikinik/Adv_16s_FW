@@ -34,7 +34,7 @@ class World implements IWorld
     /** The only instance (singleton) of this world. */
     private static final World SINGLETON = new World();
 
-    private final ArrayList<Space> spaces;
+    private final Collection<Space> spaces;
 
 //== VARIABLE CLASS FIELDS =====================================================
 
@@ -91,6 +91,10 @@ class World implements IWorld
         spaces.add(new Space(POKOJ_PRO_HOSTY,
                              new String[] {CHODBA},
                              POSTEL, KRESLO, STRYCEK_ALFRED));
+        spaces.add(new Space(KUMBAL,
+                             new String[] { CHODBA }));
+        spaces.add(new Space(SCHODY,
+                             new String[] { CHODBA }));
         spaces.add(new Space(OBYVAK,
                              new String[] {PREDSIN, KUCHYN},
                              TELEVIZE, POHOVKA));
@@ -118,7 +122,7 @@ class World implements IWorld
      * @return Collection of all spaces performing in the game
      */
     @Override
-    public Collection<? extends ISpace> getAllSpaces()
+    public Collection<Space> getAllSpaces()
     {
         return Collections.unmodifiableCollection(spaces);
     }
@@ -144,14 +148,23 @@ class World implements IWorld
      * @return Místnost se zadaným názvem (nezávisle na velkosti písmen)
      * nebo {@code null} v případě, že taková místnost neexistuje
      */
-    Space getSpace(String name)
-    {
+    Space getSpace(String name) {
         Optional<Space> space = INamed.getO(name, spaces);
-        Space result = space.orElse(null);
+
+        Space result = null;
+        try {
+            return space.orElseThrow(() ->
+                    new Exception("Zadaný prostor <<"+ name +">> neexistuje")
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
         return result;
     }
 
-    public void setCurrentSpace(Space cSpace) {
+    void setCurrentSpace(Space cSpace) {
         currentSpace = cSpace;
     }
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================

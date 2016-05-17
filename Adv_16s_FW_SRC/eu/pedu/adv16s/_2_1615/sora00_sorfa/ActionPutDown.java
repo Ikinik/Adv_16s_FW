@@ -2,42 +2,17 @@
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
-
-import eu.pedu.adv16s_fw.game_txt.IBag;
-import eu.pedu.adv16s_fw.game_txt.IItem;
-import eu.pedu.adv16s_fw.game_txt.IItemContainer;
-import eu.pedu.adv16s_fw.utilities.UncompletedMethodException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.stream.Collectors;
+import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
 
 /*******************************************************************************
- * Instance of the {@code EmptyBag} class represents the repository,
- * to which the players store the items picked up in individual spaces,
- * so that they could be moved to other spaces and/or used.
- * The disposal site has a final capacity defining the maximal permitted
- * sum of weights of items occuring in the repository.
- * <p>
- * In this game the bag is ...
- * with capacity ....
- * The item weight represents
+ * Třída akce sloužící pro přesun z jednoho ptostoru do druhého.
  *
- * @author  Rudolf PECINOVSKÝ
- * @version 2016-Summer
+ * @author  Adam Šorfa
  */
-class Bag extends ItemContainer implements IBag
+class ActionPutDown extends AAction
 {
 //== CONSTANT CLASS FIELDS =====================================================
-
-    /** The only instance of the bag in the game. */
-    private static final Bag SINGLETON = new Bag();
-
-
-
 //== VARIABLE CLASS FIELDS =====================================================
 
 
@@ -55,42 +30,62 @@ class Bag extends ItemContainer implements IBag
 //== VARIABLE INSTANCE FIELDS ==================================================
 
 
+
 //##############################################################################
 //== CONSTRUCTORS AND FACTORY METHODS ==========================================
 
     /***************************************************************************
-     * Factory method returning the only existing instance of the game.
-     *
-     * @return The instance of the given game
+     * Creates the action instance for ...
      */
-    static Bag getInstance()
+    ActionPutDown()
     {
-        return SINGLETON;
-    }
-
-
-    /***************************************************************************
-     */
-    Bag() {
-        super(6);
+        super (pPOLOZ,
+                "Položí věc z inventáře na zem");
     }
 
 
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
-
-
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+
     /***************************************************************************
-     * Initialize.
+     * Processes the command composed from the given words
+     * and returns the game answer to the user.
+     * Number of word depends on particular action, however it must be
+     * at least one, because the zeroth element contains the action name.
+     * The remaining words are arguments of this action and they may differ:
+     * the actions of <i>end</i> and <i>help</i> type do not have any,
+     * the actions of <i>go</i> and <i>take</i> type have one,
+     * the actions of <i>apply</i> type ) can have two (e.g. apply key lock)
+     * or three (e.g. apply key to lock) etc.
+     *
+     * @param arguments ActionPutDown arguments –
+     *                  their number can be different for each action,
+     *                  but for all execution of the same action is the same
+     * @return The answer of the game after processing the command
      */
     @Override
-    void initialize() { super.initialize(); }
+    public String execute(String... arguments)
+    {
+        if(arguments.length < 2){
+            return zPREDMET_NEZADAN;
+        }
+        String itemName = arguments[1];
+        Space currentSpace = World.getInstance().getCurrentSpace();
+        Bag bag = Bag.getInstance();
+
+        Item item = bag.getItem(itemName);
+        if(item == null){
+            return zNENI_V_BATOHU;
+        }
+
+        currentSpace.tryAddItem(item);
+        bag.removeItem(item);
+        return zPOLOZENO + itemName;
+    }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
-
-
 
 //##############################################################################
 //== NESTED DATA TYPES =========================================================

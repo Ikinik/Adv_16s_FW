@@ -93,7 +93,9 @@ class Texts
                     "voltů\n Odpočítávám: \n3.\n2..\n1...",
             zCIL_NEZADAN = "Cíl nezadán, Cíl nezadán píp píp, chrrrr",
             zNENI_CIL = "Příliš daleko.",
-            zPRESUN = "Vešel jste do ";
+            zPRESUN = "Vešel jste do ",
+            zNENI_V_BATOHU = "Předmět není v batohu. píp píp",
+            zPOLOZENO = "Položil jste ";
 
     /** Názvy používaných příkazů. */
     static final String
