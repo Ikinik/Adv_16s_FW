@@ -74,7 +74,7 @@ public abstract class ItemContainer implements IItemContainer {
      * @return Zpráva o výsledku: {@code true} = byl přidán, {@code false} =
      *                            nebyl přidán
      */
-    public boolean tryAddItem(Item item){
+    boolean tryAddItem(Item item){
         if(!item.isMovable()){
             return false;
         }
@@ -84,6 +84,10 @@ public abstract class ItemContainer implements IItemContainer {
         }
         items.add(item);
         return true;
+    }
+
+    void forceAddItem(Item item){
+        items.add(item);
     }
 
     void initialize() {

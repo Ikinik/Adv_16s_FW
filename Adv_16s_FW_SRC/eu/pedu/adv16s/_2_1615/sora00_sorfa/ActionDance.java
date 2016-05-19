@@ -3,19 +3,21 @@
  */
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
 
-import eu.pedu.adv16s_fw.game_txt.INamed;
+import com.sun.deploy.util.ArrayUtil;
 
-import java.util.Optional;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
 
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
 
 /*******************************************************************************
- * Třída akce sloužící pro přesun z jednoho ptostoru do druhého.
+ * Akce sloužící k zatancování.
  *
  * @author  Adam Šorfa
  */
-class ActionRun extends AAction
+class ActionDance extends AAction
 {
 //== CONSTANT CLASS FIELDS =====================================================
 //== VARIABLE CLASS FIELDS =====================================================
@@ -42,10 +44,10 @@ class ActionRun extends AAction
     /***************************************************************************
      * Creates the action instance for ...
      */
-    ActionRun()
+    ActionDance()
     {
-        super (pBJEZ,
-                "Přesune hráče do sousední místnonsi, zadané jako parametr.");
+        super (pTANCUJ,
+                "Robot zatancuje");
     }
 
 
@@ -65,7 +67,7 @@ class ActionRun extends AAction
      * the actions of <i>apply</i> type ) can have two (e.g. apply key lock)
      * or three (e.g. apply key to lock) etc.
      *
-     * @param arguments ActionMove arguments –
+     * @param arguments ActionDance arguments –
      *                  their number can be different for each action,
      *                  but for all execution of the same action is the same
      * @return The answer of the game after processing the command
@@ -73,28 +75,26 @@ class ActionRun extends AAction
     @Override
     public String execute(String... arguments)
     {
-        World land = World.getInstance();
-        Space chodba = new Space(CHODBA, new String[] {DETSKY_POKOJ,
-            LOZNICE_RODICU,KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY}, OBRAZ);
-        chodba.initialize();
-
-        land.setCurrentSpace(chodba);
-
-        return "Vešel jste do chodba";
-
-//        if(arguments.length < 2){
-//            return zCIL_NEZADAN;
-//        }
-//        String destinationName = arguments[1];
-//        Space currentSpace = World.getInstance().getCurrentSpace();
-//        Optional<Space> destination = INamed.getO(destinationName,
-//                currentSpace.getNeighbors());
-//        if(!destination.isPresent()){
-//            return zNENI_CIL;
-//        }
-//        Space destinationSpace = destination.get();
-//        World.getInstance().setCurrentSpace(destinationSpace);
-//        return zPRESUN + destinationSpace.getName();
+        Space currentSpace = World.getInstance().getCurrentSpace();
+        boolean holcickaPresent = currentSpace.getItems().stream()
+                                    .map(i->{return i.getName();})
+                                    .filter(Predicate.isEqual(HOLCICKA))
+                                    .findFirst().isPresent();
+        if(holcickaPresent){
+            Item sponka = new Item(MV + SPONKA);
+            if(Bag.getInstance().tryAddItem(sponka)){
+                return zTANCUJ_HOLCICKA;
+            }else{
+                return zTANCUJ_HOLCICKA_PLNY_BATOH;
+            }
+        }else{
+            if(arguments.length > 1) {
+                arguments = Arrays.copyOfRange(arguments, 1, arguments.length);
+                return zTANCUJ_KDEKOLIV + " " + String.join(" ", arguments);
+            }else{
+                return zTANCUJ_KDEKOLIV;
+            }
+        }
     }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

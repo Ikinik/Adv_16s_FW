@@ -49,7 +49,9 @@ abstract class AAction extends ANamed implements IAction
         new ActionEnd();
         new ActionPickUp();
         new ActionPutDown();
-        new ActionRun();
+        new ActionExplore();
+        new ActionDance();
+        new ActionCombine();
         //new ActionMove();
         //new CommandPickUp();
         //new CommandExit();
@@ -221,7 +223,11 @@ abstract class AAction extends ANamed implements IAction
         action = action.trim();
         String answer;
         if (isAlive) {
-            answer = executeCommonAction(action);
+            if(action.isEmpty()){
+                answer = zPRAZDY_PRIKAZ;
+            }else{
+                answer = executeCommonAction(action);
+            }
         }
         else {
             answer = startGame(action);
@@ -232,6 +238,7 @@ abstract class AAction extends ANamed implements IAction
     static void initialize(){
         World.getInstance().initialize();
         Bag.getInstance().initialize();
+        Flags.initialize();
     }
 
     /***************************************************************************

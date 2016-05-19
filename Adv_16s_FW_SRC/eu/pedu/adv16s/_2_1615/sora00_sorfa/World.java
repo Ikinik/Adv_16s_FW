@@ -77,7 +77,7 @@ class World implements IWorld
         spaces = new ArrayList<>();
         spaces.add(new Space(DETSKY_POKOJ,
                              new String[] {CHODBA},
-                             HOLCICKA, SKRIN, NEPORADEK));
+                             HOLCICKA, MV + SKRIN, NEPORADEK));
         spaces.add(new Space(LOZNICE_RODICU,
                              new String[] {CHODBA}));
         spaces.add(new Space(CHODBA,

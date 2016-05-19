@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 class Texts
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
-
+    static final String MV = "#";
 
     /** Názvy používaných prostorů - místností. */
     static final String
@@ -40,7 +40,7 @@ class Texts
     /** Názvy používaných objektů. */
     static final String
             HOLCICKA        = "Holčička",
-            SKRIN           = "#Skříň",
+            SKRIN           = "Skříň",
             NEPORADEK       = "Nepořádek",
             SPRCHOVY_KOUT   = "Sprchový-kout",
             UMYVADLO        = "Umyvadlo",
@@ -51,12 +51,16 @@ class Texts
             STRYCEK_ALFRED  = "Strýček-Alfréd",
             TELEFON         = "Telefon",
             PRISTUPOVY_KOD  = "Přístupový-kód",
+            ROLEXKY         = "Rolexky",
+            PENEZENKA       = "Peněženka",
+            PSACI_PERO      = "Psací-pero",
             TELEVIZE        = "Televize",
             POHOVKA         = "Pohovka",
             TATINEK         = "Tatínek",
             AUTO            = "Auto",
             MAMINKA         = "Maminka",
-            OBRAZ           = "Obraz";
+            OBRAZ           = "Obraz",
+            SPONKA          = "Sponka";
 
             /* pomocné texty - výstupy: */
     static final String
@@ -86,7 +90,7 @@ class Texts
             "Seznam užitečných příkazů:\n",
             zKONEC = "Konec hry, tak zas příště.\n",
             zPREDMET_NEZADAN = "stderr: Není co sebrat.\n",
-            zNENI_ITEM = "Undefined index vesmír. Předmět nenalezen. " +
+            zNENI_ITEM = "Undefined index. Předmět nenalezen. " +
                     "Segmentation fault !!!\n",
             zZVEDNUTO = "Sebral jste ",
             zNE_ZVEDNUTO = "Přístup odepřen. Do klávesnice bude vpuštěno 2230 "+
@@ -95,20 +99,38 @@ class Texts
             zNENI_CIL = "Příliš daleko.",
             zPRESUN = "Vešel jste do ",
             zNENI_V_BATOHU = "Předmět není v batohu. píp píp",
-            zPOLOZENO = "Položil jste ";
+            zPOLOZENO = "Položil jste ",
+            zPRAZDY_PRIKAZ = "Nevím, co mám dělat, proto se raději ani o nic " +
+                 "pokoušet nebudu.\nProtože kdo nic neudělá, ten nic neskazí.",
+            zZKOUMANY_PREDMNET_NEZADAN = "Nevím co mám prozkoumat",
+            zNENI_ZKOUMATELNY = "Nic zajímavého.",
+            zPROZKOUMANY = "Už tu není nic zajímavého k vidělí.",
+            zTANCUJ_HOLCICKA =
+            "Holčičce se tanaček velice líbil, zatleskala vám a přitom jí\n" +
+            "vypadla sponka do vlasů.\nZískáváte tedy sponku do vlasů.",
+            zTANCUJ_HOLCICKA_PLNY_BATOH = zTANCUJ_HOLCICKA + " Ehm...\n" +
+            "pardon vlastně nezískáváte vůbec nic, jelikož máte batoh plný\n" +
+            "zbytečných nesmyslů",
+            zTANCUJ_KDEKOLIV = "Bum shaka laka",
+            zSKOMBINUJ_NEZADAN = "Nevím co mám skombinovat, zadej prosím dvě " +
+            "věci a já to skusím znovu",
+            zSKOMBINUJ_NENI_V_BATOHU = "Nemůžu a nechci montovat to co nemám.",
+            zSKOMBINUJ_NENI_KOMBINACE = "Hmm... z toho nic zajímavého nezískám";
+
 
     /** Názvy používaných příkazů. */
     static final String
             pHELP   = "?",
             pTANCUJ = "tancuj",
             pJDI    = "jdi",
-            pOTEVRI = "Prozkoumej",
+        pPROZKOUMEJ = "Prozkoumej",
             pPOLOZ  = "Polož",
             pPRECTI = "Skombinuj",
             pVEZMI  = "Použij",
             pZAVRI  = "Polož",
             pKONEC  = "Konec",
             pSEBER  = "Seber",
+         pSKOMBINUJ = "Skombinuj",
             pBJEZ   = "Bjež";
 
 //== VARIABLE CLASS ATTRIBUTES =================================================

@@ -195,8 +195,7 @@ String[]   bag;        //Current bag content
         ,
 
         new ScenarioStep(tsMOVE, "Jdi Pokoj-pro-hosty",
-            "Šel jstw do pokoje pro hosty. Na křesle zde podřimuje tatínkův\n" +
-            "kolega strýček Alfréd."
+            "Šel jste do Pokoj-pro-hosty"
 
             ,
             "Pokoj-pro-hosty",
@@ -579,22 +578,13 @@ String[]   bag;        //Current bag content
 //            new String[] { }
 //        ),
 
-        new ScenarioStep(tsTAKE, pSEBER + " Skříň",
-            "Sebral jste skříň"
+        new ScenarioStep(tsNON_STANDARD0, pTANCUJ,
+            zTANCUJ_HOLCICKA
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek" },
-            new String[] { "Skříň" }
-        ),
-
-        new ScenarioStep(tsPUT_DOWN, pPOLOZ + " Skříň",
-            "Položil jste skříň"
-            ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
-            new String[] { }
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
+            new String[] { SPONKA }
         ),
 
         new ScenarioStep(tsMOVE, pJDI + " "+CHODBA,
@@ -604,16 +594,122 @@ String[]   bag;        //Current bag content
             new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
                     KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
             new String[] { OBRAZ },
-            new String[] { }
+            new String[] { SPONKA }
         ),
 
-        new ScenarioStep(tsEND, "Konec",zKONEC
+        new ScenarioStep(tsEMPTY, "",
+            "Nevím, co mám dělat, proto se raději ani o nic pokoušet nebudu.\n"+
+                    "Protože kdo nic neudělá, ten nic neskazí."
             ,
             "Chodba",
             new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
                     KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
             new String[] { OBRAZ },
-            new String[] { }
+            new String[] { SPONKA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+KOUPELNA,
+            "Vešel jste do " + KOUPELNA
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
+            new String[] { SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ + " " + ZACHOD,
+            "Záchod vypadá v celku čistě. Na první pohled na něm není\n" +
+            "nic zvláštního. Moment ... Poodkryl jste víko od nádržky. A \n" +
+            "vydíte podivně vyhlížející igelitový sáček. Po otevření \n" +
+            "sáčku nacházíte plně funkční pistoli ráže devět milimetrů " +
+            "s plným zásobníkem. \n\nMůžete dělat, jako že se nic nestalo a\n" +
+            "na pistoli zapomenou. Nebo můžete pistoli sebrat a vyzkoušet\n " +
+            "co dokáže."
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD, PISTOLE },
+            new String[] { SPONKA }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + PISTOLE,
+            "Sebral jste Pistole"
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+CHODBA,
+            "Vešel jste do " + CHODBA
+            ,
+            CHODBA,
+            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+            new String[] { OBRAZ },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + POKOJ_PRO_HOSTY,
+            "Vešel jste do " + POKOJ_PRO_HOSTY
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ + " " + STRYCEK_ALFRED,
+            "Strýček má na zápěstí drahé hodinky značky Rolex. V levé kapse\n" +
+            "má telefon, v pravé peněženku, v náprsní kapse má zastrčené \n" +
+            "psací pero."
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY, TELEFON,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + TELEFON,
+            zZVEDNUTO + TELEFON
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, TELEFON, SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD0, pTANCUJ,
+            zTANCUJ_KDEKOLIV
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, TELEFON, SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ SPONKA +" "+ TELEFON,
+            "Pomocí sponky jste z otevřel kryt telefonu a našel jste v něm \n" +
+            "ukrytý papírek s přístupovým kódem."
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsEND, pKONEC,zKONEC
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
         )
     };
 
