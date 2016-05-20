@@ -703,13 +703,125 @@ String[]   bag;        //Current bag content
             new String[] { PISTOLE, PRISTUPOVY_KOD }
         ),
 
-        new ScenarioStep(tsEND, pKONEC,zKONEC
+        new ScenarioStep(tsMOVE, pJDI + " "+CHODBA,
+            zPRESUN + CHODBA
             ,
-            POKOJ_PRO_HOSTY,
-            new String[] { CHODBA },
-            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
-                    PENEZENKA, PSACI_PERO },
+            CHODBA,
+            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+            new String[] { OBRAZ },
             new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+KUMBAL,
+            zPRESUN + KUMBAL
+            ,
+            KUMBAL,
+            new String[] { CHODBA },
+            new String[] { SMETACEK,LOPATKA,KOSTE,SAVO,SEKERA },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " "+SEKERA,
+            zZVEDNUTO + SEKERA
+            ,
+            KUMBAL,
+            new String[] { CHODBA },
+            new String[] { SMETACEK,LOPATKA,KOSTE,SAVO },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
+        ),
+
+
+        new ScenarioStep(tsMOVE, pJDI + " "+CHODBA,
+            zPRESUN + CHODBA
+            ,
+            CHODBA,
+            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+            new String[] { OBRAZ },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ+" "+SEKERA+" "+OBRAZ,
+            zPOUZIJ_SEKERA_OBRAZ
+            ,
+            CHODBA,
+            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+            new String[] { TRISKY },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+SCHODY,
+            zPRESUN + SCHODY
+            ,
+            SCHODY,
+            new String[] { CHODBA, OBYVAK },
+            new String[] { FOTKY, ZABRADLI },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+OBYVAK,
+            zPRESUN + OBYVAK
+            ,
+            OBYVAK,
+            new String[] { SCHODY, PREDSIN, KUCHYN },
+            new String[] { POHOVKA, TELEVIZE },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+KUCHYN,
+            zPRESUN + KUCHYN
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { TATINEK, MAMINKA },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ PISTOLE +" "+TATINEK,
+            zPOUZIJ_PISTOLE_TATINEK
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { MAMINKA },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ OBYVAK,
+            zPRESUN + OBYVAK
+            ,
+            OBYVAK,
+            new String[] { SCHODY, PREDSIN, KUCHYN },
+            new String[] { POHOVKA, TELEVIZE },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+PREDSIN,
+            zPRESUN + PREDSIN
+            ,
+            PREDSIN,
+            new String[] { OBYVAK, GARAZ },
+            new String[] { },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+GARAZ,
+            zPRESUN + GARAZ
+            ,
+            GARAZ,
+            new String[] { PREDSIN },
+            new String[] { AUTO },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ TATINEK +" "+ AUTO,
+            zSUCCESS_END
+            ,
+            SKLAD_JADERNYCH_ZBRANI,
+            new String[] { },
+            new String[] { },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
         )
     };
 

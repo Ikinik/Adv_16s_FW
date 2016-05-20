@@ -52,6 +52,7 @@ abstract class AAction extends ANamed implements IAction
         new ActionExplore();
         new ActionDance();
         new ActionCombine();
+        new ActionUse();
         //new ActionMove();
         //new CommandPickUp();
         //new CommandExit();

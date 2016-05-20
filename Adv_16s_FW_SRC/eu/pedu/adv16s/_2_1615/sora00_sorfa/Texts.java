@@ -35,7 +35,8 @@ class Texts
             OBYVAK          = "Obývák",
             KUCHYN          = "Kuchyň",
             PREDSIN         = "Předsíň",
-            GARAZ           = "Garáž";
+            GARAZ           = "Garáž",
+            SKLAD_JADERNYCH_ZBRANI = "Sklad-jaderných-zbraní";
 
     /** Názvy používaných objektů. */
     static final String
@@ -60,7 +61,15 @@ class Texts
             AUTO            = "Auto",
             MAMINKA         = "Maminka",
             OBRAZ           = "Obraz",
-            SPONKA          = "Sponka";
+            SPONKA          = "Sponka",
+            KOSTE           = "Koště",
+            SMETACEK        = "Smetáček",
+            LOPATKA         = "Lopatka",
+            SAVO            = "Savo",
+            SEKERA          = "Sekera",
+            TRISKY          = "Třísky",
+            FOTKY           = "Fotky",
+            ZABRADLI        = "Zábradlí";
 
             /* pomocné texty - výstupy: */
     static final String
@@ -115,8 +124,30 @@ class Texts
             zSKOMBINUJ_NEZADAN = "Nevím co mám skombinovat, zadej prosím dvě " +
             "věci a já to skusím znovu",
             zSKOMBINUJ_NENI_V_BATOHU = "Nemůžu a nechci montovat to co nemám.",
-            zSKOMBINUJ_NENI_KOMBINACE = "Hmm... z toho nic zajímavého nezískám";
-
+            zSKOMBINUJ_NENI_KOMBINACE = "Hmm... z toho nic zajímavého nezískám",
+            zPOUZIJ_NEZADAN = "Nevím co a jak, zapínám TOR EXIT NODE.",
+            zPOUZIJ_NENI_TOOL = "Nemám potřebný nástroj. Stahuji mallware...\n"+
+            "Obsah zašifrován..... !!\n " + "Pošelete urychleně 50 BTC na " +
+            "adresu: 1FCFCZ2rXnjfzqrnLvjApY6XzaShCZgV1p\npro získání " +
+            "dekriptoru",
+            zPOUZIJ_NENI_VEC = "Unknown item. Windows random error: 2622872787",
+            zPOUZIJ_EXCEPTION = "Jejda něco se pokazilo",
+            zPOUZIJ_NELZE_POUZIT = "Hmm.... no joooo. Zrovna se mi nechce nic " +
+                    "dělat",
+            zPOUZIJ_PISTOLE_TATINEK = "Vytáhl jste pistoli na tatínka, nyní " +
+            "se stává vaším rukojmím.",
+            zPOUZIJ_PISTOLE_TATINEK_PLNY_BATOH = "Nemohu spáchat takouvou " +
+            "ohavnost s plným batohem.",
+            zPOUZIJ_SEKERA_OBRAZ = "Yeaaaaa, uuaaaa dkgfdskfgb\nRozštípal jste " +
+            "obraz na třísky",
+            zSUCCESS_END =
+            "S tatínkovo pomocí jste se úspěšně dostal do tajného skladu \n" +
+            "jaderných zbraní. Zde jste pomocí skenu tatínkovy sítnice a \n" +
+            "tajného strýčkova kódu odpálil střely dlouhého doletu na \n" +
+            "hlavní města předních světových velmocí. Netrvalo to dlouhou a\n" +
+            "odpověď na sebe nenechala dlouho čekat. \n\n" +
+            "Lidsvo to má spočítané. Úkol jste splnil na výbornou, Budiž vám" +
+            " země lehká.";
 
     /** Názvy používaných příkazů. */
     static final String
@@ -126,7 +157,7 @@ class Texts
         pPROZKOUMEJ = "Prozkoumej",
             pPOLOZ  = "Polož",
             pPRECTI = "Skombinuj",
-            pVEZMI  = "Použij",
+            pPOUZIJ = "Použij",
             pZAVRI  = "Polož",
             pKONEC  = "Konec",
             pSEBER  = "Seber",

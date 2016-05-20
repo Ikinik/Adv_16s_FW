@@ -3,6 +3,7 @@ package eu.pedu.adv16s._2_1615.sora00_sorfa;
 import eu.pedu.adv16s._2_1615.sora00_sorfa.auxiliaryClases.Pair;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
@@ -16,7 +17,7 @@ class Flags {
             explorableItems = new HashMap<String,ExploredContent>();
     private static Map<Pair<String>,CombinedContent>
             combinableItems = new HashMap<Pair<String>,CombinedContent>();
-
+    private static Map<String, String> usableItems = new HashMap<String,String>();
 
     private void Flags(){}
 
@@ -49,10 +50,6 @@ class Flags {
             ,
             PRISTUPOVY_KOD));
     }
-
-//    static Optional<CombinedContent> tryCombineItems(Pair<String> combinedPair){
-//        return Optional.ofNullable(combinableItems.get(combinedPair));
-//    }
 
     static boolean isCombinablePair(Pair<String> pair){
         return combinableItems.containsKey(pair);

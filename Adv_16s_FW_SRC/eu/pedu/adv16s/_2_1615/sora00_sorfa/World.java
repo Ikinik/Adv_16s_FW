@@ -92,11 +92,14 @@ class World implements IWorld
                              new String[] {CHODBA},
                              POSTEL, KRESLO, STRYCEK_ALFRED));
         spaces.add(new Space(KUMBAL,
-                             new String[] { CHODBA }));
+                             new String[] { CHODBA },
+                             MV+SMETACEK, MV+LOPATKA, MV+KOSTE, MV+SAVO,
+                MV+SEKERA));
         spaces.add(new Space(SCHODY,
-                             new String[] { CHODBA }));
+                             new String[] { CHODBA, OBYVAK },
+                             FOTKY, ZABRADLI));
         spaces.add(new Space(OBYVAK,
-                             new String[] {PREDSIN, KUCHYN},
+                             new String[] {PREDSIN, KUCHYN, SCHODY},
                              TELEVIZE, POHOVKA));
         spaces.add(new Space(KUCHYN,
                              new String[] {OBYVAK},
@@ -106,6 +109,7 @@ class World implements IWorld
         spaces.add(new Space(GARAZ,
                              new String[] {PREDSIN},
                              AUTO));
+        spaces.add(new Space(SKLAD_JADERNYCH_ZBRANI, new String[]{ }));
     }
 
     public void initialize(){
