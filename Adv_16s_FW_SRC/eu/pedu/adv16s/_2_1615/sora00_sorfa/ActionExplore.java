@@ -5,7 +5,9 @@ package eu.pedu.adv16s._2_1615.sora00_sorfa;
 
 import eu.pedu.adv16s_fw.game_txt.INamed;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
@@ -93,10 +95,15 @@ class ActionExplore extends AAction
             if(exploredContent.isEmpty()){
                 return zPROZKOUMANY;
             }else{
+                List<String> exploredItems = new ArrayList<String>();
                 exploredContent.flushItems().stream().forEach(exploredItem -> {
+                    exploredItems.add(exploredItem.getName());
                     currentSpace.forceAddItem(exploredItem);
                 });
-                return exploredContent.getMessage();
+
+                return exploredContent.getMessage() +
+                "\nDo místlosti přibyli následující předměty: " +
+                String.join(" ", exploredItems);
             }
         }
     }

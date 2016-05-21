@@ -41,6 +41,7 @@ class Texts
     /** Názvy používaných objektů. */
     static final String
             HOLCICKA        = "Holčička",
+            ZOMBIE_HOLCICKA = "Zombie holčička",
             SKRIN           = "Skříň",
             NEPORADEK       = "Nepořádek",
             SPRCHOVY_KOUT   = "Sprchový-kout",
@@ -67,9 +68,27 @@ class Texts
             LOPATKA         = "Lopatka",
             SAVO            = "Savo",
             SEKERA          = "Sekera",
+            SROUBOVAK       = "Šroubovák",
             TRISKY          = "Třísky",
             FOTKY           = "Fotky",
-            ZABRADLI        = "Zábradlí";
+            ZABRADLI        = "Zábradlí",
+  MANZELSKA_POSTEL          = "Manželská-postel",
+            KNIHOVNA        = "Knihovna",
+            NOCNI_STOLEK    = "Noční-stolek",
+            ZRCADLO         = "Zrcadlo",
+            RETIZEK         = "Řetízek",
+     SVAZEK_BANKOVEK        = "Svazek-bankovek",
+            MINIBAR         = "Minibar",
+            VESAK           = "Věšák",
+            BOTNIK          = "Botník",
+            ROHOZKA         = "Rohožka",
+            VYSAVAC         = "Vysavač",
+        UPRAVENY_VYSAVAC    = "Upravený-vysavač",
+            SEJF            = "Sejf",
+            KOD_OD_SEJFU    = "Kód-od-sejfu",
+    FOSFORESKUJICI_AMPULKA  = "Fosforeskující-ampulka",
+            XRAY_GUN        = "Xray-gun",
+            ZELENY_BLOB     = "Zelený-blob";
 
             /* pomocné texty - výstupy: */
     static final String
@@ -106,7 +125,8 @@ class Texts
                     "voltů\n Odpočítávám: \n3.\n2..\n1...",
             zCIL_NEZADAN = "Cíl nezadán, Cíl nezadán píp píp, chrrrr",
             zNENI_CIL = "Příliš daleko.",
-            zPRESUN = "Vešel jste do ",
+            zPRESUN = "Vešel jste do místnosti ",
+            zPRESUN_POPIS_ITEMU = "Nachází se zde: ",
             zNENI_V_BATOHU = "Předmět není v batohu. píp píp",
             zPOLOZENO = "Položil jste ",
             zPRAZDY_PRIKAZ = "Nevím, co mám dělat, proto se raději ani o nic " +
@@ -121,10 +141,42 @@ class Texts
             "pardon vlastně nezískáváte vůbec nic, jelikož máte batoh plný\n" +
             "zbytečných nesmyslů",
             zTANCUJ_KDEKOLIV = "Bum shaka laka",
+            zSUCCESS_END =
+            "S tatínkovo pomocí jste se úspěšně dostal do tajného skladu \n" +
+            "jaderných zbraní. Zde jste pomocí skenu tatínkovy sítnice a \n" +
+            "tajného strýčkova kódu odpálil střely dlouhého doletu na \n" +
+            "hlavní města předních světových velmocí. Netrvalo to dlouhou a\n" +
+            "odpověď na sebe nenechala dlouho čekat. \n\n" +
+            "Lidsvo to má spočítané. Úkol jste splnil na výbornou, Budiž vám" +
+            " země lehká.",
+            zUNSUCCESSFULL_END =
+            "S tatínkovo pomocí jste se úspěšně dostal do tajného skladu\n"+
+            "jaderných zbraní. Zde jste pomocí skenu tatínkovy sítnice \n" +
+            "otevřel dveře od řídící místnosti. Boužel jste neznal\n" +
+            "přístupový kód od ovládacího terminálu. Než ste stačil provést\n" +
+            "jakoukoliv jinou záškodnickou akci byl jste dopaden\n" +
+            "bezpečnostními jednotkami. Skončil jste ve vládních\n" +
+            "laboratořích, jako testovací oběkt.",
+            zALTERNATIVE_END =
+            "Použil jste Xray gun na maminku. Zprvu se nedělo vůbec nic\n" +
+            "zvláštního. Maminka strnula a dlouho se nehýbala. Tatínek se jí\n"+
+            "pokusil dotknout. Ihned po té co se jí dotknul se rozpadla na\n" +
+            "malinké částečky prachu, které odvál průvan ven z okna.\n" +
+            "Jak po čase vyplinulo z pátrání biologů. Maminka byla nakažena\n" +
+            "vzácným virem, který si přivezla z exotické dovolené v Thajsku\n" +
+            "za rozumnou cenu. Ten postihoval především mláďátka opiček a\n" +
+            "pro lidi nebyl nikterak škodlivý. Ovšem vlivem radiace\n" +
+            "způsobené vysavačovou zbraní virus zmutoval a stal se pro lidi\n" +
+            "smrtelným. Nákaza se šířila enormě rychle a za krátko vypukla\n" +
+            "pandemie, která skončila naprostým vyhlazením lidské rasy.\n\n" +
+            "Blahopřejemne, váš úkol byl splněn na výbornou. Lidstvo to má\n" +
+            "spočítané.",
             zSKOMBINUJ_NEZADAN = "Nevím co mám skombinovat, zadej prosím dvě " +
             "věci a já to skusím znovu",
             zSKOMBINUJ_NENI_V_BATOHU = "Nemůžu a nechci montovat to co nemám.",
             zSKOMBINUJ_NENI_KOMBINACE = "Hmm... z toho nic zajímavého nezískám",
+
+
             zPOUZIJ_NEZADAN = "Nevím co a jak, zapínám TOR EXIT NODE.",
             zPOUZIJ_NENI_TOOL = "Nemám potřebný nástroj. Stahuji mallware...\n"+
             "Obsah zašifrován..... !!\n " + "Pošelete urychleně 50 BTC na " +
@@ -136,18 +188,85 @@ class Texts
                     "dělat",
             zPOUZIJ_PISTOLE_TATINEK = "Vytáhl jste pistoli na tatínka, nyní " +
             "se stává vaším rukojmím.",
+            zPOUZIJ_XRAY_TATINEK =
+            "Vytáhl jste Xray gun na tatínka. Ten začal prosit o slitování.\n" +
+            "Hmmm.... bůhví co by se z tatínka pak stalo. Mohl by vám však\n" +
+            "být ještě užitečný a posloužt tak ke vznešenějším účelům.\n" +
+            "Rozhodl jste se tedy vzít tatínka jako rukojmí",
             zPOUZIJ_PISTOLE_TATINEK_PLNY_BATOH = "Nemohu spáchat takouvou " +
             "ohavnost s plným batohem.",
+            zPOUZIJ_XRAY_TATINEK_PLNY_BATOH =
+                    zPOUZIJ_PISTOLE_TATINEK_PLNY_BATOH,
+            zPOUZIJ_BANKOVKY_HOLCICKA =
+            "Dal jste holčičce svazek bankovek. Holčička vypadá\n" +
+            "velice spokojeně. Na oplnátku vám za to věnovala vysavač s \n" +
+            "obrázkem sloníka\nZískáváte vysavač",
             zPOUZIJ_SEKERA_OBRAZ = "Yeaaaaa, uuaaaa dkgfdskfgb\nRozštípal jste " +
             "obraz na třísky",
-            zSUCCESS_END =
-            "S tatínkovo pomocí jste se úspěšně dostal do tajného skladu \n" +
-            "jaderných zbraní. Zde jste pomocí skenu tatínkovy sítnice a \n" +
-            "tajného strýčkova kódu odpálil střely dlouhého doletu na \n" +
-            "hlavní města předních světových velmocí. Netrvalo to dlouhou a\n" +
-            "odpověď na sebe nenechala dlouho čekat. \n\n" +
-            "Lidsvo to má spočítané. Úkol jste splnil na výbornou, Budiž vám" +
-            " země lehká.";
+            zPOUZIJ_KOD_SEJF =
+            "Pomocí kódu na papírku jste otevřel sejf. Kromně nezajímavých\n" +
+            "pěti zlatých cihel a papírů, oběvujete podivnou ampulku s\n" +
+            "fosforeskujícím zeleným slizem unitř a nálepku biohazard z\n" +
+            "venku.\nMohla by se vám ještě hodit.\n" +
+            "Získáváte tedy fosforeskující ampulku",
+            zPOUZIJ_XRAY_HOLCICKA =
+            "Použil jste Xray gun na holčičku. Zprvu to vypadalo že se\n" +
+            "nestalo nic zvláštního. Po chvíli jste ale začal pozorovat jak\n" +
+            "se holčička mění v zombie.",
+            zPOUZIJ_XRAY_STRYCEK_ALFRED =
+            "Použil jste Xray gun na strýčka Alfréda a výsledky na sebe\n" +
+            "nenechaly dlouho čekat. Strýček se proměnil v zelený blob. Něco\n"+
+            "zabreptal a zas znova usnul";
+
+    /** Uvítací správy zobrazené při prvním vstupu do místnosti */
+    static final String
+            wLOZNICE_RODICU =
+            "Ložnice vypadá vcelku uklizeně,\n"+
+            "na první pohled se zde nenachází žádná věc, která by\n" +
+            "potencionálně mohla zničit svět.",
+            wCHODBA =
+            "Odsud je možné navštívit spoustu dalších místností, nebo\n" +
+            "sejít dolů po schodech. Kromě obrazu na stěně tu není nic\n" +
+            "dalšího k vidění.",
+            wKOUPELNA =
+            "Hmmmm... tohle je nádhrená koupelna, je tu naprosto vše, co\n"+
+            "by mohlo posloužit k výtečné vraždě, jako z hallywoodského\n" +
+            "hororu. Naprvní pohled ovšem nic nenormálního. Při \n" +
+            "důkladněším pohledu vám padlo oko na nádržku od záchodu,\n" +
+            "vypadá, jako by s ní nedávno někdo manipuloval.",
+            wPOKOJ_PRO_HOSTY =
+            "Při vstupu do pokoje vidíte strýčka Alfréda jak podřimuje v\n"+
+            "křesle. Vypadá to tu jako po pořádném flámu. Minimálně\n" +
+            "strýšek Alfréd na to vypadá",
+            wKUMBAL =
+            "Kumbál patrně slouží jako sklad úklydových pomůcek, je to\n" +
+            "tu samý hadr a smeták. Něco z toho by se možná mohlo hodit.\n"+
+            "v kumbálu je pěkná tma, vypínač bohužel nefunguje. Po\n" +
+            "chvíli se vaše oční kamery vzpamatovaly a v koutku vidíte\n" +
+            "nádhernou sekeru.",
+            wSCHODY =
+            "I přesto že nejsou schody nijak extrémně strmé, dávají vám\n" +
+            "co proto. Kdybernetika je teprve plenkách, za normálních\n" +
+            "okolností jste rád, že dokážete jít sotva rovně.",
+            wOBYVAK =
+            "Obývá vypadá dosti obývatelně. Je zde veliký polstrovaný\n" +
+            "gauč, naproti němu na stěně se nachází veliká širokoúhlá\n" +
+            "televize. Vedle gauče se leskne minibar.",
+            wKUCHYN =
+            "V kuchini vydíte maminku a tatínka, patrně se pokoušejí\n" +
+            "něco ukuchtit. K vašemu štěstí si vás příliš nevšímají.",
+            wPREDSIN =
+            "Ihned vám oko padlo na vstupní dveře. Vypadají opravdu\n" +
+            "masivně obvzlášť pokud měříte na výšku s bídou 30 centimetrů."+
+            "Tudy do dál rozhodně nepůjde. Pode dveřmi je gumová rohožka\n"+
+            "z vietnamské tržnice s nápisem Weclome. Po stranách je pak\n" +
+            "botník a věšák na oblečení.",
+            wGARAZ =
+            "Tak tohle se jen tak nevidí, přímo před vámi je nádherný\n" +
+            "nablískaný sportovní vůz značky Porsche. Auto je však\n" +
+            "zamčené a se svojí velikostí by ste se stejně moc daleko\n" +
+            "nedostal. Vypadá to že budete potřebovat někoho, kdo vám\n" +
+            "tento problém pomůže vyřešit";
 
     /** Názvy používaných příkazů. */
     static final String

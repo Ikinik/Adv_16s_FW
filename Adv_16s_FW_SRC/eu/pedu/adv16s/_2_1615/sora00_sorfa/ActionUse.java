@@ -3,11 +3,10 @@
  */
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
 
-import eu.pedu.adv16s._2_1615.sora00_sorfa.auxiliaryClases.Pair;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.function.Consumer;
 
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
@@ -21,14 +20,28 @@ class ActionUse extends AAction
 {
 //== CONSTANT CLASS FIELDS =====================================================
     static final Map<String,Callable<String>>
-        combinableItems = new HashMap<String,Callable<String>>();
+        usableItems = new HashMap<String,Callable<String>>();
 
 //== VARIABLE CLASS FIELDS =====================================================
 
 //##############################################################################
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
     static {
-        combinableItems.put((PISTOLE+" "+TATINEK).toLowerCase(),()-> {
+        Callable<String> expeditionToNuclearWarehouse = ()->{
+            Space sklad = World.getInstance()
+                    .getSpace(SKLAD_JADERNYCH_ZBRANI);
+            World.getInstance().setCurrentSpace(sklad);
+        
+            if(Bag.getInstance().getItem(PRISTUPOVY_KOD) != null ){
+                stopGame();
+                return zSUCCESS_END;
+            }else{
+                stopGame();
+                return zUNSUCCESSFULL_END;
+            }
+        };
+    
+        usableItems.put((PISTOLE+" "+TATINEK).toLowerCase(),()-> {
             if(Bag.getInstance().tryAddItem(new Item(MV + TATINEK))){
                 Space currentSpace = World.getInstance().getCurrentSpace();
                 Item tatinek = currentSpace.getItem(TATINEK);
@@ -40,7 +53,7 @@ class ActionUse extends AAction
             }
         });
 
-        combinableItems.put((SEKERA+" "+OBRAZ).toLowerCase(),() -> {
+        usableItems.put((SEKERA+" "+OBRAZ).toLowerCase(),() -> {
             Space currentSpace = World.getInstance().getCurrentSpace();
             Item obraz = currentSpace.getItem(OBRAZ);
             currentSpace.removeItem(obraz);
@@ -49,14 +62,65 @@ class ActionUse extends AAction
             return zPOUZIJ_SEKERA_OBRAZ;
         });
 
-        combinableItems.put((TATINEK+" "+AUTO).toLowerCase(),()->{
-            Space sklad = World.getInstance()
-                                      .getSpace(SKLAD_JADERNYCH_ZBRANI);
-            World.getInstance().setCurrentSpace(sklad);
+        usableItems.put((TATINEK+" "+AUTO).toLowerCase(),expeditionToNuclearWarehouse);
 
-            stopGame();
-            return zSUCCESS_END;
+        usableItems.put((SVAZEK_BANKOVEK+" "+HOLCICKA).toLowerCase(), () ->{
+            Bag bag = Bag.getInstance();
+            Item svazekBankovek = bag.getItem(SVAZEK_BANKOVEK);
+            bag.removeItem(svazekBankovek);
+            bag.tryAddItem(new Item(MV + VYSAVAC));
+
+            return zPOUZIJ_BANKOVKY_HOLCICKA;
         });
+
+        usableItems.put((KOD_OD_SEJFU+" "+SEJF).toLowerCase(),()->{
+            Bag bag = Bag.getInstance();
+            Item kodOdSejfu = bag.getItem(KOD_OD_SEJFU);
+            bag.removeItem(kodOdSejfu);
+            bag.tryAddItem(new Item(FOSFORESKUJICI_AMPULKA));
+
+            return zPOUZIJ_KOD_SEJF;
+        });
+
+        usableItems.put((XRAY_GUN+" "+HOLCICKA).toLowerCase(),()->{
+            Space currentSpace = World.getInstance().getCurrentSpace();
+            Item holcicka = currentSpace.getItem(HOLCICKA);
+            currentSpace.removeItem(holcicka);
+            currentSpace.forceAddItem(new Item(ZOMBIE_HOLCICKA));
+
+            return zPOUZIJ_XRAY_HOLCICKA;
+        });
+
+        usableItems.put((XRAY_GUN+" "+STRYCEK_ALFRED).toLowerCase(),()->{
+            Space currentSpace = World.getInstance().getCurrentSpace();
+            Item strycekAlfred = currentSpace.getItem(STRYCEK_ALFRED);
+            currentSpace.removeItem(strycekAlfred);
+            currentSpace.forceAddItem(new Item(ZELENY_BLOB));
+
+            return zPOUZIJ_XRAY_STRYCEK_ALFRED;
+
+        });
+
+        usableItems.put((XRAY_GUN+" "+TATINEK).toLowerCase(),()->{
+            if(Bag.getInstance().tryAddItem(new Item(MV + TATINEK))){
+                Space currentSpace = World.getInstance().getCurrentSpace();
+                Item tatinek = currentSpace.getItem(TATINEK);
+                currentSpace.removeItem(tatinek);
+
+                return zPOUZIJ_XRAY_TATINEK;
+            }else{
+                return zPOUZIJ_XRAY_TATINEK_PLNY_BATOH;
+            }
+        });
+
+        usableItems.put((XRAY_GUN+" "+MAMINKA).toLowerCase(),()->{
+            stopGame();
+            return zALTERNATIVE_END;
+        });
+
+        usableItems.put((TATINEK+" "+AUTO).toLowerCase(),
+                expeditionToNuclearWarehouse);
+
     }
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
@@ -114,9 +178,9 @@ class ActionUse extends AAction
         }else if(think == null){
             return zPOUZIJ_NENI_VEC;
         }else{
-            if(combinableItems.containsKey(toolName+" "+thinkName)){
+            if(usableItems.containsKey(toolName+" "+thinkName)){
                 try {
-                    return combinableItems.get(toolName+" "+thinkName)
+                    return usableItems.get(toolName+" "+thinkName)
                                           .call();
                 } catch (Exception e) {
                     return zPOUZIJ_EXCEPTION;

@@ -76,39 +76,42 @@ class World implements IWorld
     {
         spaces = new ArrayList<>();
         spaces.add(new Space(DETSKY_POKOJ,
-                             new String[] {CHODBA},
-                             HOLCICKA, MV + SKRIN, NEPORADEK));
-        spaces.add(new Space(LOZNICE_RODICU,
-                             new String[] {CHODBA}));
-        spaces.add(new Space(CHODBA,
-                             new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
-                                 KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
-                             OBRAZ
+                new String[] {CHODBA},
+                HOLCICKA, MV + SKRIN, NEPORADEK));
+        spaces.add(new Space(LOZNICE_RODICU, wLOZNICE_RODICU,
+                new String[] {CHODBA},
+                POSTEL, KNIHOVNA, NOCNI_STOLEK, MV + ZRCADLO
                 ));
-        spaces.add(new Space(KOUPELNA,
-                             new String[] {CHODBA},
-                             SPRCHOVY_KOUT, UMYVADLO, ZACHOD));
-        spaces.add(new Space(POKOJ_PRO_HOSTY,
-                             new String[] {CHODBA},
-                             POSTEL, KRESLO, STRYCEK_ALFRED));
-        spaces.add(new Space(KUMBAL,
-                             new String[] { CHODBA },
-                             MV+SMETACEK, MV+LOPATKA, MV+KOSTE, MV+SAVO,
-                MV+SEKERA));
-        spaces.add(new Space(SCHODY,
-                             new String[] { CHODBA, OBYVAK },
-                             FOTKY, ZABRADLI));
-        spaces.add(new Space(OBYVAK,
-                             new String[] {PREDSIN, KUCHYN, SCHODY},
-                             TELEVIZE, POHOVKA));
-        spaces.add(new Space(KUCHYN,
-                             new String[] {OBYVAK},
-                             TATINEK, MAMINKA));
-        spaces.add(new Space(PREDSIN,
-                             new String[] {OBYVAK, GARAZ}));
-        spaces.add(new Space(GARAZ,
-                             new String[] {PREDSIN},
-                             AUTO));
+        spaces.add(new Space(CHODBA, wCHODBA,
+                 new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                     KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+                 OBRAZ
+                ));
+        spaces.add(new Space(KOUPELNA, wKOUPELNA,
+                 new String[] {CHODBA},
+                 SPRCHOVY_KOUT, UMYVADLO, ZACHOD));
+        spaces.add(new Space(POKOJ_PRO_HOSTY, wPOKOJ_PRO_HOSTY,
+                 new String[] {CHODBA},
+                 POSTEL, KRESLO, STRYCEK_ALFRED));
+        spaces.add(new Space(KUMBAL, wKUMBAL,
+                 new String[] { CHODBA },
+                 MV+SMETACEK, MV+LOPATKA, MV+KOSTE, MV+SAVO, MV+SEKERA,
+                 MV+SROUBOVAK));
+        spaces.add(new Space(SCHODY,wSCHODY,
+                 new String[] { CHODBA, OBYVAK },
+                 FOTKY, ZABRADLI));
+        spaces.add(new Space(OBYVAK,wOBYVAK,
+                 new String[] {PREDSIN, KUCHYN, SCHODY},
+                 TELEVIZE, POHOVKA, MINIBAR));
+        spaces.add(new Space(KUCHYN,wKUCHYN,
+                 new String[] {OBYVAK},
+                 TATINEK, MAMINKA));
+        spaces.add(new Space(PREDSIN,wPREDSIN,
+                 new String[] {OBYVAK, GARAZ},
+                VESAK, BOTNIK, ROHOZKA));
+        spaces.add(new Space(GARAZ,wGARAZ,
+                 new String[] {PREDSIN},
+                 AUTO));
         spaces.add(new Space(SKLAD_JADERNYCH_ZBRANI, new String[]{ }));
     }
 

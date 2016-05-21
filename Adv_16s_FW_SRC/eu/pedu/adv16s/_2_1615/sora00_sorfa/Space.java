@@ -10,6 +10,8 @@ import eu.pedu.adv16s_fw.game_txt.IGame;
 import eu.pedu.adv16s_fw.game_txt.INamed;
 import eu.pedu.adv16s_fw.game_txt.ISpace;
 
+import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.zPRESUN;
+import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.zPRESUN_POPIS_ITEMU;
 
 
 /*******************************************************************************
@@ -54,6 +56,11 @@ class Space extends ItemContainer implements ISpace, INamed
     /** Názvy objektů v místnosti na počátku hry. */
     private final String[] itemNames;
 
+    /** Uvítací správa zobrazená při prvním navštívení prostoru. */
+    private final String welcomeMessage;
+
+    /** Počet vstupů do místnosti, kolikrát byla místnost už navštívena. */
+    private int entersCount = 0;
 //== VARIABLE INSTANCE FIELDS ==================================================
     private Collection<Space> neighbors;
 
@@ -74,12 +81,43 @@ class Space extends ItemContainer implements ISpace, INamed
         this.name = name;
         this.neighborNames = neighborNames;
         this.itemNames = itemNames;
+        this.welcomeMessage = "";
     }
 
+    Space(String name, String welcomeMessage, String[] neighborNames,
+          String... itemNames) {
+        super(itemNames);
+        checkName(name);
+        this.name = name;
+        this.neighborNames = neighborNames;
+        this.itemNames = itemNames;
+        this.welcomeMessage = welcomeMessage;
+    }
 
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
+
+    public String getMessage(){
+        Collection<Item> itemsInside = getItems();
+
+        String realItemNames;
+        if(!itemsInside.isEmpty()) {
+            realItemNames = itemsInside.stream()
+                    .map(item -> item.getName())
+                    .collect(Collectors.joining(" "));
+        }else{
+            realItemNames = "Vůbec nic";
+        }
+
+        if(entersCount++ == 0 && welcomeMessage != ""){
+            return zPRESUN + getName() + "\n" + welcomeMessage +
+                    "\n\n" + zPRESUN_POPIS_ITEMU + realItemNames;
+        }else{
+            return zPRESUN + getName() + "\n" + zPRESUN_POPIS_ITEMU +
+                    realItemNames;
+        }
+    }
 
     /***************************************************************************
      * @return jméno prostoru

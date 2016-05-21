@@ -85,7 +85,7 @@ class ActionMove extends AAction
         }
         Space destinationSpace = destination.get();
         World.getInstance().setCurrentSpace(destinationSpace);
-        return zPRESUN + destinationSpace.getName();
+        return destinationSpace.getMessage();
     }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

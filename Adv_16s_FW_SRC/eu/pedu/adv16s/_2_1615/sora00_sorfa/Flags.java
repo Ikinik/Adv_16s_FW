@@ -42,13 +42,64 @@ class Flags {
             MV + PISTOLE
         ));
 
+        explorableItems.put(NOCNI_STOLEK.toLowerCase(), new ExploredContent(
+            "Otevřel jste noční stolek. Kromě jistých věcí na které byste\n" +
+            "raději zapoměl, že ste je kdy viděl nacházíte zaltý řetízek a\n" +
+            "svazek bankovek"
+            ,
+            MV + RETIZEK, MV + SVAZEK_BANKOVEK
+        ));
+
+        explorableItems.put(OBRAZ.toLowerCase(),new ExploredContent(
+            "Podíval jste se na obraz z blízka a něco vám na něm nesedělo.\n" +
+            "Podíval jste se za něj a spatřil jste malé kovové panty. Pohl \n" +
+            "jste obrazem a vidíte že je za ním ukrytý sejf."
+            ,
+            SEJF
+        ));
+
+        explorableItems.put(KNIHOVNA.toLowerCase(),new ExploredContent(
+            "Po prozkoumávání knih, jste našel mnoho zajímavých věcí.\n" +
+            "Zaujaly vás zejména publikce o jaderném štěpení. Při pročítání\n" +
+            "jedné z nic na vás vypadl malinký podivný papírek. Z jedné\n" +
+            "strany je na něm napsáno sejf a z druhé je změť čísel.\n" +
+            "Crrrrrrrrr unexpeced error crrrrrrrr null pointer exception"+
+            "A jejda, to je nepříjemné\n"+
+            "Rozhraní pro ovládání rukou havarovalo s neznámou chybou a\n" +
+            "muselo být restartováno. Papírek s kódem od sejfu vám upadl na\n" +
+            "zem."
+            ,
+            MV + KOD_OD_SEJFU
+        ));
+
         combinableItems.put(new Pair<String>(SPONKA.toLowerCase(),
                                              TELEFON.toLowerCase()),
                             new CombinedContent(
             "Pomocí sponky jste z otevřel kryt telefonu a našel jste v něm \n" +
             "ukrytý papírek s přístupovým kódem."
             ,
-            PRISTUPOVY_KOD));
+            MV + PRISTUPOVY_KOD));
+
+        combinableItems.put(new Pair<String>(SROUBOVAK.toLowerCase(),
+                                             VYSAVAC.toLowerCase()),
+                            new CombinedContent(
+            "Za pomocí šroubováku jste upravil dětský vysavač. Obrátil jste\n" +
+            "chod motorku. Nyní místo vysávání vyfukuje vzduch ven. Vyrobil\n" +
+            "jste si improvizovaný výkoný rozprašovač. Stačí ještě sehnat\n" +
+            "nějakou zajímavou náplň a můžeme se pustit do díla"
+            ,
+            MV + UPRAVENY_VYSAVAC));
+
+        combinableItems.put(new Pair<String>(
+                FOSFORESKUJICI_AMPULKA.toLowerCase(),
+                UPRAVENY_VYSAVAC.toLowerCase()),
+                new CombinedContent(
+            "vložil jste fosforeskující ampulku s podivným slizem do \n" +
+            "upraveného vysavače. Tím jste získal fantastickou zbraň\n" +
+            "ideální na likvidování všeho živého, co se vám připlete do\n" +
+            "cesty. Vynalezenou zbraň jste pojmenoval Xray-gun."
+            ,
+            MV + XRAY_GUN));
     }
 
     static boolean isCombinablePair(Pair<String> pair){
