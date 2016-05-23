@@ -92,18 +92,29 @@ class ActionExplore extends AAction
         }else{
             Flags.ExploredContent exploredContent =
                     Flags.getExploredContent(itemName);
-            if(exploredContent.isEmpty()){
+            if(exploredContent.isExplored()){
                 return zPROZKOUMANY;
             }else{
-                List<String> exploredItems = new ArrayList<String>();
-                exploredContent.flushItems().stream().forEach(exploredItem -> {
-                    exploredItems.add(exploredItem.getName());
-                    currentSpace.forceAddItem(exploredItem);
-                });
+                String message;
 
-                return exploredContent.getMessage() +
-                "\nDo místlosti přibyli následující předměty: " +
-                String.join(" ", exploredItems);
+                if(!exploredContent.isEmpty()) {
+                    List<String> exploredItems = new ArrayList<String>();
+                    exploredContent.flushItems().stream().forEach(
+                        exploredItem -> {
+                            exploredItems.add(exploredItem.getName());
+                            currentSpace.forceAddItem(exploredItem);
+                        }
+                    );
+
+                    message = exploredContent.getMessage() +
+                              "\nDo místlosti přibyli následující předměty: " +
+                              String.join(" ", exploredItems);
+                }else{
+                    message = exploredContent.getMessage();
+                }
+
+                exploredContent.setExplored();
+                return message;
             }
         }
     }

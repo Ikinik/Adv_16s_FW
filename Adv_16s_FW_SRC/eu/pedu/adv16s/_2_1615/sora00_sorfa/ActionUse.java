@@ -53,11 +53,44 @@ class ActionUse extends AAction
             }
         });
 
+        usableItems.put((PISTOLE+" "+HOLCICKA).toLowerCase(),()->{
+            return zPOUZIJ_PISTOLE_HOLCICKA;
+        });
+
+        usableItems.put((PISTOLE+" "+STRYCEK_ALFRED).toLowerCase(), ()->{
+            Space currentSpace = World.getInstance().getCurrentSpace();
+            Item strycek = currentSpace.getItem(STRYCEK_ALFRED);
+            currentSpace.removeItem(strycek);
+            currentSpace.forceAddItem(new Item(MRTVOLA_STRYCKA));
+
+            return zPOUZIJ_PISTOLE_STRYCEK;
+        });
+
+        usableItems.put((PISTOLE+" "+MAMINKA).toLowerCase(), ()->{
+            Space currentSpace = World.getInstance().getCurrentSpace();
+            Item maminka = currentSpace.getItem(MAMINKA);
+            Item tatinek = currentSpace.getItem(TATINEK);
+            if(tatinek != null){
+                Bag bag = Bag.getInstance();
+                if(bag.tryAddItem(tatinek)){
+                    currentSpace.removeItem(tatinek);
+                    return zPOUZIJ_PISTOLE_MAMINKA;
+                }else{
+                    return zPOUZIJ_PISTOLE_MAMINKA_PLNY_BATOH;
+                }
+            }else{
+                currentSpace.removeItem(maminka);
+                currentSpace.forceAddItem(new Item(MAMINKA));
+                return zPOUZIJ_PISTOLE_MAMINKA_NENI_TATINEK;
+            }
+        });
+
         usableItems.put((SEKERA+" "+OBRAZ).toLowerCase(),() -> {
             Space currentSpace = World.getInstance().getCurrentSpace();
             Item obraz = currentSpace.getItem(OBRAZ);
             currentSpace.removeItem(obraz);
             currentSpace.forceAddItem(new Item(MV + TRISKY));
+            currentSpace.forceAddItem(new Item(SEJF));
 
             return zPOUZIJ_SEKERA_OBRAZ;
         });
@@ -73,11 +106,26 @@ class ActionUse extends AAction
             return zPOUZIJ_BANKOVKY_HOLCICKA;
         });
 
+        usableItems.put((PENEZENKA+" "+HOLCICKA).toLowerCase(),()->{
+            Bag bag = Bag.getInstance();
+            Item penezenka = bag.getItem(PENEZENKA);
+            bag.removeItem(penezenka);
+            bag.tryAddItem(new Item(MV + VYSAVAC));
+
+            return zPOUZIJ_PENEZENKA_HOLCICKA;
+        });
+
         usableItems.put((KOD_OD_SEJFU+" "+SEJF).toLowerCase(),()->{
             Bag bag = Bag.getInstance();
+            Space currentSpace = World.getInstance().getCurrentSpace();
+
             Item kodOdSejfu = bag.getItem(KOD_OD_SEJFU);
             bag.removeItem(kodOdSejfu);
-            bag.tryAddItem(new Item(FOSFORESKUJICI_AMPULKA));
+            bag.tryAddItem(new Item(MV+FOSFORESKUJICI_AMPULKA));
+
+            Item sejf = currentSpace.getItem(SEJF);
+            currentSpace.removeItem(sejf);
+            currentSpace.forceAddItem(new Item(VYKRADENY_SEJF));
 
             return zPOUZIJ_KOD_SEJF;
         });

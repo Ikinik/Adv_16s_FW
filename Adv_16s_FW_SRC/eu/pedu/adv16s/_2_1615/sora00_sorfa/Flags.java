@@ -3,7 +3,6 @@ package eu.pedu.adv16s._2_1615.sora00_sorfa;
 import eu.pedu.adv16s._2_1615.sora00_sorfa.auxiliaryClases.Pair;
 
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
@@ -22,71 +21,54 @@ class Flags {
     private void Flags(){}
 
     static void initialize(){
-        //MultiKeyMap hoj =
-        explorableItems.put(STRYCEK_ALFRED.toLowerCase(), new ExploredContent(
-            "Strýček má na zápěstí drahé hodinky značky Rolex. V levé kapse\n" +
-            "má telefon, v pravé peněženku, v náprsní kapse má zastrčené \n" +
-            "psací pero."
-            ,
-            MV + ROLEXKY, MV + TELEFON, MV + PENEZENKA, MV + PSACI_PERO));
+
+        ExploredContent strycekContent = new ExploredContent(
+            zPROZKOUMEJ_STRYCEK_ALFRED,
+            MV + ROLEXKY, MV + TELEFON, MV + PENEZENKA, MV + PSACI_PERO);
+
+        explorableItems.put(STRYCEK_ALFRED.toLowerCase(), strycekContent);
+
+        explorableItems.put(MRTVOLA_STRYCKA.toLowerCase(),strycekContent);
 
         explorableItems.put(ZACHOD.toLowerCase(), new ExploredContent(
-            "Záchod vypadá v celku čistě. Na první pohled na něm není\n" +
-            "nic zvláštního. Moment ... Poodkryl jste víko od nádržky. A \n" +
-            "vydíte podivně vyhlížející igelitový sáček. Po otevření \n" +
-            "sáčku nacházíte plně funkční pistoli ráže devět milimetrů " +
-            "s plným zásobníkem. \n\nMůžete dělat, jako že se nic nestalo a\n" +
-            "na pistoli zapomenou. Nebo můžete pistoli sebrat a vyzkoušet\n" +
-            "co dokáže."
+                zPROZKOUMEJ_ZACHOD
             ,
             MV + PISTOLE
         ));
 
         explorableItems.put(NOCNI_STOLEK.toLowerCase(), new ExploredContent(
-            "Otevřel jste noční stolek. Kromě jistých věcí na které byste\n" +
-            "raději zapoměl, že ste je kdy viděl nacházíte zaltý řetízek a\n" +
-            "svazek bankovek"
+            zPROZKOUMEJ_NOCNI_STOLEK
             ,
             MV + RETIZEK, MV + SVAZEK_BANKOVEK
         ));
 
         explorableItems.put(OBRAZ.toLowerCase(),new ExploredContent(
-            "Podíval jste se na obraz z blízka a něco vám na něm nesedělo.\n" +
-            "Podíval jste se za něj a spatřil jste malé kovové panty. Pohl \n" +
-            "jste obrazem a vidíte že je za ním ukrytý sejf."
+            zPROZKOUMEJ_OBRAZ
             ,
             SEJF
         ));
 
         explorableItems.put(KNIHOVNA.toLowerCase(),new ExploredContent(
-            "Po prozkoumávání knih, jste našel mnoho zajímavých věcí.\n" +
-            "Zaujaly vás zejména publikce o jaderném štěpení. Při pročítání\n" +
-            "jedné z nic na vás vypadl malinký podivný papírek. Z jedné\n" +
-            "strany je na něm napsáno sejf a z druhé je změť čísel.\n" +
-            "Crrrrrrrrr unexpeced error crrrrrrrr null pointer exception"+
-            "A jejda, to je nepříjemné\n"+
-            "Rozhraní pro ovládání rukou havarovalo s neznámou chybou a\n" +
-            "muselo být restartováno. Papírek s kódem od sejfu vám upadl na\n" +
-            "zem."
+            zPROZKOUMEJ_KNIHOVNA
             ,
             MV + KOD_OD_SEJFU
+        ));
+
+        explorableItems.put(SEJF.toLowerCase(),new ExploredContent(
+            zPROZKOUMEJ_SEJF
         ));
 
         combinableItems.put(new Pair<String>(SPONKA.toLowerCase(),
                                              TELEFON.toLowerCase()),
                             new CombinedContent(
-            "Pomocí sponky jste z otevřel kryt telefonu a našel jste v něm \n" +
-            "ukrytý papírek s přístupovým kódem."
+            zSKOMBINUJ_SPONKA_TELEFON
             ,
             MV + PRISTUPOVY_KOD));
 
         combinableItems.put(new Pair<String>(SROUBOVAK.toLowerCase(),
                                              VYSAVAC.toLowerCase()),
                             new CombinedContent(
-            "Za pomocí šroubováku jste upravil dětský vysavač. Obrátil jste\n" +
-            "chod motorku. Nyní místo vysávání vyfukuje vzduch ven. Vyrobil\n" +
-            "jste si improvizovaný výkoný rozprašovač. Stačí ještě sehnat\n" +
-            "nějakou zajímavou náplň a můžeme se pustit do díla"
+            zSKOMBINUJ_SROUBOVAK_VYSAVAC
             ,
             MV + UPRAVENY_VYSAVAC));
 
@@ -94,10 +76,7 @@ class Flags {
                 FOSFORESKUJICI_AMPULKA.toLowerCase(),
                 UPRAVENY_VYSAVAC.toLowerCase()),
                 new CombinedContent(
-            "vložil jste fosforeskující ampulku s podivným slizem do \n" +
-            "upraveného vysavače. Tím jste získal fantastickou zbraň\n" +
-            "ideální na likvidování všeho živého, co se vám připlete do\n" +
-            "cesty. Vynalezenou zbraň jste pojmenoval Xray-gun."
+            zSKOMBINUJ_AMPULKA_UVYSAVAC
             ,
             MV + XRAY_GUN));
     }
@@ -124,7 +103,7 @@ class Flags {
 
         CombinedContent(String message, String manufacturedItemName) {
             this.message = message;
-            this.manufacturedItem = new Item(MV + manufacturedItemName);
+            this.manufacturedItem = new Item(manufacturedItemName);
         }
 
         Item getManufacturedItem() {
@@ -143,7 +122,7 @@ class Flags {
     static class ExploredContent {
         private final ArrayList<Item> items;
         private final String message;
-
+        private boolean explored = false;
         /**
          * Uchová tajný obsah zkoumatelného předmětu.
          * @param message zpráva zobrazená při prozkoumání předmětu.
@@ -154,6 +133,11 @@ class Flags {
             items = (ArrayList) Arrays.stream(itemNames)
                           .map(Item::new)
                           .collect(Collectors.toList());
+        }
+
+        ExploredContent(String message){
+            this.message = message;
+            items = new ArrayList<>();
         }
 
         /**
@@ -172,6 +156,9 @@ class Flags {
             return items.isEmpty();
         }
 
+        void setExplored() { explored = true; }
+
+        boolean isExplored() { return explored; }
         /**
          * vyplivne všechny obsažené předměty. Po zavolání metody se obsah
          * vyprázní. Předměty lze prozkoumat pouze jednou

@@ -85,7 +85,7 @@ class ActionCombine extends AAction
         }
 
         Pair<String> combinedPair = new Pair<String>(arguments[1],
-                                                     arguments[2]);
+                                                arguments[2]);
         if(Flags.isCombinablePair(combinedPair)){
             Flags.CombinedContent
                     result = Flags.getCombinedContent(combinedPair);

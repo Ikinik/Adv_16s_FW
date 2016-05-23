@@ -51,6 +51,7 @@ class Texts
             POSTEL          = "Postel",
             KRESLO          = "Křeslo",
             STRYCEK_ALFRED  = "Strýček-Alfréd",
+            MRTVOLA_STRYCKA = "Mrtvola-strýčka",
             TELEFON         = "Telefon",
             PRISTUPOVY_KOD  = "Přístupový-kód",
             ROLEXKY         = "Rolexky",
@@ -61,6 +62,7 @@ class Texts
             TATINEK         = "Tatínek",
             AUTO            = "Auto",
             MAMINKA         = "Maminka",
+            MRTVOLA_MAMINKY = "Mrtvola-maminky",
             OBRAZ           = "Obraz",
             SPONKA          = "Sponka",
             KOSTE           = "Koště",
@@ -86,6 +88,7 @@ class Texts
         UPRAVENY_VYSAVAC    = "Upravený-vysavač",
             SEJF            = "Sejf",
             KOD_OD_SEJFU    = "Kód-od-sejfu",
+            VYKRADENY_SEJF  = "Vykradený-sejf",
     FOSFORESKUJICI_AMPULKA  = "Fosforeskující-ampulka",
             XRAY_GUN        = "Xray-gun",
             ZELENY_BLOB     = "Zelený-blob";
@@ -141,6 +144,7 @@ class Texts
             "pardon vlastně nezískáváte vůbec nic, jelikož máte batoh plný\n" +
             "zbytečných nesmyslů",
             zTANCUJ_KDEKOLIV = "Bum shaka laka",
+            zNIC_NENI = "Vůbec nic",
             zSUCCESS_END =
             "S tatínkovo pomocí jste se úspěšně dostal do tajného skladu \n" +
             "jaderných zbraní. Zde jste pomocí skenu tatínkovy sítnice a \n" +
@@ -156,7 +160,9 @@ class Texts
             "přístupový kód od ovládacího terminálu. Než ste stačil provést\n" +
             "jakoukoliv jinou záškodnickou akci byl jste dopaden\n" +
             "bezpečnostními jednotkami. Skončil jste ve vládních\n" +
-            "laboratořích, jako testovací oběkt.",
+            "laboratořích, jako testovací oběkt.\n\n" +
+            "Bohužl jste selhal, váš úkol zůstal nesplněn. Tak snad nědky\n" +
+            "příště :)",
             zALTERNATIVE_END =
             "Použil jste Xray gun na maminku. Zprvu se nedělo vůbec nic\n" +
             "zvláštního. Maminka strnula a dlouho se nehýbala. Tatínek se jí\n"+
@@ -171,10 +177,6 @@ class Texts
             "pandemie, která skončila naprostým vyhlazením lidské rasy.\n\n" +
             "Blahopřejemne, váš úkol byl splněn na výbornou. Lidstvo to má\n" +
             "spočítané.",
-            zSKOMBINUJ_NEZADAN = "Nevím co mám skombinovat, zadej prosím dvě " +
-            "věci a já to skusím znovu",
-            zSKOMBINUJ_NENI_V_BATOHU = "Nemůžu a nechci montovat to co nemám.",
-            zSKOMBINUJ_NENI_KOMBINACE = "Hmm... z toho nic zajímavého nezískám",
 
 
             zPOUZIJ_NEZADAN = "Nevím co a jak, zapínám TOR EXIT NODE.",
@@ -186,10 +188,27 @@ class Texts
             zPOUZIJ_EXCEPTION = "Jejda něco se pokazilo",
             zPOUZIJ_NELZE_POUZIT = "Hmm.... no joooo. Zrovna se mi nechce nic " +
                     "dělat",
+            zPOUZIJ_PISTOLE_HOLCICKA =
+            "Zprvu vám to přišlo ja výborný nápad, ale nakonec jste si to\n" +
+            "rozmyslel. Unitř vám sice bije chladné strojové srdce robota,\n" +
+            "ale i na takovouto ohavnost je to přece jen málo.",
+            zPOUZIJ_PISTOLE_STRYCEK =
+            "Nepozorovaně jste se přiblížil ke strýčkovi, přiložil mu\n" +
+            "pistoli na spánek a zmáčkl spoušť. Strýček se odebral do\n" +
+            "věčných lovišť. Zbylo po něm jen torzo lidského těla, bez hlavy\n"+
+            "a velká kaluž krve. Tak to bychom jednoho měli. Zbývá ještě\n" +
+            "něco málo přes sedm miliard.",
+            zPOUZIJ_PISTOLE_MAMINKA =
+            "Vytáhl jste pistoli na maminku. Když to tatínek viděl, skočil\n" +
+            "před maminku a začal vám slibovat hory doly. Uvědomil ste si,\n" +
+            "že by se vám tatíneik mohl ještě hodit. Vzal jste si ho proto\n" +
+            "jako rukojmí.",
+            zPOUZIJ_PISTOLE_MAMINKA_NENI_TATINEK =
+            "Zastřelij jste mamniku",
             zPOUZIJ_PISTOLE_TATINEK = "Vytáhl jste pistoli na tatínka, nyní " +
             "se stává vaším rukojmím.",
             zPOUZIJ_XRAY_TATINEK =
-            "Vytáhl jste Xray gun na tatínka. Ten začal prosit o slitování.\n" +
+            "Vytáhl jste Xray gun na tatínka. Ten začal prosit o slitování.\n"+
             "Hmmm.... bůhví co by se z tatínka pak stalo. Mohl by vám však\n" +
             "být ještě užitečný a posloužt tak ke vznešenějším účelům.\n" +
             "Rozhodl jste se tedy vzít tatínka jako rukojmí",
@@ -197,12 +216,19 @@ class Texts
             "ohavnost s plným batohem.",
             zPOUZIJ_XRAY_TATINEK_PLNY_BATOH =
                     zPOUZIJ_PISTOLE_TATINEK_PLNY_BATOH,
+            zPOUZIJ_PISTOLE_MAMINKA_PLNY_BATOH =
+                    zPOUZIJ_PISTOLE_TATINEK_PLNY_BATOH,
             zPOUZIJ_BANKOVKY_HOLCICKA =
             "Dal jste holčičce svazek bankovek. Holčička vypadá\n" +
             "velice spokojeně. Na oplnátku vám za to věnovala vysavač s \n" +
             "obrázkem sloníka\nZískáváte vysavač",
+            zPOUZIJ_PENEZENKA_HOLCICKA =
+            "Dal jste holčičce strýčkovu peněženku. Holčička vypadá\n"+
+            "velice spokojeně. Na oplnátku vám za to věnovala vysavač s \n" +
+            "obrázkem sloníka\nZískáváte vysavač",
             zPOUZIJ_SEKERA_OBRAZ = "Yeaaaaa, uuaaaa dkgfdskfgb\nRozštípal jste " +
-            "obraz na třísky",
+            "obraz na třísky. Obraz však nebyl na stěně jen tak na okrasu.\n" +
+            "Plnil zde důležitou funkci, ukrýval totiž tajný sejf.",
             zPOUZIJ_KOD_SEJF =
             "Pomocí kódu na papírku jste otevřel sejf. Kromně nezajímavých\n" +
             "pěti zlatých cihel a papírů, oběvujete podivnou ampulku s\n" +
@@ -216,7 +242,62 @@ class Texts
             zPOUZIJ_XRAY_STRYCEK_ALFRED =
             "Použil jste Xray gun na strýčka Alfréda a výsledky na sebe\n" +
             "nenechaly dlouho čekat. Strýček se proměnil v zelený blob. Něco\n"+
-            "zabreptal a zas znova usnul";
+            "zabreptal a zas znova usnul",
+
+
+            zPROZKOUMEJ_STRYCEK_ALFRED =
+            "Strýček má na zápěstí drahé hodinky značky Rolex. V levé kapse\n" +
+            "má telefon, v pravé peněženku, v náprsní kapse má zastrčené \n" +
+            "psací pero.",
+            zPROZKOUMEJ_ZACHOD =
+            "Záchod vypadá v celku čistě. Na první pohled na něm není\n" +
+            "nic zvláštního. Moment ... Poodkryl jste víko od nádržky. A \n" +
+            "vydíte podivně vyhlížející igelitový sáček. Po otevření \n" +
+            "sáčku nacházíte plně funkční pistoli ráže devět milimetrů " +
+            "s plným zásobníkem. \n\nMůžete dělat, jako že se nic nestalo a\n" +
+            "na pistoli zapomenou. Nebo můžete pistoli sebrat a vyzkoušet\n" +
+            "co dokáže.",
+            zPROZKOUMEJ_NOCNI_STOLEK =
+            "Otevřel jste noční stolek. Kromě jistých věcí na které byste\n" +
+            "raději zapoměl, že ste je kdy viděl nacházíte zaltý řetízek a\n" +
+            "svazek bankovek",
+            zPROZKOUMEJ_OBRAZ =
+            "Podíval jste se na obraz z blízka a něco vám na něm nesedělo.\n" +
+            "Podíval jste se za něj a spatřil jste malé kovové panty. Pohl \n" +
+            "jste obrazem a vidíte že je za ním ukrytý sejf.",
+            zPROZKOUMEJ_KNIHOVNA =
+            "Po prozkoumávání knih, jste našel mnoho zajímavých věcí.\n" +
+            "Zaujaly vás zejména publikce o jaderném štěpení. Při pročítání\n" +
+            "jedné z nic na vás vypadl malinký podivný papírek. Z jedné\n" +
+            "strany je na něm napsáno sejf a z druhé je změť čísel.\n" +
+            "Crrrrrrrrr unexpeced error crrrrrrrr null pointer exception\n"+
+            "A jejda, to je nepříjemné\n"+
+            "Rozhraní pro ovládání rukou havarovalo s neznámou chybou a\n" +
+            "muselo být restartováno. Papírek s kódem od sejfu vám upadl na\n" +
+            "zem.",
+            zPROZKOUMEJ_SEJF =
+            "Hmmm... vypadá to, že budu potřebovat znát tajný kód od sejfu,\n" +
+            "abych se dostal dovnitř",
+
+
+            zSKOMBINUJ_NEZADAN = "Nevím co mám skombinovat, zadej prosím dvě " +
+            "věci a já to skusím znovu",
+            zSKOMBINUJ_NENI_V_BATOHU = "Nemůžu a nechci montovat to co nemám.",
+            zSKOMBINUJ_NENI_KOMBINACE = "Hmm... z toho nic zajímavého nezískám",
+            zSKOMBINUJ_SPONKA_TELEFON =
+            "Pomocí sponky jste z otevřel kryt telefonu a našel jste v něm \n" +
+            "ukrytý papírek s přístupovým kódem.",
+            zSKOMBINUJ_SROUBOVAK_VYSAVAC =
+            "Za pomocí šroubováku jste upravil dětský vysavač. Obrátil jste\n" +
+            "chod motorku. Nyní místo vysávání vyfukuje vzduch ven. Vyrobil\n" +
+            "jste si improvizovaný výkoný rozprašovač. Stačí ještě sehnat\n" +
+            "nějakou zajímavou náplň a můžeme se pustit do díla",
+            zSKOMBINUJ_AMPULKA_UVYSAVAC =
+            "vložil jste fosforeskující ampulku s podivným slizem do \n" +
+            "upraveného vysavače. Tím jste získal fantastickou zbraň\n" +
+            "ideální na likvidování všeho živého, co se vám připlete do\n" +
+            "cesty. Vynalezenou zbraň jste pojmenoval Xray-gun.";
+
 
     /** Uvítací správy zobrazené při prvním vstupu do místnosti */
     static final String
@@ -249,15 +330,15 @@ class Texts
             "co proto. Kdybernetika je teprve plenkách, za normálních\n" +
             "okolností jste rád, že dokážete jít sotva rovně.",
             wOBYVAK =
-            "Obývá vypadá dosti obývatelně. Je zde veliký polstrovaný\n" +
-            "gauč, naproti němu na stěně se nachází veliká širokoúhlá\n" +
+            "Obývák vypadá dosti obývatelně. Je zde veliký polstrovaný\n" +
+            "gauč, naproti němu na stěně visí veliká širokoúhlá\n" +
             "televize. Vedle gauče se leskne minibar.",
             wKUCHYN =
-            "V kuchini vydíte maminku a tatínka, patrně se pokoušejí\n" +
+            "V kuchini vidíte maminku a tatínka, patrně se pokoušejí\n" +
             "něco ukuchtit. K vašemu štěstí si vás příliš nevšímají.",
             wPREDSIN =
             "Ihned vám oko padlo na vstupní dveře. Vypadají opravdu\n" +
-            "masivně obvzlášť pokud měříte na výšku s bídou 30 centimetrů."+
+            "masivně obvzlášť pokud měříte na výšku s bídou 30 centimetrů.\n"+
             "Tudy do dál rozhodně nepůjde. Pode dveřmi je gumová rohožka\n"+
             "z vietnamské tržnice s nápisem Weclome. Po stranách je pak\n" +
             "botník a věšák na oblečení.",
@@ -275,13 +356,11 @@ class Texts
             pJDI    = "jdi",
         pPROZKOUMEJ = "Prozkoumej",
             pPOLOZ  = "Polož",
-            pPRECTI = "Skombinuj",
             pPOUZIJ = "Použij",
-            pZAVRI  = "Polož",
             pKONEC  = "Konec",
             pSEBER  = "Seber",
          pSKOMBINUJ = "Skombinuj",
-            pBJEZ   = "Bjež";
+         pROZHLED   = "Rozhledni-se";
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 

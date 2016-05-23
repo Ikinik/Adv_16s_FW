@@ -2,15 +2,21 @@
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
 package eu.pedu.adv16s._2_1615.sora00_sorfa;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.*;
 
 
 /*******************************************************************************
- * Třída akce sloužící pro přesun z jednoho ptostoru do druhého.
+ * Akce sloužící k zatancování.
  *
  * @author  Adam Šorfa
  */
-class ActionPutDown extends AAction
+class ActionLookAround extends AAction
 {
 //== CONSTANT CLASS FIELDS =====================================================
 //== VARIABLE CLASS FIELDS =====================================================
@@ -37,10 +43,10 @@ class ActionPutDown extends AAction
     /***************************************************************************
      * Creates the action instance for ...
      */
-    ActionPutDown()
+    ActionLookAround()
     {
-        super (pPOLOZ,
-                "Položí věc z inventáře na zem");
+        super (pROZHLED,
+                "Vypíše aktuální stav prostoru a obsah batohu.");
     }
 
 
@@ -60,7 +66,7 @@ class ActionPutDown extends AAction
      * the actions of <i>apply</i> type ) can have two (e.g. apply key lock)
      * or three (e.g. apply key to lock) etc.
      *
-     * @param arguments ActionPutDown arguments –
+     * @param arguments ActionLookAround arguments –
      *                  their number can be different for each action,
      *                  but for all execution of the same action is the same
      * @return The answer of the game after processing the command
@@ -68,21 +74,33 @@ class ActionPutDown extends AAction
     @Override
     public String execute(String... arguments)
     {
-        if(arguments.length < 2){
-            return zNENI_V_BATOHU;
-        }
-        String itemName = arguments[1];
         Space currentSpace = World.getInstance().getCurrentSpace();
-        Bag bag = Bag.getInstance();
+        Collection<Item> itemsInside = currentSpace.getItems();
+        Collection<Space> neighbors = currentSpace.getNeighbors();
+        String strItems;
+        String strNeighbors;
+        String spaceName = currentSpace.getName();
 
-        Item item = bag.getItem(itemName);
-        if(item == null){
-            return zNENI_V_BATOHU;
+        if(!itemsInside.isEmpty()){
+            strItems = itemsInside.stream()
+                                  .map(item -> item.getName())
+                                  .collect(Collectors.joining(" "));
+        }else{
+            strItems = zNIC_NENI;
         }
 
-        currentSpace.tryAddItem(item);
-        bag.removeItem(item);
-        return zPOLOZENO + itemName;
+        if(!neighbors.isEmpty()){
+            strNeighbors = neighbors.stream()
+                                    .map(space -> space.getName())
+                                    .collect(Collectors.joining(" "));
+        }else{
+            strNeighbors = "Nikam";
+        }
+
+        return
+        "V aktuálním prostoru: " +spaceName+ " se\n" +
+        "nachází: " + strItems + "\n\n" +
+        "Odsud je dále možné jít: " + strNeighbors;
     }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

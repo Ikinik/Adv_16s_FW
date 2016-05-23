@@ -109,268 +109,183 @@ String[]   bag;        //Current bag content
     {
         START_STEP,
 
-        new ScenarioStep(tsNON_STANDARD0, "tancuj",
-            "Holčičce se tanaček velice líbil, zatleskala vám a přitom jí\n " +
-            "vypadla sponka do vlasů.\n Získáváte tedy sponku do vlasů."
-
+        new ScenarioStep(tsNON_STANDARD0, pTANCUJ,
+            zTANCUJ_HOLCICKA
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba"},
-            new String[] { "Holčička", "Skřň", "Nepořádek" },
-            new String[] { "Sponka" }
-        )
-        ,
-
-        new ScenarioStep(tsMOVE, "Jdi Chodba",
-            "Šel jste do chodba"
-
-            ,
-            "Chodba",
-            new String[] { "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
-                "Pokoj-pro-hosty", "Kumbál", "Schody"},
-            new String[] { },
-            new String[] { "Sponka" }
-        )
-        ,
-
-        new ScenarioStep(tsMOVE, "Jdi Koupelna",
-            "Šel jste do Koupelna."
-
-            ,
-            "Koupelna",
-            new String[] { "Chodba" },
-            new String[] { "Sprchový-kout", "Umyvadlo", "Záchod" },
-            new String[] { "Sponka" }
-        )
-        ,
-
-        new ScenarioStep(tsNON_STANDARD1, "Prozkoumej záchod",
-            "Záchod vypadá v celku čistě. Na první pohled na něm není\n" +
-            "nic zvláštního. Moment ... Poodkryl jste víko od nádržky. A \n" +
-            "vydíte podivně vyhlížející igelitový sáček. Po otevření \n" +
-            "sáčku nacházíte plně funkční pistoli ráže devět milimetrů " +
-            "s plným zásobníkem. \n\nMůžete dělat, jako že se nic nestalo a\n" +
-            "na pistoli zapomenou. Nebo můžete pistoli sebrat a vyzkoušet\n " +
-            "co dokáže."
-
-            ,
-            "Koupelna",
-            new String[] { "Koupelna" },
-            new String[] { "Sprchový-kout", "Umyvadlo", "Záchod", "Pistole" },
-            new String[] { "Sponka" }
-        )
-        ,
-
-        new ScenarioStep(tsTAKE , "Seber Pistole",
-            "Sebral jste Pistoli."
-
-            ,
-            "Koupelna",
-            new String[] { "Koupelna" },
-            new String[] { "Sprchový-kout", "Umyvadlo", "Záchod" },
-            new String[] { "Sponka", "Pistole" }
-        )
-        ,
-
-        new ScenarioStep(tsTAKE , "Seber Umyvadlo",
-            "Sebral jste Umyvadlo."
-
-            ,
-            "Koupelna",
-            new String[] { "Koupelna" },
-            new String[] { "Sprchový-kout", "Záchod" },
-            new String[] { "Sponka", "Pistole", "Umyvadlo" }
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
+            new String[] { SPONKA }
         ),
 
-        new ScenarioStep(tsMOVE, "Jdi Chodba",
-                "Šel jste do chodba"
-
+        new ScenarioStep(tsMOVE, pJDI +" "+CHODBA,
+                zPRESUN + CHODBA + "\n" + wCHODBA
                 ,
-                "Chodba",
-                new String[] { "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
-                        "Pokoj-pro-hosty", "Kumbál", "Schody"},
+                CHODBA,
+                new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                        KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+                new String[] { OBRAZ },
+                new String[] { SPONKA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ KOUPELNA,
+            zPRESUN + KOUPELNA + "\n" + wKOUPELNA
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
+            new String[] { SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ +" "+ ZACHOD,
+            zPROZKOUMEJ_ZACHOD
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD, PISTOLE },
+            new String[] { SPONKA }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + PISTOLE,
+            zZVEDNUTO + PISTOLE
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ CHODBA,
+            zPRESUN + CHODBA +"\n"+ zPRESUN_POPIS_ITEMU + OBRAZ
+            ,
+            CHODBA,
+            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+            new String[] { OBRAZ },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + POKOJ_PRO_HOSTY,
+            zPRESUN + POKOJ_PRO_HOSTY +"\n"+ wPOKOJ_PRO_HOSTY
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ + " " + STRYCEK_ALFRED,
+            zPROZKOUMEJ_STRYCEK_ALFRED
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY, TELEFON,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + TELEFON,
+            zZVEDNUTO + TELEFON
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, TELEFON, SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ SPONKA +" "+ TELEFON,
+            zSKOMBINUJ_SPONKA_TELEFON
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ CHODBA,
+            zPRESUN + CHODBA +"\n"+ zPRESUN_POPIS_ITEMU + OBRAZ
+            ,
+            CHODBA,
+            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+            new String[] { OBRAZ },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ SCHODY,
+            zPRESUN + SCHODY +"\n"+ wSCHODY
+            ,
+            SCHODY,
+            new String[] { CHODBA, OBYVAK },
+            new String[] { FOTKY, ZABRADLI },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ OBYVAK,
+            zPRESUN + OBYVAK +"\n"+ wOBYVAK
+            ,
+            OBYVAK,
+            new String[] { SCHODY, PREDSIN, KUCHYN },
+            new String[] { POHOVKA, TELEVIZE, MINIBAR },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ KUCHYN,
+            zPRESUN + KUCHYN +"\n"+ wKUCHYN
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { TATINEK, MAMINKA },
+            new String[] { PISTOLE, PRISTUPOVY_KOD}
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ PISTOLE +" "+TATINEK,
+            zPOUZIJ_PISTOLE_TATINEK
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { MAMINKA },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ OBYVAK,
+            zPRESUN + OBYVAK +"\n"+ zPRESUN_POPIS_ITEMU + TELEVIZE +" "+
+                    POHOVKA +" "+ MINIBAR
+            ,
+            OBYVAK,
+            new String[] { SCHODY, PREDSIN, KUCHYN },
+            new String[] { TELEVIZE, POHOVKA, MINIBAR },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ PREDSIN,
+            zPRESUN + PREDSIN +"\n"+ wPREDSIN
+            ,
+            PREDSIN,
+            new String[] { OBYVAK, GARAZ },
+            new String[] { VESAK, BOTNIK, ROHOZKA },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+GARAZ,
+            zPRESUN + GARAZ +"\n"+ wGARAZ
+            ,
+            GARAZ,
+            new String[] { PREDSIN },
+            new String[] { AUTO },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ TATINEK +" "+ AUTO,
+                zSUCCESS_END
+                ,
+                SKLAD_JADERNYCH_ZBRANI,
                 new String[] { },
-                new String[] { "Sponka", "Pistole", "Umyvadlo" }
+                new String[] { },
+                new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
         )
-        ,
-
-        new ScenarioStep(tsMOVE, "Jdi Pokoj-pro-hosty",
-            "Šel jste do Pokoj-pro-hosty"
-
-            ,
-            "Pokoj-pro-hosty",
-            new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd" },
-            new String[] { "Sponka", "Pistole", "Umyvadlo" }
-        )
-        ,
-
-        new ScenarioStep(tsNON_STANDARD1, "Prozkoumej Strýček-Alfréd",
-            "Strýček má na zápěstí drahé hodinky značky Rolex. V levé kapse\n" +
-            "má telefon, v pravé peněženku, v náprsní kapse má zastrčené \n" +
-            "psací pero."
-
-            ,
-            "Pokoj-pro-hosty",
-            new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Telefon", "Rolexky", "Peněženka", "Psací-pero" },
-            new String[] { "Sponka", "Pistole", "Umyvadlo", }
-        )
-        ,
-
-        new ScenarioStep(tsTAKE, "Seber Telefon",
-            "Sebral jste telefon"
-
-            ,
-            "Pokoj-pro-hosty",
-            new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Rolexky", "Peněženka", "Psací-pero" },
-            new String[] { "Sponka", "Pistole", "Telefon", "Umyvadlo" }
-        )
-        ,
-        new ScenarioStep(tsTAKE, "Seber Peněženka",
-            "Sebral jste telefon"
-
-            ,
-            "Pokoj-pro-hosty",
-            new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Rolexky", "Psací-pero" },
-            new String[] { "Sponka", "Pistole", "Telefon", "Umyvadlo", "Peněženka" }
-        ),
-        new ScenarioStep(tsTAKE, "Seber Rolexky",
-            "Sebral jste telefon"
-
-            ,
-            "Pokoj-pro-hosty",
-            new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Psací-pero" },
-            new String[] { "Sponka", "Pistole", "Telefon", "Umyvadlo", "Peněženka", "Rolexky" }
-        ),
-        new ScenarioStep(tsPUT_DOWN, "Polož Umyvadlo",
-            "Položil jste Umyvadlo na zem."
-
-            ,
-            "Pokoj-pro-hosty",
-            new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Psací-pero", "Umyvadlo" },
-            new String[] { "Sponka", "Pistole", "Telefon", "Peněženka", "Rolexky" }
-        ),
-        new ScenarioStep(tsTAKE, "Seber Psací-pero",
-            "Sebral jste Psací-pero"
-
-            ,
-            "Pokoj-pro-hosty",
-            new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Umyvadlo" },
-            new String[] { "Sponka", "Pistole", "Telefon", "Peněženka", "Rolexky", "Psací-pero" }
-        ),
-        new ScenarioStep(tsNON_STANDARD2 , "Skombinuj telefon sponka",
-            "Pomocí sponky jste z otevřel kryt telefonu a našel jste v něm \n" +
-            "ukrytý papírek s přístupovým kódem."
-
-            ,
-            "Pokoj-pro-hosty",
-            new String[] { "Chodba" },
-            new String[] { "Postel", "Křeslo", "Strýček-Alfréd", "Umyvadlo"},
-            new String[] {"Pistole", "Přístupový-kód", "Peněženka", "Rolexky", "Psací-pero" }
-        )
-        ,
-
-        new ScenarioStep(tsMOVE, "Jdi Chodba",
-            "Šel jste do chodba"
-
-            ,
-            "Chodba",
-            new String[] { "Dětský-pokoj", "Ložnice-rodičů", "Koupelna",
-                    "Pokoj-pro-hosty", "Kumbál", "Schody" },
-            new String[] { },
-            new String[] { "Přístupový-kód", "Pistole" , "Peněženka", "Rolexky", "Psací-pero"}
-        )
-        ,
-
-        new ScenarioStep(tsNON_STANDARD1, "Sejdi Schody",
-            "Sešel jste po schodech do prvního patra. Schody vedou přímo do\n" +
-            "obýváku"
-
-            ,
-            "Obývák",
-            new String[] { "Předsíň", "Kuchyň" },
-            new String[] { "Televize", "Pohovka"},
-            new String[] { "Přístupový-kód", "Pistole", "Peněženka", "Rolexky", "Psací-pero" }
-        )
-        ,
-
-        new ScenarioStep(tsMOVE, "Jdi kuchyň",
-            "Vešel jste do kuchyňe"
-
-            ,
-            "Kuchyň",
-            new String[] { "Obývák" },
-            new String[] { "Tatínek", "Maminka"},
-            new String[] { "Přístupový-kód", "Pistole", "Peněženka", "Rolexky", "Psací-pero" }
-        )
-        ,
-
-        new ScenarioStep(tsNON_STANDARD2, "Použij pistole tatínek",
-            "Vytáhl jste pistoli na tatínka, nyní se stává vaším rukojmím."
-
-            ,
-            "Kuchyň",
-            new String[] { "Obývák" },
-            new String[] { "Maminka"},
-            new String[] { "Přístupový-kód", "Pistole", "Tatínek", "Peněženka", "Rolexky", "Psací-pero" }
-        )
-        ,
-
-        new ScenarioStep(tsMOVE, "Jdi Obývák",
-            "Vešel jste do obýváku"
-
-            ,
-            "Obývák",
-            new String[] { "Předsíň", "Kuchyň" },
-            new String[] { "Televize", "Pohovka" },
-            new String[] { "Přístupový-kód", "Pistole", "Tatínek", "Peněženka", "Rolexky", "Psací-pero" }
-        )
-        ,
-
-        new ScenarioStep(tsMOVE, "Jdi Předsíň",
-            "Vešel jste do předsíně"
-
-            ,
-            "Předsíň",
-            new String[] { "Obývák", "Garáž" },
-            new String[] { },
-            new String[] { "Přístupový-kód", "Pistole", "Tatínek", "Peněženka", "Rolexky", "Psací-pero" }
-        )
-        ,
-
-        new ScenarioStep(tsMOVE, "Jdi Garáž",
-            "Vešel jste do garáže"
-
-            ,
-            "Garáž",
-            new String[] { "Předsíň" },
-            new String[] { "Auto" },
-            new String[] { "Přístupový-kód", "Pistole", "Tatínek", "Peněženka", "Rolexky", "Psací-pero" }
-        )
-        ,
-
-        new ScenarioStep(tsNON_STANDARD2, "Použij tatínek auto",
-            "S tatínkovo pomocí jste se úspěšně dostal do tajného skladu \n" +
-            "jaderných zbraní. Zde jste pomocí skenu tatínkovy sítnice a \n" +
-            "tajného strýčkova kódu odpálil střely dlouhého doletu na \n" +
-            "hlavní města předních světových velmocí. Netrvalo to dlouhou a\n" +
-            "odpověď na sebe nenechala dlouho čekat. \n\n " +
-            "Lidsvo to má spočítané. Úkol jste splnil na výbornou, Budiž vám" +
-            "země lehká."
-
-            ,
-            "Sklad-jaderných-zbraní",
-            new String[] { },
-            new String[] { },
-            new String[] { }
-        )
-        ,
     };
 
 
@@ -402,33 +317,22 @@ String[]   bag;        //Current bag content
 
         START_STEP,
 
-     /*   new ScenarioStep(tsNOT_SET, "Jdi",
-            "Cíl nezadán, Cíl nezadán píp píp, chrrrr"
-            ,
-            "Dětský-pokoj.",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Skřň", "Nepořádek"},
-            new String[] { }
-        )
-        ,
-*/
         new ScenarioStep(tsUNKNOWN, "sdfas",
-            "Nedefinonvaný příkaz. Chrrrr, zničit lidstvo."
+            zNEZNAMY_PRIKAZ
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA , NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
 
-        new ScenarioStep(tsBAD_ITEM, "Seber střecha",
-            "Přístup odepřen. Do klávesnice bude vpuštěno 2230 voltů\n" +
-            "Odpočítávám: \n3.\n2..\n1..."
+        new ScenarioStep(tsBAD_ITEM, pSEBER + " Střecha",
+            zNENI_ITEM
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
@@ -453,103 +357,104 @@ String[]   bag;        //Current bag content
             "Prozkoumej (co)\t\tprozkoumá předmět ve vašem okolí.\n" +
             "?\tzobrazí tuto užitečnou nápovědu."
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
 
-        new ScenarioStep(tsUNMOVABLE, "Seber vesmír",
-            "Undefined index vesmír. Předmět nenalezen. Segmentation fault !!! "
+        new ScenarioStep(tsUNMOVABLE, pSEBER + " vesmír",
+            zNENI_ITEM
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
 
         new ScenarioStep(tsTAKE_WA, "Seber",
-            "stderr: Není co sebrat."
+            zPREDMET_NEZADAN
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
 
         ,
         new ScenarioStep(tsPUT_DOWN_WA, "Polož",
-            "stderr: Není co položit."
+            zNENI_V_BATOHU
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
 
-        new ScenarioStep(tsBAG_FULL, "Seber Postel",
-            "To se mi nikam nevejde."
+        new ScenarioStep(tsBAG_FULL, pSEBER + " Postel",
+            zNENI_ITEM
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
 
-        new ScenarioStep(tsNOT_IN_BAG, "Polož chodba",
-            "Randrom error: 416468654545. Předmět není v inventáři"
+        new ScenarioStep(tsNOT_IN_BAG, pPOLOZ + " chodba",
+            zNENI_V_BATOHU
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
 
         new ScenarioStep(tsMOVE_WA, "Jdi",
-            "Není kam jít"
+            zCIL_NEZADAN
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
 
-        new ScenarioStep(tsBAD_NEIGHBOR, "Jdi garáž",
-            "Příliš daleko."
+        new ScenarioStep(tsBAD_NEIGHBOR, pJDI + " garáž",
+            zNENI_CIL
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
 
         new ScenarioStep(tsEMPTY, "",
-            "Nevím, co mám dělat, proto se raději ani o nic pokoušet nebudu.\n"+
-            "Protože kdo nic neudělá, ten nic neskazí."
+            zPRAZDY_PRIKAZ
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
         ,
 
-        new ScenarioStep(tsEND, "Konec",
-            "Konec hry, tak zas příště."
+        new ScenarioStep(tsEND, pKONEC,
+            zKONEC
             ,
-            "Dětský-pokoj",
-            new String[] { "Chodba" },
-            new String[] { "Holčička", "Nepořádek", "Skříň" },
+            DETSKY_POKOJ,
+            new String[] { CHODBA },
+            new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { }
         )
     };
+
+    static { ScenarioStep.setIndex(1); }
 
     private static final ScenarioStep[] REQUIRED_STEPS_SCENARIO_STEPS = {
         START_STEP,
@@ -563,9 +468,8 @@ String[]   bag;        //Current bag content
             new String[] { SPONKA }
         ),
 
-        new ScenarioStep(tsMOVE, pJDI + " "+CHODBA,
-                zPRESUN + CHODBA + "\n" + wCHODBA +
-                "\n\n" + zPRESUN_POPIS_ITEMU + OBRAZ
+        new ScenarioStep(tsMOVE, pJDI +" "+CHODBA,
+                zPRESUN + CHODBA + "\n" + wCHODBA
             ,
             CHODBA,
             new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
@@ -584,241 +488,551 @@ String[]   bag;        //Current bag content
             new String[] { SPONKA }
         ),
 
-        new ScenarioStep(tsEND, pKONEC,
-            zKONEC
+        new ScenarioStep(tsNON_STANDARD0, pROZHLED,
+            "V aktuálním prostoru: " +DETSKY_POKOJ+ " se\n" +
+            "nachází: " + HOLCICKA +" "+ SKRIN +" "+ NEPORADEK +"\n\n" +
+            "Odsud je dále možné jít: " + CHODBA
             ,
             DETSKY_POKOJ,
             new String[] { CHODBA },
             new String[] { HOLCICKA, NEPORADEK, SKRIN },
             new String[] { SPONKA }
-        )
+        ),
 
-//        new ScenarioStep(tsEMPTY, "",
-//            "Nevím, co mám dělat, proto se raději ani o nic pokoušet nebudu.\n"+
-//                    "Protože kdo nic neudělá, ten nic neskazí."
-//            ,
-//            "Chodba",
-//            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
-//                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
-//            new String[] { OBRAZ },
-//            new String[] { SPONKA }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+KOUPELNA,
-//            "Vešel jste do " + KOUPELNA
-//            ,
-//            KOUPELNA,
-//            new String[] { CHODBA },
-//            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
-//            new String[] { SPONKA }
-//        ),
-//
-//        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ + " " + ZACHOD,
-//            "Záchod vypadá v celku čistě. Na první pohled na něm není\n" +
-//            "nic zvláštního. Moment ... Poodkryl jste víko od nádržky. A \n" +
-//            "vydíte podivně vyhlížející igelitový sáček. Po otevření \n" +
-//            "sáčku nacházíte plně funkční pistoli ráže devět milimetrů " +
-//            "s plným zásobníkem. \n\nMůžete dělat, jako že se nic nestalo a\n" +
-//            "na pistoli zapomenou. Nebo můžete pistoli sebrat a vyzkoušet\n " +
-//            "co dokáže."
-//            ,
-//            KOUPELNA,
-//            new String[] { CHODBA },
-//            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD, PISTOLE },
-//            new String[] { SPONKA }
-//        ),
-//
-//        new ScenarioStep(tsTAKE, pSEBER + " " + PISTOLE,
-//            "Sebral jste Pistole"
-//            ,
-//            KOUPELNA,
-//            new String[] { CHODBA },
-//            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
-//            new String[] { PISTOLE, SPONKA }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+CHODBA,
-//            "Vešel jste do " + CHODBA
-//            ,
-//            CHODBA,
-//            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
-//                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
-//            new String[] { OBRAZ },
-//            new String[] { PISTOLE, SPONKA }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " " + POKOJ_PRO_HOSTY,
-//            "Vešel jste do " + POKOJ_PRO_HOSTY
-//            ,
-//            POKOJ_PRO_HOSTY,
-//            new String[] { CHODBA },
-//            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED },
-//            new String[] { PISTOLE, SPONKA }
-//        ),
-//
-//        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ + " " + STRYCEK_ALFRED,
-//            "Strýček má na zápěstí drahé hodinky značky Rolex. V levé kapse\n" +
-//            "má telefon, v pravé peněženku, v náprsní kapse má zastrčené \n" +
-//            "psací pero."
-//            ,
-//            POKOJ_PRO_HOSTY,
-//            new String[] { CHODBA },
-//            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY, TELEFON,
-//                    PENEZENKA, PSACI_PERO },
-//            new String[] { PISTOLE, SPONKA }
-//        ),
-//
-//        new ScenarioStep(tsTAKE, pSEBER + " " + TELEFON,
-//            zZVEDNUTO + TELEFON
-//            ,
-//            POKOJ_PRO_HOSTY,
-//            new String[] { CHODBA },
-//            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
-//                    PENEZENKA, PSACI_PERO },
-//            new String[] { PISTOLE, TELEFON, SPONKA }
-//        ),
-//
-//        new ScenarioStep(tsNON_STANDARD0, pTANCUJ,
-//            zTANCUJ_KDEKOLIV
-//            ,
-//            POKOJ_PRO_HOSTY,
-//            new String[] { CHODBA },
-//            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
-//                    PENEZENKA, PSACI_PERO },
-//            new String[] { PISTOLE, TELEFON, SPONKA }
-//        ),
-//
-//        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ SPONKA +" "+ TELEFON,
-//            "Pomocí sponky jste z otevřel kryt telefonu a našel jste v něm \n" +
-//            "ukrytý papírek s přístupovým kódem."
-//            ,
-//            POKOJ_PRO_HOSTY,
-//            new String[] { CHODBA },
-//            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
-//                    PENEZENKA, PSACI_PERO },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+CHODBA,
-//            zPRESUN + CHODBA
-//            ,
-//            CHODBA,
-//            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
-//                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
-//            new String[] { OBRAZ },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+KUMBAL,
-//            zPRESUN + KUMBAL
-//            ,
-//            KUMBAL,
-//            new String[] { CHODBA },
-//            new String[] { SMETACEK,LOPATKA,KOSTE,SAVO,SEKERA },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD }
-//        ),
-//
-//        new ScenarioStep(tsTAKE, pSEBER + " "+SEKERA,
-//            zZVEDNUTO + SEKERA
-//            ,
-//            KUMBAL,
-//            new String[] { CHODBA },
-//            new String[] { SMETACEK,LOPATKA,KOSTE,SAVO },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
-//        ),
-//
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+CHODBA,
-//            zPRESUN + CHODBA
-//            ,
-//            CHODBA,
-//            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
-//                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
-//            new String[] { OBRAZ },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
-//        ),
-//
-//        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ+" "+SEKERA+" "+OBRAZ,
-//            zPOUZIJ_SEKERA_OBRAZ
-//            ,
-//            CHODBA,
-//            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
-//                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
-//            new String[] { TRISKY },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+SCHODY,
-//            zPRESUN + SCHODY
-//            ,
-//            SCHODY,
-//            new String[] { CHODBA, OBYVAK },
-//            new String[] { FOTKY, ZABRADLI },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+OBYVAK,
-//            zPRESUN + OBYVAK
-//            ,
-//            OBYVAK,
-//            new String[] { SCHODY, PREDSIN, KUCHYN },
-//            new String[] { POHOVKA, TELEVIZE },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+KUCHYN,
-//            zPRESUN + KUCHYN
-//            ,
-//            KUCHYN,
-//            new String[] { OBYVAK },
-//            new String[] { TATINEK, MAMINKA },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA }
-//        ),
-//
-//        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ PISTOLE +" "+TATINEK,
-//            zPOUZIJ_PISTOLE_TATINEK
-//            ,
-//            KUCHYN,
-//            new String[] { OBYVAK },
-//            new String[] { MAMINKA },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI +" "+ OBYVAK,
-//            zPRESUN + OBYVAK
-//            ,
-//            OBYVAK,
-//            new String[] { SCHODY, PREDSIN, KUCHYN },
-//            new String[] { POHOVKA, TELEVIZE },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+PREDSIN,
-//            zPRESUN + PREDSIN
-//            ,
-//            PREDSIN,
-//            new String[] { OBYVAK, GARAZ },
-//            new String[] { },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
-//        ),
-//
-//        new ScenarioStep(tsMOVE, pJDI + " "+GARAZ,
-//            zPRESUN + GARAZ
-//            ,
-//            GARAZ,
-//            new String[] { PREDSIN },
-//            new String[] { AUTO },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
-//        ),
-//
-//        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ TATINEK +" "+ AUTO,
-//            zSUCCESS_END
-//            ,
-//            SKLAD_JADERNYCH_ZBRANI,
-//            new String[] { },
-//            new String[] { },
-//            new String[] { PISTOLE, PRISTUPOVY_KOD, SEKERA, TATINEK }
-//        )
+        new ScenarioStep(tsMOVE, pJDI +" "+ CHODBA,
+            zPRESUN + CHODBA + "\n" + zPRESUN_POPIS_ITEMU + OBRAZ
+            ,
+            CHODBA,
+            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+            new String[] { OBRAZ },
+            new String[] { SPONKA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+KOUPELNA,
+            zPRESUN + KOUPELNA + "\n" + wKOUPELNA
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
+            new String[] { SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ + " " + ZACHOD,
+            zPROZKOUMEJ_ZACHOD
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD, PISTOLE },
+            new String[] { SPONKA }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + PISTOLE,
+            zZVEDNUTO + PISTOLE
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+CHODBA,
+            zPRESUN + CHODBA +"\n"+ zPRESUN_POPIS_ITEMU + OBRAZ
+            ,
+            CHODBA,
+            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+            new String[] { OBRAZ },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + POKOJ_PRO_HOSTY,
+            zPRESUN + POKOJ_PRO_HOSTY +"\n"+ wPOKOJ_PRO_HOSTY
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ + " " + STRYCEK_ALFRED,
+            zPROZKOUMEJ_STRYCEK_ALFRED
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY, TELEFON,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, SPONKA }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + TELEFON,
+            zZVEDNUTO + TELEFON
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, TELEFON, SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD0, pTANCUJ,
+            zTANCUJ_KDEKOLIV
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, TELEFON, SPONKA }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ SPONKA +" "+ TELEFON,
+            zSKOMBINUJ_SPONKA_TELEFON
+            ,
+            POKOJ_PRO_HOSTY,
+            new String[] { CHODBA },
+            new String[] { POSTEL, KRESLO, STRYCEK_ALFRED, ROLEXKY,
+                    PENEZENKA, PSACI_PERO },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ CHODBA,
+            zPRESUN + CHODBA +"\n"+ zPRESUN_POPIS_ITEMU + OBRAZ
+            ,
+            CHODBA,
+            new String[] { DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY },
+            new String[] { OBRAZ },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ SCHODY,
+            zPRESUN + SCHODY +"\n"+ wSCHODY
+            ,
+            SCHODY,
+            new String[] { CHODBA, OBYVAK },
+            new String[] { FOTKY, ZABRADLI },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ OBYVAK,
+            zPRESUN + OBYVAK +"\n"+ wOBYVAK
+            ,
+            OBYVAK,
+            new String[] { SCHODY, PREDSIN, KUCHYN },
+            new String[] { POHOVKA, TELEVIZE, MINIBAR },
+            new String[] { PISTOLE, PRISTUPOVY_KOD }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ KUCHYN,
+            zPRESUN + KUCHYN +"\n"+ wKUCHYN
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { TATINEK, MAMINKA },
+            new String[] { PISTOLE, PRISTUPOVY_KOD}
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ PISTOLE +" "+TATINEK,
+            zPOUZIJ_PISTOLE_TATINEK
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { MAMINKA },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ OBYVAK,
+            zPRESUN + OBYVAK +"\n"+ zPRESUN_POPIS_ITEMU + TELEVIZE +" "+
+                    POHOVKA +" "+ MINIBAR
+            ,
+            OBYVAK,
+            new String[] { SCHODY, PREDSIN, KUCHYN },
+            new String[] { TELEVIZE, POHOVKA, MINIBAR },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ PREDSIN,
+            zPRESUN + PREDSIN +"\n"+ wPREDSIN
+            ,
+            PREDSIN,
+            new String[] { OBYVAK, GARAZ },
+            new String[] { VESAK, BOTNIK, ROHOZKA },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " "+GARAZ,
+            zPRESUN + GARAZ +"\n"+ wGARAZ
+            ,
+            GARAZ,
+            new String[] { PREDSIN },
+            new String[] { AUTO },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ TATINEK +" "+ AUTO,
+            zSUCCESS_END
+            ,
+            SKLAD_JADERNYCH_ZBRANI,
+            new String[] { },
+            new String[] { },
+            new String[] { PISTOLE, PRISTUPOVY_KOD, TATINEK }
+        )
+    };
+
+    static { ScenarioStep.setIndex(1); }
+
+    private static final ScenarioStep[] ALTERNATIVE_END_SCENARIO_STEPS = {
+        START_STEP,
+
+        new ScenarioStep(tsMOVE, pJDI + " " + CHODBA,
+            zPRESUN + CHODBA + "\n" + wCHODBA
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] {OBRAZ},
+            new String[] { }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + LOZNICE_RODICU,
+            zPRESUN + LOZNICE_RODICU + "\n" + wLOZNICE_RODICU
+            ,
+            LOZNICE_RODICU,
+            new String[]{CHODBA},
+            new String[]{POSTEL, KNIHOVNA, NOCNI_STOLEK, ZRCADLO},
+            new String[]{ }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ + " " + NOCNI_STOLEK,
+            zPROZKOUMEJ_NOCNI_STOLEK
+            ,
+            LOZNICE_RODICU,
+            new String[]{CHODBA},
+            new String[]{POSTEL, KNIHOVNA, NOCNI_STOLEK, ZRCADLO, RETIZEK,
+                    SVAZEK_BANKOVEK},
+            new String[]{ }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + SVAZEK_BANKOVEK,
+            zZVEDNUTO + SVAZEK_BANKOVEK
+            ,
+            LOZNICE_RODICU,
+            new String[]{CHODBA},
+            new String[]{POSTEL, KNIHOVNA, NOCNI_STOLEK, ZRCADLO, RETIZEK },
+            new String[]{ SVAZEK_BANKOVEK }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ + " " + KNIHOVNA,
+            zPROZKOUMEJ_KNIHOVNA
+            ,
+            LOZNICE_RODICU,
+            new String[]{CHODBA},
+            new String[]{POSTEL, KNIHOVNA, NOCNI_STOLEK, ZRCADLO, RETIZEK,
+                    KOD_OD_SEJFU },
+            new String[]{ SVAZEK_BANKOVEK }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + KOD_OD_SEJFU,
+            zZVEDNUTO + KOD_OD_SEJFU
+            ,
+            LOZNICE_RODICU,
+            new String[]{CHODBA},
+            new String[]{POSTEL, KNIHOVNA, NOCNI_STOLEK, ZRCADLO, RETIZEK },
+            new String[]{ SVAZEK_BANKOVEK, KOD_OD_SEJFU }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + CHODBA,
+            zPRESUN + CHODBA +"\n"+ zPRESUN_POPIS_ITEMU + OBRAZ
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] {OBRAZ},
+            new String[] { SVAZEK_BANKOVEK, KOD_OD_SEJFU }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + DETSKY_POKOJ,
+            zPRESUN + DETSKY_POKOJ +"\n"+ zPRESUN_POPIS_ITEMU +
+                    HOLCICKA +" "+ SKRIN +" "+ NEPORADEK
+            ,
+            DETSKY_POKOJ,
+            new String[]{ CHODBA },
+            new String[]{ HOLCICKA, SKRIN, NEPORADEK },
+            new String[]{ SVAZEK_BANKOVEK, KOD_OD_SEJFU }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ + " " +
+                SVAZEK_BANKOVEK + " " + HOLCICKA,
+            zPOUZIJ_BANKOVKY_HOLCICKA
+            ,
+            DETSKY_POKOJ,
+            new String[]{ CHODBA },
+            new String[]{ HOLCICKA, SKRIN, NEPORADEK },
+            new String[]{ KOD_OD_SEJFU, VYSAVAC }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + CHODBA,
+            zPRESUN + CHODBA +"\n"+ zPRESUN_POPIS_ITEMU + OBRAZ
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] {OBRAZ},
+            new String[] { KOD_OD_SEJFU, VYSAVAC }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + KUMBAL,
+            zPRESUN + KUMBAL + "\n" + wKUMBAL
+            ,
+            KUMBAL,
+            new String[]{ CHODBA },
+            new String[]{ SMETACEK, LOPATKA, KOSTE, SAVO, SEKERA,
+                    SROUBOVAK },
+            new String[]{ KOD_OD_SEJFU, VYSAVAC }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + SEKERA,
+            zZVEDNUTO + SEKERA
+            ,
+            KUMBAL,
+            new String[]{ CHODBA },
+            new String[]{ SMETACEK, LOPATKA, KOSTE, SAVO,
+                    SROUBOVAK },
+            new String[]{ KOD_OD_SEJFU, VYSAVAC, SEKERA }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER + " " + SROUBOVAK,
+            zZVEDNUTO + SROUBOVAK
+            ,
+            KUMBAL,
+            new String[]{ CHODBA },
+            new String[]{ SMETACEK, LOPATKA, KOSTE, SAVO },
+            new String[]{ KOD_OD_SEJFU, VYSAVAC, SEKERA, SROUBOVAK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + CHODBA,
+            zPRESUN + CHODBA +"\n"+ zPRESUN_POPIS_ITEMU + OBRAZ
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] {OBRAZ},
+            new String[] { KOD_OD_SEJFU, VYSAVAC, SEKERA, SROUBOVAK }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ + " " + SEKERA + " " + OBRAZ,
+            zPOUZIJ_SEKERA_OBRAZ
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] { TRISKY, SEJF },
+            new String[] { KOD_OD_SEJFU, VYSAVAC, SEKERA, SROUBOVAK }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ +" "+ SEJF,
+            zPROZKOUMEJ_SEJF
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] { TRISKY, SEJF },
+            new String[] { KOD_OD_SEJFU, VYSAVAC, SEKERA, SROUBOVAK }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ KOD_OD_SEJFU +" "+ SEJF,
+            zPOUZIJ_KOD_SEJF
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] { TRISKY, VYKRADENY_SEJF },
+            new String[] { VYSAVAC, SEKERA, FOSFORESKUJICI_AMPULKA, SROUBOVAK }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ VYSAVAC +" "+
+                SROUBOVAK,
+            zSKOMBINUJ_SROUBOVAK_VYSAVAC
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] { TRISKY, VYKRADENY_SEJF },
+            new String[] { SEKERA, FOSFORESKUJICI_AMPULKA, UPRAVENY_VYSAVAC }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ UPRAVENY_VYSAVAC
+                +" "+ FOSFORESKUJICI_AMPULKA,
+            zSKOMBINUJ_AMPULKA_UVYSAVAC
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] { TRISKY, VYKRADENY_SEJF },
+            new String[] { SEKERA, XRAY_GUN}
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + SCHODY,
+            zPRESUN + SCHODY +"\n"+ wSCHODY
+            ,
+            SCHODY,
+            new String[] {CHODBA, OBYVAK},
+            new String[] {FOTKY, ZABRADLI},
+            new String[] { SEKERA, XRAY_GUN }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + OBYVAK,
+            zPRESUN + OBYVAK +"\n"+ wOBYVAK
+            ,
+            OBYVAK,
+            new String[] { SCHODY, KUCHYN, PREDSIN },
+            new String[] { TELEVIZE, POHOVKA, MINIBAR },
+            new String[] { SEKERA, XRAY_GUN }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + KUCHYN,
+            zPRESUN + KUCHYN +"\n"+ wKUCHYN
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { MAMINKA, TATINEK },
+            new String[] { SEKERA, XRAY_GUN }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ XRAY_GUN +" "+ MAMINKA,
+            zALTERNATIVE_END
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { MAMINKA, TATINEK },
+            new String[] { SEKERA, XRAY_GUN }
+        ),
+    };
+
+    static { ScenarioStep.setIndex(1); }
+
+    private static final ScenarioStep[] BAD_END_SCENARIO_STEPS = {
+        START_STEP,
+
+        new ScenarioStep(tsMOVE, pJDI + " " + CHODBA,
+            zPRESUN + CHODBA + "\n" + wCHODBA
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] {OBRAZ},
+            new String[] { }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + KOUPELNA,
+            zPRESUN + KOUPELNA + "\n" + wKOUPELNA
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
+            new String[] { }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD1, pPROZKOUMEJ +" "+ ZACHOD,
+                zPROZKOUMEJ_ZACHOD
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD, PISTOLE },
+            new String[] { }
+        ),
+
+        new ScenarioStep(tsTAKE, pSEBER +" "+ PISTOLE,
+            zZVEDNUTO + PISTOLE
+            ,
+            KOUPELNA,
+            new String[] { CHODBA },
+            new String[] { SPRCHOVY_KOUT, UMYVADLO, ZACHOD },
+            new String[] { PISTOLE }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + CHODBA,
+            zPRESUN + CHODBA +"\n"+ zPRESUN_POPIS_ITEMU + OBRAZ
+            ,
+            CHODBA,
+            new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
+                    KOUPELNA, POKOJ_PRO_HOSTY, KUMBAL, SCHODY},
+            new String[] { OBRAZ },
+            new String[] { PISTOLE }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + SCHODY,
+            zPRESUN + SCHODY +"\n"+ wSCHODY
+            ,
+            SCHODY,
+            new String[] { CHODBA, OBYVAK },
+            new String[] { FOTKY, ZABRADLI },
+            new String[] { PISTOLE }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + OBYVAK,
+            zPRESUN + OBYVAK +"\n"+ wOBYVAK
+            ,
+            OBYVAK,
+            new String[] { SCHODY, KUCHYN, PREDSIN },
+            new String[] { TELEVIZE, POHOVKA, MINIBAR },
+            new String[] { PISTOLE }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + KUCHYN,
+            zPRESUN + KUCHYN +"\n"+ wKUCHYN
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { MAMINKA, TATINEK },
+            new String[] { PISTOLE }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ PISTOLE +" "+ TATINEK,
+            zPOUZIJ_PISTOLE_TATINEK
+            ,
+            KUCHYN,
+            new String[] { OBYVAK },
+            new String[] { MAMINKA, },
+            new String[] { PISTOLE, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + OBYVAK,
+            zPRESUN + OBYVAK +"\n"+ zPRESUN_POPIS_ITEMU + TELEVIZE +" "+
+                    POHOVKA +" "+ MINIBAR
+            ,
+            OBYVAK,
+            new String[] { SCHODY, KUCHYN, PREDSIN },
+            new String[] { TELEVIZE, POHOVKA, MINIBAR },
+            new String[] { PISTOLE, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI + " " + PREDSIN,
+            zPRESUN + PREDSIN +"\n"+ wPREDSIN
+            ,
+            PREDSIN,
+            new String[] { OBYVAK, GARAZ },
+            new String[] { VESAK, BOTNIK, ROHOZKA },
+            new String[] { PISTOLE, TATINEK }
+        ),
+
+        new ScenarioStep(tsMOVE, pJDI +" "+ GARAZ,
+            zPRESUN + GARAZ +"\n"+ wGARAZ
+            ,
+            GARAZ,
+            new String[] { PREDSIN },
+            new String[] { AUTO },
+            new String[] { PISTOLE, TATINEK }
+        ),
+
+        new ScenarioStep(tsNON_STANDARD2, pPOUZIJ +" "+ TATINEK +" "+ AUTO,
+            zUNSUCCESSFULL_END
+            ,
+            SKLAD_JADERNYCH_ZBRANI,
+            new String[] { },
+            new String[] { },
+            new String[] { PISTOLE, TATINEK }
+        )
     };
 
     /** The only instance of this class.
@@ -884,6 +1098,10 @@ String[]   bag;        //Current bag content
                     TypeOfScenario.scMISTAKES, MISTAKE_SCENARIO_STEPS);
         addScenario("_REQUIRED_",
                    TypeOfScenario.scGENERAL, REQUIRED_STEPS_SCENARIO_STEPS);
+        addScenario("_ALTERNATIVE_",
+                    TypeOfScenario.scGENERAL, ALTERNATIVE_END_SCENARIO_STEPS);
+        addScenario("_BADEND_",
+                TypeOfScenario.scGENERAL, BAD_END_SCENARIO_STEPS);
         seal();
     }
 
@@ -961,7 +1179,11 @@ String[]   bag;        //Current bag content
 
         //Game testing according to scenarios with the given names
 //        MANAGER.testGameByScenarios("???");
-        MANAGER.testGameByScenarios("_REQUIRED_");
+        //MANAGER.testGameByScenarios(HAPPY_SCENARIO_NAME);
+        //MANAGER.testGameByScenarios(MISTAKE_SCENARIO_NAME);
+        //MANAGER.testGameByScenarios("_REQUIRED_");
+        //MANAGER.testGameByScenarios("_ALTERNATIVE_");
+        MANAGER.testGameByScenarios("_BADEND_");
 
         //Playing the game according to the scenario with the given name
 //        MANAGER.playGameByScenario("???");

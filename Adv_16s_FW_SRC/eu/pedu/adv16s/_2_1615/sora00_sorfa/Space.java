@@ -10,6 +10,7 @@ import eu.pedu.adv16s_fw.game_txt.IGame;
 import eu.pedu.adv16s_fw.game_txt.INamed;
 import eu.pedu.adv16s_fw.game_txt.ISpace;
 
+import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.zNIC_NENI;
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.zPRESUN;
 import static eu.pedu.adv16s._2_1615.sora00_sorfa.Texts.zPRESUN_POPIS_ITEMU;
 
@@ -107,7 +108,7 @@ class Space extends ItemContainer implements ISpace, INamed
                     .map(item -> item.getName())
                     .collect(Collectors.joining(" "));
         }else{
-            realItemNames = "Vůbec nic";
+            realItemNames = zNIC_NENI;
         }
 
         if(entersCount++ == 0 && welcomeMessage != ""){
