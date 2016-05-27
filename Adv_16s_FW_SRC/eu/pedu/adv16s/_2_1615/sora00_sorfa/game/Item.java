@@ -1,32 +1,22 @@
 /* The file is saved in UTF-8 codepage.
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
-package eu.pedu.adv16s._2_1615.sora00_sorfa;
+package eu.pedu.adv16s._2_1615.sora00_sorfa.game;
 
-import eu.pedu.adv16s._2_1615.sora00_sorfa.game.IAuthorPrototype;
-import eu.pedu.adv16s._2_1615.sora00_sorfa.game.RobotGame;
-import eu.pedu.adv16s._2_1615.sora00_sorfa.game.ScenarioManager;
-import eu.pedu.adv16s_fw.game_txt.IGSMFactory;
-import eu.pedu.adv16s_fw.game_txt.IGame;
-import eu.pedu.adv16s_fw.scenario.AScenarioManager;
+import eu.pedu.adv16s_fw.game_txt.IItem;
+
 
 /**
- * Instance třídy {@code GSMFactory} představují tovární objekty,
- * které jsou schopny na požádání dodat instanci aktuální hry
- * a správce scénářů této hry, tj. dodat kombinaci
- * (Game + ScenarioManager Factory).
- * <p>
- * V první fázi bývá aktivována pouze metoda {@link #getScenarioManager()}
- * umožňující získání instance správce scénářů vyvíjené hry.
- * Posléze po odkomentování zakomentovaných metod lze postupně získat
- * také vlastní textové i grafické verze hry
- * a jejího textového, resp. grafického uživatelského rozhraní.
+ * Instance třídy {@code Item} přestavují předměty v prostorech {@link Space}.
+ * Předměty mohou být jak věci, tak i osoby.
  *
  * @author  Rudolf PECINOVSKÝ
+ * @version 2016-Summer
  */
-public class GSMFactory implements IGSMFactory, IAuthorPrototype
+class Item extends ANamed implements IItem
 {
 //== CONSTANT CLASS FIELDS =====================================================
+    private final boolean MOVABLE;
 //== VARIABLE CLASS FIELDS =====================================================
 
 
@@ -41,6 +31,9 @@ public class GSMFactory implements IGSMFactory, IAuthorPrototype
 
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
+    /** Název předmětu */
+    private String name;
+
 //== VARIABLE INSTANCE FIELDS ==================================================
 
 
@@ -49,10 +42,22 @@ public class GSMFactory implements IGSMFactory, IAuthorPrototype
 //== CONSTRUCTORS AND FACTORY METHODS ==========================================
 
     /**
-     * Vytvoří tovární objekt poskytující klíčové objekty hry
+     * Vytvoří předmět. Pokud jméno přednětu začíná mřížkou {@code #} je
+     * předmětu nastaven příznak movable. Mřížka není součástí názvu předmětu.
+     *
+     * @param name Jméno aktuálního předmětu
      */
-    public GSMFactory()
+    Item(String name)
     {
+        super(name);
+        boolean movable = false;
+        if(name.charAt(0) == '#'){
+            movable = true;
+            name = name.substring(1);
+        }
+
+        this.name = name;
+        MOVABLE = movable;
     }
 
 
@@ -61,39 +66,29 @@ public class GSMFactory implements IGSMFactory, IAuthorPrototype
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
     /**
-     * Vrací instanci {@link ScenarioManager}
-     *
-     * @return Pořadovaný scenario manager
+     * @return Váha předmětu
      */
     @Override
-    public AScenarioManager getScenarioManager()
+    public int getWeight()
     {
-        return ScenarioManager.getInstance();
+        return 0;
     }
 
+    /** Pokud má předmět nastaven příznak moovable vrátí {@code true}. Pokud
+     * ne, vrátí {@code false} */
+    public boolean isMovable(){
+        return MOVABLE;
+    }
 
     /**
-     * @return  Odkaz na instanci hry
+     * Vrátí název předmětu
+     *
+     * @return Název předmětu
      */
     @Override
-    public IGame getGame()
-    {
-       return RobotGame.getInstance();
+    public String getName(){
+        return name;
     }
-
-
-    /**
-     * Vrací objekt zpracovávající uživatelské rozhraní
-     *
-     * @return Požadované uživatelské rozhraní
-     */
-//    @Override
-//    public IUI getUI()
-//    {
-//        return TextUI_Instance;
-//    }
-
-
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

@@ -1,30 +1,22 @@
 /* The file is saved in UTF-8 codepage.
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
-package eu.pedu.adv16s._2_1615.sora00_sorfa;
+package eu.pedu.adv16s._2_1615.sora00_sorfa.game;
 
-import eu.pedu.adv16s._2_1615.sora00_sorfa.game.IAuthorPrototype;
-import eu.pedu.adv16s._2_1615.sora00_sorfa.game.RobotGame;
-import eu.pedu.adv16s._2_1615.sora00_sorfa.game.ScenarioManager;
-import eu.pedu.adv16s_fw.game_txt.IGSMFactory;
 import eu.pedu.adv16s_fw.game_txt.IGame;
-import eu.pedu.adv16s_fw.scenario.AScenarioManager;
+import eu.pedu.adv16s_fw.game_txt.INamed;
+
+
 
 /**
- * Instance třídy {@code GSMFactory} představují tovární objekty,
- * které jsou schopny na požádání dodat instanci aktuální hry
- * a správce scénářů této hry, tj. dodat kombinaci
- * (Game + ScenarioManager Factory).
- * <p>
- * V první fázi bývá aktivována pouze metoda {@link #getScenarioManager()}
- * umožňující získání instance správce scénářů vyvíjené hry.
- * Posléze po odkomentování zakomentovaných metod lze postupně získat
- * také vlastní textové i grafické verze hry
- * a jejího textového, resp. grafického uživatelského rozhraní.
+ * Instance třídy {@code ANamed} představují rodičovské podobjekty
+ * instancí tříd pojmenovaných objektů, tj. tříd implementujících
+ * interfejs {@link INamed}.
  *
  * @author  Rudolf PECINOVSKÝ
+ * @version 2016-Summer
  */
-public class GSMFactory implements IGSMFactory, IAuthorPrototype
+public abstract class ANamed implements INamed
 {
 //== CONSTANT CLASS FIELDS =====================================================
 //== VARIABLE CLASS FIELDS =====================================================
@@ -41,6 +33,12 @@ public class GSMFactory implements IGSMFactory, IAuthorPrototype
 
 //##############################################################################
 //== CONSTANT INSTANCE FIELDS ==================================================
+
+    /** Název dané instance. */
+    private final String name;
+
+
+
 //== VARIABLE INSTANCE FIELDS ==================================================
 
 
@@ -49,10 +47,26 @@ public class GSMFactory implements IGSMFactory, IAuthorPrototype
 //== CONSTRUCTORS AND FACTORY METHODS ==========================================
 
     /**
-     * Vytvoří tovární objekt poskytující klíčové objekty hry
+     * Vytvoří rodičovský podobjekt instance objektu se zadaným názvem.
+     *
+     * @param name Název dané instance
      */
-    public GSMFactory()
+    public ANamed(String name)
     {
+        if ((name == null)  ||  name.isEmpty()) {
+            throw new IllegalArgumentException(
+                        "\nThe object name may be neither null "
+                      + "nor an empty string");
+        }
+        if (! (this instanceof IGame)         &&
+            ( (! name.equals(name.trim())) ||
+              (name.split("\\s").length > 1)  ))
+        {
+            throw new IllegalArgumentException(
+                      "\nNames may not contain any whitespaces - Entered: «"
+                    + name + '»');
+        }
+        this.name = name;
     }
 
 
@@ -61,41 +75,34 @@ public class GSMFactory implements IGSMFactory, IAuthorPrototype
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
     /**
-     * Vrací instanci {@link ScenarioManager}
+     * Vrátí název dané instance.
      *
-     * @return Pořadovaný scenario manager
+     * @return Název instance
      */
     @Override
-    public AScenarioManager getScenarioManager()
+    public String getName()
     {
-        return ScenarioManager.getInstance();
+        return name;
     }
-
-
-    /**
-     * @return  Odkaz na instanci hry
-     */
-    @Override
-    public IGame getGame()
-    {
-       return RobotGame.getInstance();
-    }
-
-
-    /**
-     * Vrací objekt zpracovávající uživatelské rozhraní
-     *
-     * @return Požadované uživatelské rozhraní
-     */
-//    @Override
-//    public IUI getUI()
-//    {
-//        return TextUI_Instance;
-//    }
 
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+
+    /**
+     * Vrátí textový podpis dané instance tvořený názvem její mateřské třídy
+     * následovaným znakem podtržení a názvem instance.
+     *
+     * @return Název instance
+     */
+    @Override
+    public String toString()
+    {
+        return name;
+    }
+
+
+
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 
 
