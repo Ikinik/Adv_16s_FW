@@ -31,7 +31,7 @@ import static eu.pedu.adv16s._2_1615.sora00_sorfa.game.Texts.*;
  *
  * @author  Rudolf PECINOVSKÝ
  */
-public class ScenarioManager extends AScenarioManager
+public final class ScenarioManager extends AScenarioManager
                                implements IAuthorPrototype
 {
 //== CONSTANT CLASS FIELDS =====================================================
@@ -1174,11 +1174,11 @@ public class ScenarioManager extends AScenarioManager
 
         //Game testing according to scenarios with the given names
 //        MANAGER.testGameByScenarios("???");
-        //MANAGER.testGameByScenarios(HAPPY_SCENARIO_NAME);
+        MANAGER.testGameByScenarios(HAPPY_SCENARIO_NAME);
         //MANAGER.testGameByScenarios(MISTAKE_SCENARIO_NAME);
         //MANAGER.testGameByScenarios("_REQUIRED_");
         //MANAGER.testGameByScenarios("_ALTERNATIVE_");
-        MANAGER.testGameByScenarios("_BADEND_");
+        //MANAGER.testGameByScenarios("_BADEND_");
 
         //Playing the game according to the scenario with the given name
 //        MANAGER.playGameByScenario("???");

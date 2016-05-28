@@ -34,7 +34,7 @@ abstract class AAction extends ANamed implements IAction
 //== VARIABLE CLASS FIELDS =====================================================
     /** Uchovává informaci o tom, zda se hra právě hraje nebo jen čeká na
      *  spuštění. */
-    public static boolean isAlive = false;
+    private static boolean isAlive = false;
 
 
 //##############################################################################
@@ -211,17 +211,17 @@ abstract class AAction extends ANamed implements IAction
      */
     static String executeAction(String action)
     {
-        action = action.trim();
+        String trAction = action.trim();
         String answer;
         if (isAlive) {
-            if(action.isEmpty()){
+            if(trAction.isEmpty()){
                 answer = zPRAZDY_PRIKAZ;
             }else{
-                answer = executeCommonAction(action);
+                answer = executeCommonAction(trAction);
             }
         }
         else {
-            answer = startGame(action);
+            answer = startGame(trAction);
         }
         return answer;
     }

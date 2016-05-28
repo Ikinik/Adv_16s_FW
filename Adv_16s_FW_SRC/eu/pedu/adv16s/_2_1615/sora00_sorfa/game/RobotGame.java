@@ -28,7 +28,7 @@ import static eu.pedu.adv16s._2_1615.sora00_sorfa.game.Texts.*;
  *
  * @author  Rudolf PECINOVSKÝ
  */
-public class RobotGame extends ANamed implements IGame, IAuthorPrototype
+public final class RobotGame extends ANamed implements IGame, IAuthorPrototype
 {
 //== CONSTANT CLASS FIELDS =====================================================
 
@@ -106,7 +106,7 @@ public class RobotGame extends ANamed implements IGame, IAuthorPrototype
     @Override
     public boolean isAlive()
     {
-        return AAction.isAlive;
+        return AAction.isAlive();
     }
 
 

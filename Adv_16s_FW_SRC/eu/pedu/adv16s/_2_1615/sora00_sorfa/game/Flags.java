@@ -12,7 +12,7 @@ import static eu.pedu.adv16s._2_1615.sora00_sorfa.game.Texts.*;
  *
  * @author Adam Šorfa
  */
-class Flags {
+final class Flags {
 
     /** Mapa pro ukádání prozkoumávatelných předmětů a jejich obsahu. */
     private static Map<String,ExploredContent>
@@ -24,7 +24,7 @@ class Flags {
             combinableItems = new HashMap<Pair<String>,CombinedContent>();
 
     /** Privátní konstruktor bránící vytvoření instance třídy */
-    private void Flags(){}
+    private Flags(){}
 
     /** Inicializace. Jsou naplněny definované mapy.  */
     static void initialize(){
@@ -88,25 +88,42 @@ class Flags {
             MV + XRAY_GUN));
     }
 
-    /** Vrátí {@code true}, pokud je pár {@link Pair} kombinovatelný */
+    /**
+     * Slouží k zjištění, zda-li lze předměty zkombinovat
+     * @param pair Kombinace předmětů
+     * @return Pokud je pár kombinovatelný vrátí {@code true}, jinak vrací
+     * {@code false}
+     */
     static boolean isCombinablePair(Pair<String> pair){
         return combinableItems.containsKey(pair);
     }
 
-    /** Vrátí výsledek kombinace dvou předmětů {@link CombinedContent}. Pokud
-     * nejdou ředměty kombinovatelné vrátí {@code null} */
+    /**
+     * Vrací obsah kombinace předmětů {@link CombinedContent}
+     * @param pair Kombinovaný pár
+     * @return Pokud lze předměty skombinovat vrací instanci
+     * {@link CombinedContent}. Pokud není kombnace možná vrací {@code null}
+     */
     static CombinedContent getCombinedContent(Pair<String> pair){
         return combinableItems.get(pair);
     }
 
-    /** Vrátí {@code true}, pokud je přemět prozkoumatelný. Pokun ne,
-     * vrátí {@code false} */
+    /**
+     * Slouží k zjištění, zda-li je předmět prozkoumatelný
+     * @param itemName zkoumaný předmět
+     * @return Pokud lze předmět prozkoumat, vrací {@code true}, jinak
+     * {@code false}
+     */
     static boolean isExplorableItem(String itemName){
         return explorableItems.containsKey(itemName);
     }
 
-    /** vrátí porozkoumaný obsah předmětu {@link ExploredContent}. Pokud není
-     *  předmět zkoumatelný vrátí {@code null} */
+    /**
+     * Vrací obsah prozkoumaného předmětu
+     * @param itemName Název prozkoumávaného předmětu
+     * @return Pokud je předmět zkoumatelný, vrací instanci
+     * {@link ExploredContent}, jinak vrací {@code null}
+     */
     static ExploredContent getExploredContent(String itemName){
         return explorableItems.get(itemName);
     }
@@ -175,8 +192,11 @@ class Flags {
                           .collect(Collectors.toList());
         }
 
-        /** Předmět také nemusí obsahovat žádné další ukryté předměty, ale
-         * pouze užitečnou informaci */
+        /**
+         * Předmět také nemusí obsahovat žádné další ukryté předměty, ale
+         * pouze užitečnou informaci
+         * @param message zpráva zobrazená po prozkoumání opředmětu
+         */
         ExploredContent(String message){
             this.message = message;
             items = new ArrayList<>();
@@ -202,8 +222,11 @@ class Flags {
          * duplicitních předmětů */
         void setExplored() { explored = true; }
 
-        /** Pokud byl předmět již prozkoumán vrátí {@code true}. Pokud ne,
-         * vrátí {@code false} */
+        /**
+         * Slouží k zjištění, zda-li byl předmět již prozkoumán
+         * @return Pokud byl předmět již prozkoumán vrátí {@code true}. Pokud
+         * ne, vrátí {@code false}
+         */
         boolean isExplored() { return explored; }
         /**
          * vyplivne všechny obsažené předměty. Po zavolání metody se obsah

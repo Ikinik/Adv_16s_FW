@@ -10,9 +10,7 @@ import eu.pedu.adv16s_fw.game_txt.IGame;
 import eu.pedu.adv16s_fw.game_txt.INamed;
 import eu.pedu.adv16s_fw.game_txt.ISpace;
 
-import static eu.pedu.adv16s._2_1615.sora00_sorfa.game.Texts.zNIC_NENI;
-import static eu.pedu.adv16s._2_1615.sora00_sorfa.game.Texts.zPRESUN;
-import static eu.pedu.adv16s._2_1615.sora00_sorfa.game.Texts.zPRESUN_POPIS_ITEMU;
+import static eu.pedu.adv16s._2_1615.sora00_sorfa.game.Texts.*;
 
 
 /**
@@ -108,7 +106,7 @@ class Space extends ItemContainer implements ISpace, INamed
      * nastavena, nebo již bylo do místnosti vstoupeno, vrtátí popis předmětů
      * nacházejících se v prostoru
      */
-    public String getMessage(){
+     String getMessage(){
         Collection<Item> itemsInside = getItems();
 
         String realItemNames;

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * Instance třídy {@code ItemContainer } představují rodičovské podobjekty
  * instancí, které vystupují jako kontejnery předmětů.
  */
-public abstract class ItemContainer implements IItemContainer {
+abstract class ItemContainer implements IItemContainer {
 
     /** Kapacita kontejneru */
     protected final int CAPACITY;
@@ -24,7 +24,7 @@ public abstract class ItemContainer implements IItemContainer {
     private String[] itemNames = {};
 
     /** Vytvoří nový kontejner s neomezenou kapacotou */
-    public ItemContainer(){
+    ItemContainer(){
         this.CAPACITY = Integer.MAX_VALUE;
     }
 
@@ -32,7 +32,7 @@ public abstract class ItemContainer implements IItemContainer {
      * Vytvoří nový kontejner s se zadanou kapacitou.
      * @param capacity Kapacita kontejneru
      */
-    public ItemContainer(int capacity){
+    ItemContainer(int capacity){
         this.CAPACITY = capacity;
     }
 
@@ -41,7 +41,7 @@ public abstract class ItemContainer implements IItemContainer {
      * kapacitou
      * @param itemNames Názvy předmětů obsažených v kontejneru
      */
-    public ItemContainer(String[] itemNames){
+    ItemContainer(String[] itemNames){
         this.itemNames = itemNames;
         this.CAPACITY = Integer.MAX_VALUE;
     }
@@ -52,7 +52,7 @@ public abstract class ItemContainer implements IItemContainer {
      * @param capacity Kapacita kontejneru
      * @param itemNames Názvy předmětů obsažených v kontejneru
      */
-    public ItemContainer(int capacity, String... itemNames){
+    ItemContainer(int capacity, String... itemNames){
         this.CAPACITY = capacity;
         this.itemNames = itemNames;
     }
@@ -74,7 +74,7 @@ public abstract class ItemContainer implements IItemContainer {
      * @return Vrátí požadovaný předmět, nebo {@code null}, pokud se předmět v
      * kontejneru nenachází
      */
-    public Item getItem(String itemName){
+    Item getItem(String itemName){
         return INamed.getO(itemName, items).orElse(null);
     }
 
@@ -83,7 +83,7 @@ public abstract class ItemContainer implements IItemContainer {
      *
      * @param item Předmět, který má být odstraněn.
      */
-    public void removeItem(Item item){
+    void removeItem(Item item){
         items.remove(item);
     }
 
@@ -114,7 +114,10 @@ public abstract class ItemContainer implements IItemContainer {
         return true;
     }
 
-    /** Přidá předmět do kontejneru bez ohledu na cokoliv */
+    /**
+     * Přidá předmět do kontejneru bez ohledu na cokoliv
+     * @param item Přidávaný předmět
+     */
     void forceAddItem(Item item){
         items.add(item);
     }

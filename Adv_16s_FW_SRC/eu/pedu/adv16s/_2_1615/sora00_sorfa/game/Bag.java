@@ -62,11 +62,6 @@ class Bag extends ItemContainer implements IBag
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-    /**
-     * Initialize.
-     */
-    @Override
-    void initialize() { super.initialize(); }
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 

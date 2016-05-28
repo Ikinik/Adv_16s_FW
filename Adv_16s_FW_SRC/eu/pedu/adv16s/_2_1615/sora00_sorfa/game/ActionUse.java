@@ -103,7 +103,8 @@ class ActionUse extends AAction
             return zPOUZIJ_SEKERA_OBRAZ;
         });
 
-        usableItems.put((TATINEK+" "+AUTO).toLowerCase(),expeditionToNuclearWarehouse);
+        usableItems.put((TATINEK+" "+AUTO).toLowerCase(),
+                expeditionToNuclearWarehouse);
 
         usableItems.put((SVAZEK_BANKOVEK+" "+HOLCICKA).toLowerCase(), () ->{
             Bag bag = Bag.getInstance();

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * @author  Rudolf PECINOVSKÝ
  * @version Reference
  */
-class Texts
+final class Texts
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
     static final String MV = "#";
@@ -186,7 +186,7 @@ class Texts
             "dekriptoru",
             zPOUZIJ_NENI_VEC = "Unknown item. Windows random error: 2622872787",
             zPOUZIJ_EXCEPTION = "Jejda něco se pokazilo",
-            zPOUZIJ_NELZE_POUZIT = "Hmm.... no joooo. Zrovna se mi nechce nic " +
+            zPOUZIJ_NELZE_POUZIT = "Hmm.... no joooo. Zrovna se mi nechce nic "+
                     "dělat",
             zPOUZIJ_PISTOLE_HOLCICKA =
             "Zprvu vám to přišlo ja výborný nápad, ale nakonec jste si to\n" +
@@ -226,8 +226,8 @@ class Texts
             "Dal jste holčičce strýčkovu peněženku. Holčička vypadá\n"+
             "velice spokojeně. Na oplnátku vám za to věnovala vysavač s \n" +
             "obrázkem sloníka\nZískáváte vysavač",
-            zPOUZIJ_SEKERA_OBRAZ = "Yeaaaaa, uuaaaa dkgfdskfgb\nRozštípal jste " +
-            "obraz na třísky. Obraz však nebyl na stěně jen tak na okrasu.\n" +
+            zPOUZIJ_SEKERA_OBRAZ = "Yeaaaaa, uuaaaa dkgfdskfgb\nRozštípal jste"+
+            " obraz na třísky. Obraz však nebyl na stěně jen tak na okrasu.\n" +
             "Plnil zde důležitou funkci, ukrýval totiž tajný sejf.",
             zPOUZIJ_KOD_SEJF =
             "Pomocí kódu na papírku jste otevřel sejf. Kromně nezajímavých\n" +
