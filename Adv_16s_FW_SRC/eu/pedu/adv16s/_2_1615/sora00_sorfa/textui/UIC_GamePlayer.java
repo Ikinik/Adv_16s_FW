@@ -55,7 +55,7 @@ public class UIC_GamePlayer implements IUI{
     }
 
     /**
-     * @return Odkaz na class objekt tovární třídy {@lik GSMFactory}
+     * @return Odkaz na class objekt tovární třídy {@link GSMFactory}
      */
     @Override
     public Class<? extends IGSMFactory> getFactoryClass() {

@@ -31,7 +31,7 @@ import static eu.pedu.adv16s._2_1615.sora00_sorfa.game.Texts.*;
  *
  * @author  Rudolf PECINOVSKÝ
  */
-public class ScenarioManager extends AScenarioManager
+public final class ScenarioManager extends AScenarioManager
                                implements IAuthorPrototype
 {
 //== CONSTANT CLASS FIELDS =====================================================
@@ -181,8 +181,8 @@ public class ScenarioManager extends AScenarioManager
             new String[] { PISTOLE, TELEFON, SPONKA }
         ),
 
-        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ SPONKA +" "+ TELEFON,
-            zSKOMBINUJ_SPONKA_TELEFON
+        new ScenarioStep(tsNON_STANDARD2, pZKOMBINUJ +" "+ SPONKA +" "+ TELEFON,
+                zZKOMBINUJ_SPONKA_TELEFON
             ,
             POKOJ_PRO_HOSTY,
             new String[] { CHODBA },
@@ -576,8 +576,8 @@ public class ScenarioManager extends AScenarioManager
             new String[] { PISTOLE, TELEFON, SPONKA }
         ),
 
-        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ SPONKA +" "+ TELEFON,
-            zSKOMBINUJ_SPONKA_TELEFON
+        new ScenarioStep(tsNON_STANDARD2, pZKOMBINUJ +" "+ SPONKA +" "+ TELEFON,
+                zZKOMBINUJ_SPONKA_TELEFON
             ,
             POKOJ_PRO_HOSTY,
             new String[] { CHODBA },
@@ -844,9 +844,9 @@ public class ScenarioManager extends AScenarioManager
             new String[] { VYSAVAC, SEKERA, FOSFORESKUJICI_AMPULKA, SROUBOVAK }
         ),
 
-        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ VYSAVAC +" "+
+        new ScenarioStep(tsNON_STANDARD2, pZKOMBINUJ +" "+ VYSAVAC +" "+
                 SROUBOVAK,
-            zSKOMBINUJ_SROUBOVAK_VYSAVAC
+                zZKOMBINUJ_SROUBOVAK_VYSAVAC
             ,
             CHODBA,
             new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
@@ -855,9 +855,9 @@ public class ScenarioManager extends AScenarioManager
             new String[] { SEKERA, FOSFORESKUJICI_AMPULKA, UPRAVENY_VYSAVAC }
         ),
 
-        new ScenarioStep(tsNON_STANDARD2, pSKOMBINUJ +" "+ UPRAVENY_VYSAVAC
+        new ScenarioStep(tsNON_STANDARD2, pZKOMBINUJ +" "+ UPRAVENY_VYSAVAC
                 +" "+ FOSFORESKUJICI_AMPULKA,
-            zSKOMBINUJ_AMPULKA_UVYSAVAC
+                zZKOMBINUJ_AMPULKA_UVYSAVAC
             ,
             CHODBA,
             new String[] {DETSKY_POKOJ, LOZNICE_RODICU,
@@ -1174,11 +1174,11 @@ public class ScenarioManager extends AScenarioManager
 
         //Game testing according to scenarios with the given names
 //        MANAGER.testGameByScenarios("???");
-        //MANAGER.testGameByScenarios(HAPPY_SCENARIO_NAME);
+        MANAGER.testGameByScenarios(HAPPY_SCENARIO_NAME);
         //MANAGER.testGameByScenarios(MISTAKE_SCENARIO_NAME);
         //MANAGER.testGameByScenarios("_REQUIRED_");
         //MANAGER.testGameByScenarios("_ALTERNATIVE_");
-        MANAGER.testGameByScenarios("_BADEND_");
+        //MANAGER.testGameByScenarios("_BADEND_");
 
         //Playing the game according to the scenario with the given name
 //        MANAGER.playGameByScenario("???");

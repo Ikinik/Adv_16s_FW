@@ -167,7 +167,10 @@ class World implements IWorld
         return result;
     }
 
-    /** Nastaví aktuální prostor */
+    /**
+     * Nastaví aktuální prostor
+     * @param cSpace Prostor, který má být nastaven, jako aktuální
+     */
     void setCurrentSpace(Space cSpace) {
         currentSpace = cSpace;
     }

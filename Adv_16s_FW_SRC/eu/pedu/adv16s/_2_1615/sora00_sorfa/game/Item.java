@@ -50,14 +50,13 @@ class Item extends ANamed implements IItem
     Item(String name)
     {
         super(name);
-        boolean movable = false;
         if(name.charAt(0) == '#'){
-            movable = true;
-            name = name.substring(1);
+            MOVABLE = true;
+            this.name = name.substring(1);
+        }else{
+            MOVABLE = false;
+            this.name = name;
         }
-
-        this.name = name;
-        MOVABLE = movable;
     }
 
 
@@ -74,9 +73,14 @@ class Item extends ANamed implements IItem
         return 0;
     }
 
-    /** Pokud má předmět nastaven příznak moovable vrátí {@code true}. Pokud
-     * ne, vrátí {@code false} */
-    public boolean isMovable(){
+    /**
+     * Slouží, k zjištění, zda-li lze předmět přemísťovat. Tj. má nastaven
+     * příznak movable
+     *
+     * @return Pokud má předmět nastaven příznak moovable vrátí {@code true}.
+     * Pokud ne, vrátí {@code false}
+     */
+    boolean isMovable(){
         return MOVABLE;
     }
 

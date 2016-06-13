@@ -43,7 +43,7 @@ class ActionCombine extends AAction
      */
     ActionCombine()
     {
-        super (pSKOMBINUJ,
+        super (pZKOMBINUJ,
                 "Pokusí se skombinovat dvě věci dohromady.");
     }
 
@@ -68,7 +68,7 @@ class ActionCombine extends AAction
     public String execute(String... arguments)
     {
         if(arguments.length < 3){
-            return zSKOMBINUJ_NEZADAN;
+            return zZKOMBINUJ_NEZADAN;
         }
 
         Bag bag = Bag.getInstance();
@@ -76,7 +76,7 @@ class ActionCombine extends AAction
         Item secondItem = bag.getItem(arguments[2]);
 
         if( firstItem == null || secondItem == null){
-            return zSKOMBINUJ_NENI_V_BATOHU;
+            return zZKOMBINUJ_NENI_V_BATOHU;
         }
 
         Pair<String> combinedPair = new Pair<String>(arguments[1],
@@ -91,7 +91,7 @@ class ActionCombine extends AAction
 
             return result.getMessage();
         }else{
-            return zSKOMBINUJ_NENI_KOMBINACE;
+            return zZKOMBINUJ_NENI_KOMBINACE;
         }
     }
 
